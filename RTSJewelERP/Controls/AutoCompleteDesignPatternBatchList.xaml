@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="RTSJewelERP.Controls.AutoCompleteDesignPatternBatchList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             
+    Panel.ZIndex="10">
+    <Canvas>
+        <TextBox x:Name="autoTextBoxDesignPattern" TabIndex="0"  FontSize="18"  FontWeight="Bold"  Background="#f5bd88"  
+                 Height="49" MinWidth="150" TextWrapping="NoWrap" Width="227" Text="" />
+        <ListBox x:Name="suggestionListBox" 
+                 SelectionChanged="suggestionListBox_SelectionChanged"
+                 Background="SeaGreen"   Foreground="White" FontSize="18"  
+                 Visibility="Collapsed" 
+                 MinWidth="150" 
+                 Margin="0,25,0,-25"/>
+    </Canvas>
+</UserControl>

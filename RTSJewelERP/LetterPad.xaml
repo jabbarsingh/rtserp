@@ -1,0 +1,13 @@
+﻿<Window x:Class="RTSJewelERP.LetterPad"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       Title="Letter Pad" Height="356" Width="701.6" WindowStartupLocation="CenterScreen" Background="#f5bd88">
+    <Grid>
+        
+        <TextBox  x:Name="tbMultiLine"  TextWrapping="Wrap"  AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" Margin="24,39,10.2,43.4"/>
+
+        <Button  Content="Print" Click="ExportToPdf" Margin="310,283,311.2,10.4" RenderTransformOrigin="0.503,0.503"/>
+        <TextBox x:Name="BillDate" HorizontalAlignment="Left" Height="27" Margin="24,7,0,0" TextWrapping="Wrap" Text="{Binding Mode=OneWay, Source={x:Static System:DateTime.Now}, StringFormat=dd-MMM-yyyy}"   VerticalAlignment="Top" Width="97"/>
+    </Grid>
+</Window>

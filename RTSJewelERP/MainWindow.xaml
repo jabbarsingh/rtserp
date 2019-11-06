@@ -1,0 +1,8 @@
+﻿<NavigationWindow x:Class="RTSJewelERP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Closing="NavigationWindow_Closing"
+                  Height="{Binding SystemParameter.PrimaryScreenHeight}"  WindowState="Maximized"
+                  Width="{Binding SystemParameter.PrimaryScreenWidth}" WindowStartupLocation="CenterScreen" 
+        Title="RTS-ERP Automation"  Source="HomePage.xaml">
+
+</NavigationWindow>

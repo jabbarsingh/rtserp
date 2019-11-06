@@ -1,0 +1,31 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="RTSJewelERP.RokadAccountsBreakups"
+        Title="RokadAccountsBreakups" Height="612" Width="928">
+    <Grid>
+        <Button  Content="_1" Margin="280,0,615,416" VerticalAlignment="Bottom" FontSize="18" Height="28" Click="Button_Click_4"/>
+
+        <TextBox  FontSize="20" FontWeight="Bold"   GotFocus="TextBoxHighlight_GotFocus"  TabIndex="1"  LostFocus="TextBoxHighlight_LostFocus"     KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="txtAmount" Height="36" Margin="0,130,425,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="110"/>
+        <Label Content="रूपए: ₹" HorizontalAlignment="Left" Margin="315,132,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Width="65" Height="35"/>
+        <Label Content="विवरण :" Margin="514,130,343,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Height="30"/>
+        <TextBox  GotFocus="TextBoxHighlight_GotFocus" TabIndex="2"   LostFocus="TextBoxHighlight_LostFocus"  x:Name="Narration"  KeyDown="Window_KeyDown" HorizontalAlignment="Left" Height="44" Margin="577,130,0,0"  TextWrapping="Wrap" Text=""   VerticalAlignment="Top" Width="182" />
+        <Button Content="जोड़े"  KeyDown="Window_KeyDown" TabIndex="3"   LostFocus="AddItemRow_LostFocus" GotFocus="AddItemRow_GotFocus"  HorizontalAlignment="Left" Margin="781,126,0,0" VerticalAlignment="Top" Width="66" Height="44" Click="Button_Click"/>
+
+        <DataGrid AlternatingRowBackground="Salmon" AlternationCount="1"    x:Name="JammaGridBreakups" Margin="23,208,10,121" IsTabStop="False" />
+
+
+
+
+
+        <TextBox   FontSize="20" FontWeight="Bold" Foreground="RosyBrown"   KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="txtTotalJammaAmount" Height="36" Margin="0,465,10,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="149"/>
+        <Label Content="आज का कुल जमा:" Margin="618,465,164,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Height="36"/>
+        <ComboBox   x:Name="CREDIT_Account"  TabIndex="0"  KeyDown="Window_KeyDown"  HorizontalAlignment="Left" Height="33" Margin="23,132,0,0"  VerticalAlignment="Top" Width="252"/>
+        <Button  Content="Delete" HorizontalAlignment="Left" Margin="796,538,0,0" VerticalAlignment="Top" Width="101" Height="24" Click="Delete_Click"/>
+
+        <DatePicker  FontSize="15" FontWeight="Bold"   x:Name="RokadDate"   Keyboard.PreviewKeyUp="DatePicker_PreviewKeyUp" KeyDown="Window_KeyDown" HorizontalAlignment="Left" Margin="414,0,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top" Width="132" Height="30"/>
+        <Label Content=" तारीख" Margin="353,0,511,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Height="30"/>
+        <Label x:Name="acctGroupName" FontSize="12"  FontWeight="Bold" Background="SlateGray" Content="" HorizontalAlignment="Left" Margin="353,35,0,0" VerticalAlignment="Top" Width="236" Height="42"/>
+
+    </Grid>
+</Window>

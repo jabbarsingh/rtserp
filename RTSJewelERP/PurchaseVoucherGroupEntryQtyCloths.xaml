@@ -1,0 +1,171 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:controls="clr-namespace:RTSJewelERP.Controls"
+      xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="RTSJewelERP.PurchaseVoucherGroupEntryQtyCloths" 
+      mc:Ignorable="d" Background="#f5bd88" 
+      Height="{Binding SystemParameter.PrimaryScreenHeight}"
+                  Width="1174.55" 
+    
+	Title="Purchase Voucher" >
+    <Grid Margin="17,10,3,10" Height="568">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="430"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="145"/>
+            <RowDefinition Height="289"/>
+
+            <RowDefinition Height="166"/>
+        </Grid.RowDefinitions>
+        <controls:AutoCompleteComboBox TabIndex="0"  x:Name="autocompltCustName" LostFocus="autocompltCustName_LostFocus" KeyUp="TextBoxAuto_KeyUp"    KeyDown="Window_CustKeyDown"  Grid.Row="0" Grid.Column="1"                                       
+                                       Margin="64,3,216,97" />
+
+        <controls:AutoCompleteUnderGroupList  LostFocus="autocompleteItemName_LostFocus" GotFocus="TextBoxHighlight_GotFocus"   x:Name="autocompleteItemName"  KeyDown="Window_CustKeyDown"  Grid.Row="0"                                   
+                                       Margin="19,8,192,87" />
+        <TextBox TabIndex="0"  GotFocus="TextBox_GotFocus" KeyDown="Window_CustKeyDown" Text="Cash Customer"  x:Name="CashCustName" HorizontalAlignment="Left" Height="24" Margin="319,12,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="93" FontSize="13" RenderTransformOrigin="0.488,0.592" Grid.Column="1"/>
+
+        <Border Visibility="Collapsed"  BorderThickness="1" Margin="147,-16,36,68">
+            <ScrollViewer Background="LimeGreen" VerticalScrollBarVisibility="Auto" Margin="9,9,0,9" HorizontalAlignment="Left" Width="239">
+                <StackPanel  x:Name="resultStack" Height="89" />
+            </ScrollViewer>
+        </Border>
+
+        <TextBox Visibility="Collapsed" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_KeyDown" Name="txtWeight"  PreviewTextInput="NumberValidationTextBox"   TabIndex="2" HorizontalAlignment="Left" Height="23" Margin="330,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
+        <TextBox  TabIndex="7" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="txtPrice" Height="23" Margin="0,108,397,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Grid.Column="1"/>
+        <Button LostFocus="AddItemRow_LostFocus" GotFocus="AddItemRow_GotFocus"  Name="AddItemRow"  Content="_Add" Margin="238,99,206,0" VerticalAlignment="Top" Height="34" Click="Button_Click" Grid.Column="1"/>
+        <Label Grid.Column="0" Grid.Row="0" Content="Qty" HorizontalAlignment="Left" Margin="292,82,0,0" VerticalAlignment="Top" Height="26" Width="29"/>
+        <TextBox TabIndex="5" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus" PreviewTextInput="NumberValidationTextBox"    Grid.Column="0" Text="1" Grid.Row="0"    KeyDown="Window_KeyDown"  x:Name="txtQty" Height="23" Margin="268,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75"/>
+
+        <TextBox TabIndex="8" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus" Name="txtDiscPerc"   KeyDown="Window_KeyDown" HorizontalAlignment="Left" Text="0" PreviewTextInput="NumberValidationTextBox"  Margin="123,108,0,14" TextWrapping="Wrap" Width="47" Grid.Column="1"/>
+        <TextBox TabIndex="9" GotFocus="TextBoxHighlight_GotFocus"  Name="txtGSTRate" LostFocus="txtGSTRate_LostFocus"  KeyDown="Window_KeyDown" HorizontalAlignment="Right" PreviewTextInput="NumberValidationTextBox" Height="23" Margin="0,108,276,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Grid.Column="1"/>
+        <Label Content="Rate" HorizontalAlignment="Left" Margin="30,84,0,0" VerticalAlignment="Top" Height="26" Width="61" Grid.Column="1"/>
+        <DataGrid IsTabStop="False"  x:Name="CartGrid" Margin="19,10,-201,41" Grid.ColumnSpan="2" Grid.Row="1" LoadingRow="CartGrid_LoadingRow" SelectionChanged="CartGrid_SelectionChanged">
+            <DataGrid.Columns >
+                <DataGridTemplateColumn  Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate  >
+                        <DataTemplate>
+                            <Button IsTabStop="False" Click="ButtonBase_OnClick" CommandParameter="{Binding Id}" Content="Delete"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn  Header="View">
+                    <DataGridTemplateColumn.CellTemplate  >
+                        <DataTemplate>
+                            <Button IsTabStop="False" Click="ViewGroupInventory_OnClick" CommandParameter="{Binding Id}" Content="View"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+
+        <Button IsTabStop="False"  Content="_Clear All" HorizontalAlignment="Left" Margin="19,0,0,123" Grid.Row="2" Width="75" Click="Button_Click_1" Height="33" VerticalAlignment="Bottom"/>
+        <Label FontWeight="Black" FontSize="14" Content="Purchase Invoice" HorizontalAlignment="Left" Margin="626,-7,-223,0" VerticalAlignment="Top" Width="98" Grid.Column="1" Height="29"/>
+        <Label Content="E-Way#" Grid.Column="1" HorizontalAlignment="Left" Margin="525,24,-79,0" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Height="26" Width="55"/>
+        <TextBox   Name="EwayNumbertxt" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="582,27,-191,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" PreviewTextInput="NumberValidationInvoiceTextBox" />
+        <!--<ComboBox x:Name="taxtype"  HorizontalAlignment="Right" Height="23" Margin="0,78,360,0"  VerticalAlignment="Top" Width="87" Grid.Column="1">
+            <ComboBoxItem Tag="L" IsSelected="True" Content="VAT(%)"/>
+            <ComboBoxItem Tag="V" Content="CST(%)"/>
+            <ComboBoxItem Tag="T" Content="GST(%)"/>
+        </ComboBox>-->
+        <!--<TextBox  x:Name="invoiceNumber"  KeyDown="Window_KeyDown_Invoice" PreviewTextInput="NumberValidationInvoiceTextBox" TextChanged="textBoxInvoiceNumber_TextChanged"   HorizontalAlignment="Left" Height="23" Margin="582,55,-167,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="86"  Grid.Column="1"/>-->
+        <TextBox PreviewKeyDown="invoiceNumber_PreviewKeyDown"  x:Name="invoiceNumber"   KeyDown="Window_KeyDown_Invoice"  TextChanged="textBoxInvoiceNumber_TextChanged"   HorizontalAlignment="Left" Height="23" Margin="582,55,-167,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="86"  Grid.Column="1"/>
+        <Label Content="Invoice# " HorizontalAlignment="Left" Margin="516,55,-76,0" VerticalAlignment="Top" Width="61" FontSize="12" FontWeight="Bold" Height="24" Grid.Column="1" RenderTransformOrigin="3.909,0.413"/>
+        <Label Content="Date" HorizontalAlignment="Left" Margin="535,83,-73,0" VerticalAlignment="Top" Width="39" Height="27" Grid.Column="1" FontWeight="Bold" FontSize="12" RenderTransformOrigin="3.339,0.781"/>
+        <DatePicker x:Name="invDate"  HorizontalAlignment="Left" Margin="582,84,-191,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top" Width="110" Grid.Column="1" Height="24"/>
+        <Label Content="Voucher#" Grid.Column="1" HorizontalAlignment="Left" Margin="515,112,-76,0" VerticalAlignment="Top" Width="62" FontSize="12" FontWeight="Bold" Height="24"/>
+        <Label Grid.Column="0" Grid.Row="0" Content="Store" HorizontalAlignment="Left" Margin="65,84,0,0" VerticalAlignment="Top" Height="26" Width="52"/>
+        <TextBox IsReadOnly="True"  Name="cmbStorage" HorizontalAlignment="Left" Margin="19,110,0,0" VerticalAlignment="Top" Width="141" Height="22">
+        </TextBox>
+
+        <Label Grid.Column="1" Grid.Row="0" Content="Disc (%)" HorizontalAlignment="Left" Margin="116,79,0,0" VerticalAlignment="Top" Height="26" Width="59"/>
+
+        <Label Grid.Column="1" Grid.Row="0" Content="GST (%)"   HorizontalAlignment="Left" Margin="175,82,0,0" VerticalAlignment="Top" Height="26" Width="59"/>
+
+        <Label Visibility="Collapsed" Grid.Row="0" Content="Weight" HorizontalAlignment="Left" Margin="330,84,0,0" VerticalAlignment="Top" Height="26" Width="48"/>
+        <Label Content="Total: ₹" Background="DimGray" x:Name="lbTotal" Margin="535,0,-177,10" Grid.Row="1" Height="26" VerticalAlignment="Bottom" Grid.Column="1"/>
+        <Label Content="Grand Total ₹" x:Name="lbGrandTotal" FontSize="16" Margin="458,0,-227,119" Grid.Row="2" Height="43" VerticalAlignment="Bottom" Grid.Column="1" Background="ForestGreen"  HorizontalAlignment="Left" Width="270"/>
+        <TextBox IsReadOnly="True"   Name="cmbTray" HorizontalAlignment="Left" Margin="182,110,0,0" VerticalAlignment="Top" Width="71" Height="22">
+
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="0" Content="Tray" HorizontalAlignment="Left" Margin="201,82,0,0" VerticalAlignment="Top" Height="26" Width="52"/>
+        <Label Content="Tax: ₹" x:Name="lbTotalTax" Margin="269,0,114,10" Grid.Row="1" Height="26" VerticalAlignment="Bottom" Grid.Column="1"/>
+
+        <TextBox  PreviewKeyDown="invoiceNumber_PreviewKeyDown"  Name="VoucherNumber" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="582,113,-191,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" />
+        <TextBox x:Name="HSN" HorizontalAlignment="Left" Height="23" Margin="201,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" />
+        <Label Grid.Column="0" Grid.Row="0" Content="HSN" HorizontalAlignment="Left" Margin="163,62,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+
+
+        <Border Visibility="Collapsed"  BorderThickness="1" Margin="263,-11,29,80" Grid.Column="1">
+            <ScrollViewer Background="Aqua" VerticalScrollBarVisibility="Auto" Margin="9,9,0,9" HorizontalAlignment="Left" Width="196">
+                <StackPanel  x:Name="resultStackCust" Height="63" Width="229" />
+            </ScrollViewer>
+        </Border>
+        <Label Name="lblCustBalance" Content="Balance" HorizontalAlignment="Left" Margin="64,27,0,0" VerticalAlignment="Top" Width="90" Grid.Column="1"/>
+        <TextBox LostFocus="txtDueBal_LostFocus"   KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="receivedCash" Height="19" Margin="0,287,168,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"/>
+        <TextBox    LostFocus="txtDueBal_LostFocus"    KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="receivedCard" Height="20" Margin="0,22,168,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Grid.Column="1" Grid.Row="2"/>
+        <TextBox   LostFocus="txtDueBal_LostFocus"    KeyDown="WindowFlatOff_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="flatOff" Height="19" Margin="0,0,168,100" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="95" Grid.Column="1" Grid.Row="2"/>
+        <Button IsTabStop="False" Name="PrintInvBtn" Content="_Print" Margin="353,0,66,123" Grid.Row="2"  Height="38" VerticalAlignment="Bottom" Click="PrintSimpleTextButton_Click" Grid.Column="1"/>
+
+        <TextBox  LostFocus="txtDueBal_LostFocus"   KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="receivedPaytm" Height="20" Margin="0,77,328,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Grid.Row="2" Grid.Column="1"/>
+
+        <Label Content="Cash" Grid.Column="1" HorizontalAlignment="Left" Margin="188,286,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="45" Grid.RowSpan="2"/>
+        <Label Content="Card" Grid.Column="1" HorizontalAlignment="Left" Margin="188,17,0,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="43"/>
+        <Label Content="PayTm" HorizontalAlignment="Left" Margin="30,77,0,0" Grid.Row="2" VerticalAlignment="Top" Height="23" Width="43" Grid.Column="1"/>
+        <Label x:Name="dueBal" Content="Due Balance" Grid.Column="1" HorizontalAlignment="Left" Margin="213,77,0,0" Grid.Row="2" VerticalAlignment="Top" Width="162" Background="DarkSeaGreen" Height="40" />
+        <Label Content="Flat OFF" Grid.Column="1" HorizontalAlignment="Left" Margin="179,44,0,0" Grid.Row="2" VerticalAlignment="Top" Height="23" Width="55"/>
+        <TextBox IsReadOnly="True" LostFocus="txtDueBal_LostFocus"   KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="receivedOffer" Height="19" Margin="0,71,20,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Grid.Row="2"/>
+        <Label Content="Offer" HorizontalAlignment="Left" Margin="253,71,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="46"/>
+        <TextBox IsReadOnly="True" LostFocus="txtDueBal_LostFocus"   PreviewTextInput="NumberValidationTextBox"  x:Name="receivedLoyalty" Height="20" Margin="0,46,328,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Loyalty Card" HorizontalAlignment="Left" Margin="0,46,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="77" Grid.Column="1"/>
+        <Button Content="_View" Grid.Column="1" HorizontalAlignment="Left" Margin="673,57,-213,0" VerticalAlignment="Top" Width="41" Height="22" Click="Button_Click_3"/>
+        <TextBox Visibility="Collapsed" LostFocus="txtDueBal_LostFocus"   KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="discountTxt" Height="19" Margin="529,47,-123,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="95" Grid.Column="1" Grid.Row="2"/>
+        <Label Visibility="Collapsed" Content="Discount" Grid.Column="1" HorizontalAlignment="Left" Margin="458,47,-23,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="66"/>
+        <Label Content="Discount: ₹" x:Name="lblTotalDiscByItem" Margin="107,0,276,10" Grid.Row="1" Height="26" VerticalAlignment="Bottom" Grid.Column="1"/>
+        <TextBox IsReadOnly="True" LostFocus="txtDueBal_LostFocus"    KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="txtRoundOff" Height="19" Margin="0,10,326,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="RoundOff" HorizontalAlignment="Left" Margin="12,6,0,0" Grid.Row="2" VerticalAlignment="Top" Height="31" Width="65" Grid.Column="1"/>
+        <TextBox Visibility="Collapsed" LostFocus="txtDueBal_LostFocus"    KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="txtAdvanceAmt" Height="19" Margin="0,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Grid.Column="1" Grid.Row="2"/>
+        <Label Visibility="Collapsed" Content="Advance" Grid.Column="1" HorizontalAlignment="Left" Margin="348,22,0,0" Grid.Row="2" VerticalAlignment="Top" Height="31" Width="58"/>
+        <TextBox   LostFocus="txtDueBal_LostFocus"    KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="totalParcel" Height="24" Margin="0,10,35,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="66" Grid.Row="2"/>
+        <Label Content="Total Parcel" HorizontalAlignment="Left" Margin="249,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="24" Width="73"/>
+
+        <TextBox   HorizontalAlignment="Left" Height="23" Margin="107,30,0,0" TextWrapping="Wrap" Text="" Name="dispatchedThrough" VerticalAlignment="Top" Width="105" Grid.Row="2"/>
+        <Label Content="Dispatch Through" HorizontalAlignment="Left" Margin="107,5,0,0" VerticalAlignment="Top" Height="29" Width="110" Grid.Row="2"/>
+        <ComboBox x:Name="deliveryBy"  HorizontalAlignment="Left" Height="23" Margin="107,67,0,0"  VerticalAlignment="Top" Width="105" Grid.Row="2">
+            <ComboBoxItem Tag="L" IsSelected="True" Content="Transport"/>
+            <ComboBoxItem Tag="S" Content="Hand Delivery"/>
+            <ComboBoxItem Tag="V" Content="Lorry"/>
+            <ComboBoxItem Tag="V" Content="Van"/>
+            <ComboBoxItem Tag="T" Content="Train"/>
+            <ComboBoxItem Tag="S" Content="Self"/>
+            <ComboBoxItem Tag="C" Content="Courier"/>
+            <ComboBoxItem Tag="O" Content="Others"/>
+        </ComboBox>
+        <Label Content="Delivery By" HorizontalAlignment="Left" Margin="30,65,0,0" VerticalAlignment="Top" Width="77" FontSize="12"  FontStyle="Italic" Height="31" RenderTransformOrigin="0.415,1.824" Grid.Row="2"/>
+        <TextBox   x:Name="transportName" HorizontalAlignment="Left" Height="23" Margin="106,101,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="106" FontSize="14" RenderTransformOrigin="0.488,0.592" Grid.Row="2"/>
+        <Label Content="TransportName" HorizontalAlignment="Left" Margin="16,96,0,0" VerticalAlignment="Top" Width="91" FontSize="12"  FontStyle="Italic" Height="30" RenderTransformOrigin="0.415,1.824" Grid.Row="2"/>
+        <Button Content="+" Grid.Column="1" Margin="295,0,183,109" VerticalAlignment="Bottom" FontSize="18" Height="24" Click="Button_Click_4"/>
+        <Button Content="+" HorizontalAlignment="Right" Margin="0,17,88,0" VerticalAlignment="Top" FontSize="15" Width="22" Click="Button_Click_5" Height="24"/>
+        <Image   Name="infoItem" Source="info.jpg" MouseDown="infoitem_MouseDown"  HorizontalAlignment="Left" Height="19" Margin="302,17,0,0" VerticalAlignment="Top" Width="14"/>
+        <TextBox   x:Name="narration" HorizontalAlignment="Left" Height="23" Margin="301,103,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Narration" HorizontalAlignment="Left" Margin="230,102,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="62"/>
+        <TextBox   LostFocus="txtDueBal_LostFocus"    KeyDown="Window_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="YourOrder" Height="21" Margin="0,41,35,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="65" Grid.Row="2"/>
+        <Label Content="Your Order" HorizontalAlignment="Left" Margin="248,39,0,0" Grid.Row="2" VerticalAlignment="Top" Height="23" Width="73"/>
+        <RadioButton Name="isShipping" Content="_Shipping Address" Grid.Column="1" HorizontalAlignment="Left" Margin="295,43,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Column="0" Grid.Row="0" Content="Op.Stock" HorizontalAlignment="Left" Margin="19,63,0,0" VerticalAlignment="Top" Height="26" Width="61"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus" PreviewTextInput="NumberValidationTextBox"    Grid.Column="0" Text="0" Grid.Row="0"    KeyDown="Window_KeyDown"  x:Name="txtQtyStockEntry" Height="23" Margin="80,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75"/>
+        <ComboBox  SelectedItem="Pc" TabIndex="6" KeyDown="Window_KeyDown"   GotFocus="CombopboxHighlight_GotFocus"  LostFocus="CombopboxHighlight_LostFocus" x:Name="cmbUnits" HorizontalAlignment="Left" Margin="359,110,0,0" VerticalAlignment="Top" Width="62"/>
+        <Label Grid.Column="0" Grid.Row="0" Content="UOM" HorizontalAlignment="Left" Margin="364,84,0,0" VerticalAlignment="Top" Height="26" Width="47"/>
+        <TextBox   LostFocus="PackCharge_LostFocus"    KeyDown="WindowFlatOff_KeyDown" PreviewTextInput="NumberValidationTextBox"  x:Name="PackCharge" Height="31" Margin="0,0,-119,82" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="95" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Pack-Other" Grid.Column="1" HorizontalAlignment="Left" Margin="448,55,-19,0" Grid.Row="2" VerticalAlignment="Top" Height="23" Width="72"/>
+        <Label Content="Grand SUM ₹" x:Name="lbGrandSum" FontSize="16" Margin="444,0,-213,38" Grid.Row="2" Height="43" VerticalAlignment="Bottom" Grid.Column="1" Background="ForestGreen"/>
+        <Button Name="btnItemAllocation" Click="btnItemAllocation_Click" Content="_Group" HorizontalAlignment="Left" Margin="253,12,0,0" VerticalAlignment="Top" Width="39" Height="42"/>
+    </Grid>
+
+
+</Page>

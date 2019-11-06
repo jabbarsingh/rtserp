@@ -1,0 +1,9 @@
+﻿<Window x:Class="RTSJewelERP.ResetStock"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  WindowStartupLocation="CenterScreen" Background="#f5bd88" 
+        Title="Reset Accounts and Stock" Height="300" Width="300">
+    <Grid>
+        <Button Content="Stock/Accounts-Reset" HorizontalAlignment="Left" Margin="84,112,0,0" VerticalAlignment="Top" Width="136" Height="60" Click="Button_Click"/>
+
+    </Grid>
+</Window>

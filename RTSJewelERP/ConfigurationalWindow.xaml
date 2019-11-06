@@ -1,0 +1,14 @@
+﻿<Window x:Class="RTSJewelERP.ConfigurationalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" WindowStartupLocation="CenterScreen" Background="#f5bd88" 
+        Title="Configurational Window" Height="361" Width="806">
+    <Grid>
+        <ComboBox Name="cmbConfigList" SelectionChanged="cmbConfigList_SelectionChanged"  HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="245" Height="40"/>
+        <TextBox Name="IDNo" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="20,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="ParentName" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="160,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="GrandParent"  IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="298,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Name="cmbListPage" HorizontalAlignment="Left" Margin="436,111,0,0" VerticalAlignment="Top" Width="256" Height="55"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="697,115,0,0" VerticalAlignment="Top" Width="91" Height="51" Click="Button_Click"/>
+
+    </Grid>
+</Window>

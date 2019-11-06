@@ -1,0 +1,54 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="RTSJewelERP.ShowItemInfo"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" Background="LawnGreen" 
+        Title="Item Details" Height="311" Width="819">
+    <Grid>
+
+        <TabControl HorizontalAlignment="Left" Height="271" Margin="10,1,0,0" VerticalAlignment="Top" Width="793">
+            <TabItem IsSelected="True" Header="Basic Details" Height="22" VerticalAlignment="Bottom">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-2,5">
+                    <TextBox IsReadOnly="True"  x:Name="ActualQty"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="139,110,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="117"/>
+                    <Label Content="Current Qty Stock" Margin="18,110,650,0" VerticalAlignment="Top" Height="26" FontWeight="Bold" />
+                    <TextBox  IsReadOnly="True" x:Name="ActualWt"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="139,136,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="117"/>
+                    <Label  FontWeight="Bold"  Content="Current Wt Stock" HorizontalAlignment="Left" Margin="13,136,0,0" VerticalAlignment="Top" Width="110" Height="26"/>
+                    <TextBox IsReadOnly="True" x:Name="CurrentStockValue"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="139,166,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="117"/>
+                    <Label FontWeight="Bold"  Content="CurrentStockValue" HorizontalAlignment="Left" Margin="13,159,0,0" VerticalAlignment="Top" Width="119" Height="26"/>
+                    <TextBox IsReadOnly="True"   x:Name="OpeningStock"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="399,109,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="118"/>
+                    <Label  FontWeight="Bold"  Content="Opening Qty Stock" HorizontalAlignment="Left" Margin="270,106,0,0" VerticalAlignment="Top" Width="122" Height="26"/>
+                    <TextBox IsReadOnly="True" x:Name="OpeningStockValue"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="399,166,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="118"/>
+                    <Label  FontWeight="Bold"  Content="OpeningStockValue" HorizontalAlignment="Left" Margin="270,162,0,0" VerticalAlignment="Top" Width="119" Height="26"/>
+                    <TextBox IsReadOnly="True"  x:Name="OpeningStockWt"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="399,137,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="118"/>
+                    <Label  FontWeight="Bold"  Content="Opening Wt Stock" HorizontalAlignment="Left" Margin="268,133,0,0" VerticalAlignment="Top" Width="124" Height="26"/>
+
+                    <DatePicker IsEnabled="False"  x:Name="LastBuyDate" HorizontalAlignment="Left" Margin="399,49,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top" Width="118" Height="24"/>
+                    <Label Content="LastBuyDate" HorizontalAlignment="Left" Margin="309,49,0,0" VerticalAlignment="Top" Width="80" Height="26"/>
+                    <Label Content="LastSaleDate" HorizontalAlignment="Left" Margin="45,52,0,0" VerticalAlignment="Top" Width="76" Height="26"/>
+                    <DatePicker IsEnabled="False" x:Name="LastSaleDate" HorizontalAlignment="Left" Margin="139,53,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top" Width="117" Height="24"/>
+                    <TextBox IsReadOnly="True" x:Name="LastSalePrice" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="23" Margin="139,82,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="117"/>
+                    <Label Content="LastSalePrice" HorizontalAlignment="Left" Margin="45,82,0,0" VerticalAlignment="Top" Width="78" Height="26"/>
+                    <TextBox IsReadOnly="True"  x:Name="LastBuyPrice" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="23" Margin="399,78,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="118"/>
+                    <Label Content="LastBuyPrice" HorizontalAlignment="Left" Margin="300,75,0,0" VerticalAlignment="Top" Width="89" Height="26"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Sale History" Selector.Selected="TabItem_Selected"  >
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid IsTabStop="False" IsReadOnly="True"  x:Name="ItemSaleGrid" Margin="0,20,19,34">
+                        <DataGrid.Columns >
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Buy History" Margin="-2,-2,-2,0"  Selector.Selected="TabItem_Selected_1">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid IsTabStop="False" IsReadOnly="True"  x:Name="ItemBuyGrid" Margin="0,20,19,34"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Storage Details" Margin="-2,-2,-2,0">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

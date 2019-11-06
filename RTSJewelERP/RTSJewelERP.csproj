@@ -1,0 +1,1219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CEC950C-AA36-42CC-91D4-D241C05CDE0C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RTSJewelERP</RootNamespace>
+    <AssemblyName>RTSJewelERP</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>C:\Users\Admin\Downloads\HtmlAgilityPack\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Enhanced\GST-Enhanced\GST-Account Software\InvoiceApplication\bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Users\Admin\Downloads\Json120r2\Bin\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="RestSharp">
+      <HintPath>C:\Users\Admin\Downloads\RestSharp.104.1\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\AllinOne\Qty\GST-Account Software\InvoiceApplication\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AccountMaster.xaml.cs">
+      <DependentUpon>AccountMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddAgent.xaml.cs">
+      <DependentUpon>AddAgent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddDesignPatternClothItem.xaml.cs">
+      <DependentUpon>AddDesignPatternClothItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddInstantAccount.xaml.cs">
+      <DependentUpon>AddInstantAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddInstantBarcodeItem.xaml.cs">
+      <DependentUpon>AddInstantBarcodeItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddInstantBarcodeJewell.xaml.cs">
+      <DependentUpon>AddInstantBarcodeJewell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddItem.xaml.cs">
+      <DependentUpon>AddItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddPayment.xaml.cs">
+      <DependentUpon>AddPayment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddReceipt.xaml.cs">
+      <DependentUpon>AddReceipt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddStockGroup.xaml.cs">
+      <DependentUpon>AddStockGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddSundryCreditor.xaml.cs">
+      <DependentUpon>AddSundryCreditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddSundryDebtor.xaml.cs">
+      <DependentUpon>AddSundryDebtor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Agents.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agents.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AttachDetach.xaml.cs">
+      <DependentUpon>AttachDetach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Backup.xaml.cs">
+      <DependentUpon>Backup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankBook.xaml.cs">
+      <DependentUpon>BankBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BoxListStorage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BoxListStorage.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Bracode.xaml.cs">
+      <DependentUpon>Bracode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CashPothabaki.xaml.cs">
+      <DependentUpon>CashPothabaki.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CashPothabakiConsolidated.xaml.cs">
+      <DependentUpon>CashPothabakiConsolidated.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Company.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Company.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyMaster.xaml.cs">
+      <DependentUpon>CompanyMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigClass.cs" />
+    <Compile Include="ConfigPageList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigPageList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigTableList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigTableList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationalWindow.xaml.cs">
+      <DependentUpon>ConfigurationalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteBarCodeItemNameComboBox.xaml.cs">
+      <DependentUpon>AutoCompleteBarCodeItemNameComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteBarCodeItemNameComboBoxConsolidated.xaml.cs">
+      <DependentUpon>AutoCompleteBarCodeItemNameComboBoxConsolidated.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteComboBox.xaml.cs">
+      <DependentUpon>AutoCompleteComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteDesignPatternBatchList.xaml.cs">
+      <DependentUpon>AutoCompleteDesignPatternBatchList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteItemCloths.xaml.cs">
+      <DependentUpon>AutoCompleteItemCloths.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteRokadAccounts.xaml.cs">
+      <DependentUpon>AutoCompleteRokadAccounts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteTextboxStockEntryItemxaml.xaml.cs">
+      <DependentUpon>AutoCompleteTextboxStockEntryItemxaml.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteTextboxStockGroup.xaml.cs">
+      <DependentUpon>AutoCompleteTextboxStockGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteTextboxStockSubGroup.xaml.cs">
+      <DependentUpon>AutoCompleteTextboxStockSubGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteUnderGroupList.xaml.cs">
+      <DependentUpon>AutoCompleteUnderGroupList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutocomplteItemTextbox.xaml.cs">
+      <DependentUpon>AutocomplteItemTextbox.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\AutoSaleVoucherBarcodeCustName.xaml.cs">
+      <DependentUpon>AutoSaleVoucherBarcodeCustName.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreditNote.xaml.cs">
+      <DependentUpon>CreditNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.xaml.cs">
+      <DependentUpon>Customer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DebitCreditAccountsList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DebitCreditAccountsList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DebitNote.xaml.cs">
+      <DependentUpon>DebitNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteAccount.xaml.cs">
+      <DependentUpon>DeleteAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteItem.xaml.cs">
+      <DependentUpon>DeleteItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryResetDatabase.xaml.cs">
+      <DependentUpon>FactoryResetDatabase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GroupList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GSTReports.xaml.cs">
+      <DependentUpon>GSTReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InstantStockEntryMain.xaml.cs">
+      <DependentUpon>InstantStockEntryMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InstantStockTransfer.xaml.cs">
+      <DependentUpon>InstantStockTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemMaster.xaml.cs">
+      <DependentUpon>ItemMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemMasterJewell.xaml.cs">
+      <DependentUpon>ItemMasterJewell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemMasterJewellConsolidated.xaml.cs">
+      <DependentUpon>ItemMasterJewellConsolidated.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ITextEvents.cs" />
+    <Compile Include="ITextEventsCRDRNote.cs" />
+    <Compile Include="Journal.xaml.cs">
+      <DependentUpon>Journal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LetterPad.xaml.cs">
+      <DependentUpon>LetterPad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainAccounts.cs">
+      <DependentUpon>MainAccounts.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MainAccounts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainAccounts.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PawnHome.xaml.cs">
+      <DependentUpon>PawnHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.xaml.cs">
+      <DependentUpon>Payment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentInvoice.xaml.cs">
+      <DependentUpon>PaymentInvoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs" />
+    <Compile Include="ProtectedWindow.xaml.cs">
+      <DependentUpon>ProtectedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseInvoiceNumberList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseInvoiceNumberList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasePartyName.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchasePartyName.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseQtyGSTVoucherxaml.xaml.cs">
+      <DependentUpon>PurchaseQtyGSTVoucherxaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseVoucher.xaml.cs">
+      <DependentUpon>PurchaseVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseVoucherGroupEntryQtyCloths.xaml.cs">
+      <DependentUpon>PurchaseVoucherGroupEntryQtyCloths.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReadyMadeItemAllocation.xaml.cs">
+      <DependentUpon>ReadyMadeItemAllocation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Receipt.xaml.cs">
+      <DependentUpon>Receipt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptInvoice.xaml.cs">
+      <DependentUpon>ReceiptInvoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ResetStock.xaml.cs">
+      <DependentUpon>ResetStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rokad.xaml.cs">
+      <DependentUpon>Rokad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RokadAccountsBreakups.xaml.cs">
+      <DependentUpon>RokadAccountsBreakups.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RokadAccountsBreakupsNamme.xaml.cs">
+      <DependentUpon>RokadAccountsBreakupsNamme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RokadEntry.xaml.cs">
+      <DependentUpon>RokadEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RokadMonthlyReports.xaml.cs">
+      <DependentUpon>RokadMonthlyReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleestimationVoucherJewellLatha.xaml.cs">
+      <DependentUpon>SaleestimationVoucherJewellLatha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleQtyEstimationVoucher.xaml.cs">
+      <DependentUpon>SaleQtyEstimationVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleQtyEstimationVoucherSizeA6.xaml.cs">
+      <DependentUpon>SaleQtyEstimationVoucherSizeA6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleQtyEstimationVoucherSizeA6NoDisc.xaml.cs">
+      <DependentUpon>SaleQtyEstimationVoucherSizeA6NoDisc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleQtyEstimationVoucherSizeItemDesc.xaml.cs">
+      <DependentUpon>SaleQtyEstimationVoucherSizeItemDesc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleQtyGSTRetailComposition.xaml.cs">
+      <DependentUpon>SaleQtyGSTRetailComposition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucher.xaml.cs">
+      <DependentUpon>SaleVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherAllInOneQtyGST.xaml.cs">
+      <DependentUpon>SaleVoucherAllInOneQtyGST.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherAllInOneQtyGSTSteel.xaml.cs">
+      <DependentUpon>SaleVoucherAllInOneQtyGSTSteel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherBarcode.xaml.cs">
+      <DependentUpon>SaleVoucherBarcode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherBarcodeConsolidated.xaml.cs">
+      <DependentUpon>SaleVoucherBarcodeConsolidated.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherBarcodeWatch.xaml.cs">
+      <DependentUpon>SaleVoucherBarcodeWatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherClothHitesh.xaml.cs">
+      <DependentUpon>SaleVoucherClothHitesh.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherClothKiran.xaml.cs">
+      <DependentUpon>SaleVoucherClothKiran.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherEstimationBarcodeJewell.xaml.cs">
+      <DependentUpon>SaleVoucherEstimationBarcodeJewell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherEstimationBarcodeJewellConsolidated.xaml.cs">
+      <DependentUpon>SaleVoucherEstimationBarcodeJewellConsolidated.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherEstimationBarcodeJewellUpdate.xaml.cs">
+      <DependentUpon>SaleVoucherEstimationBarcodeJewellUpdate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherEstimationBarcodeWatch.xaml.cs">
+      <DependentUpon>SaleVoucherEstimationBarcodeWatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherEstimationJewelleryConsolidatedLatha.xaml.cs">
+      <DependentUpon>SaleVoucherEstimationJewelleryConsolidatedLatha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherInvoiceNumberList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleVoucherInvoiceNumberList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherJewellLatha.xaml.cs">
+      <DependentUpon>SaleVoucherJewellLatha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherJewellLathaConsolidated.xaml.cs">
+      <DependentUpon>SaleVoucherJewellLathaConsolidated.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherJewellOldJewell.xaml.cs">
+      <DependentUpon>SaleVoucherJewellOldJewell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherQtyEstimationA5SizePdf.xaml.cs">
+      <DependentUpon>SaleVoucherQtyEstimationA5SizePdf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherQtyGhansyam.xaml.cs">
+      <DependentUpon>SaleVoucherQtyGhansyam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaleVoucherQtyGSTRetailRegular.xaml.cs">
+      <DependentUpon>SaleVoucherQtyGSTRetailRegular.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SendBulkSMS.xaml.cs">
+      <DependentUpon>SendBulkSMS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SheetAccountList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SheetAccountList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SheetAddAccount.xaml.cs">
+      <DependentUpon>SheetAddAccount.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SheetHome.xaml.cs">
+      <DependentUpon>SheetHome.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SheetNewTransactionEntry.xaml.cs">
+      <DependentUpon>SheetNewTransactionEntry.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SheetViewAccounts.xaml.cs">
+      <DependentUpon>SheetViewAccounts.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ShowItemInfo.xaml.cs">
+      <DependentUpon>ShowItemInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="State.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>State.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="StockBoxEntryByPurchase.xaml.cs">
+      <DependentUpon>StockBoxEntryByPurchase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockEntry.xaml.cs">
+      <DependentUpon>StockEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockEntryTransferBoxTray.xaml.cs">
+      <DependentUpon>StockEntryTransferBoxTray.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockEntryMain.xaml.cs">
+      <DependentUpon>StockEntryMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockEntryWatchBarCode.xaml.cs">
+      <DependentUpon>StockEntryWatchBarCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockItemsList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockItemsList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Storage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Storage.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="StorageList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StorageList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchCompany.xaml.cs">
+      <DependentUpon>SwitchCompany.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TodayRate.xaml.cs">
+      <DependentUpon>TodayRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TrayItemLoad.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrayItemLoad.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TrayList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrayList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Units.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Units.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAccountLedger.xaml.cs">
+      <DependentUpon>ViewAccountLedger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WhatUWant.xaml.cs">
+      <DependentUpon>WhatUWant.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AccountMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddAgent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddDesignPatternClothItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddInstantAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddInstantBarcodeItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddInstantBarcodeJewell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddReceipt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddStockGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddSundryCreditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddSundryDebtor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AttachDetach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Backup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bracode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CashPothabaki.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CashPothabakiConsolidated.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CompanyMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfigurationalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoCompleteBarCodeItemNameComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoCompleteBarCodeItemNameComboBoxConsolidated.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoCompleteComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AutoCompleteDesignPatternBatchList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoCompleteItemCloths.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoCompleteRokadAccounts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoCompleteTextboxStockEntryItemxaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoCompleteTextboxStockGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoCompleteTextboxStockSubGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoCompleteUnderGroupList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutocomplteItemTextbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AutoSaleVoucherBarcodeCustName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreditNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DebitNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FactoryResetDatabase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GSTReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InstantStockEntryMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InstantStockTransfer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemMasterJewell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemMasterJewellConsolidated.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Journal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LetterPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Loginpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Loginpage.xaml.cs">
+      <DependentUpon>Loginpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PawnHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Payment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaymentInvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProtectedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PurchaseQtyGSTVoucherxaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PurchaseVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PurchaseVoucherGroupEntryQtyCloths.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReadyMadeItemAllocation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Receipt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReceiptInvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResetStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rokad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RokadAccountsBreakups.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RokadAccountsBreakupsNamme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RokadEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RokadMonthlyReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleestimationVoucherJewellLatha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleQtyEstimationVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleQtyEstimationVoucherSizeA6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleQtyEstimationVoucherSizeA6NoDisc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleQtyEstimationVoucherSizeItemDesc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleQtyGSTRetailComposition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherAllInOneQtyGST.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherAllInOneQtyGSTSteel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherBarcode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherBarcodeConsolidated.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherBarcodeWatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherClothHitesh.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherClothKiran.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherEstimationBarcodeJewell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherEstimationBarcodeJewellConsolidated.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherEstimationBarcodeJewellUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherEstimationBarcodeWatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherEstimationJewelleryConsolidatedLatha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherJewellLatha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherJewellLathaConsolidated.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherJewellOldJewell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherQtyEstimationA5SizePdf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherQtyGhansyam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaleVoucherQtyGSTRetailRegular.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SendBulkSMS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SheetAddAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SheetHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SheetNewTransactionEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SheetViewAccounts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowItemInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockBoxEntryByPurchase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockEntryTransferBoxTray.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockEntryMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockEntryWatchBarCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SwitchCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TodayRate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAccountLedger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WhatUWant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Agents.xsc">
+      <DependentUpon>Agents.xsd</DependentUpon>
+    </None>
+    <None Include="Agents.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Agents.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Agents.xss">
+      <DependentUpon>Agents.xsd</DependentUpon>
+    </None>
+    <None Include="BoxListStorage.xsc">
+      <DependentUpon>BoxListStorage.xsd</DependentUpon>
+    </None>
+    <None Include="BoxListStorage.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BoxListStorage.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="BoxListStorage.xss">
+      <DependentUpon>BoxListStorage.xsd</DependentUpon>
+    </None>
+    <None Include="Company.xsc">
+      <DependentUpon>Company.xsd</DependentUpon>
+    </None>
+    <None Include="Company.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Company.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Company.xss">
+      <DependentUpon>Company.xsd</DependentUpon>
+    </None>
+    <None Include="ConfigPageList.xsc">
+      <DependentUpon>ConfigPageList.xsd</DependentUpon>
+    </None>
+    <None Include="ConfigPageList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConfigPageList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ConfigPageList.xss">
+      <DependentUpon>ConfigPageList.xsd</DependentUpon>
+    </None>
+    <None Include="ConfigTableList.xsc">
+      <DependentUpon>ConfigTableList.xsd</DependentUpon>
+    </None>
+    <None Include="ConfigTableList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConfigTableList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ConfigTableList.xss">
+      <DependentUpon>ConfigTableList.xsd</DependentUpon>
+    </None>
+    <None Include="DebitCreditAccountsList.xsc">
+      <DependentUpon>DebitCreditAccountsList.xsd</DependentUpon>
+    </None>
+    <None Include="DebitCreditAccountsList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DebitCreditAccountsList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DebitCreditAccountsList.xss">
+      <DependentUpon>DebitCreditAccountsList.xsd</DependentUpon>
+    </None>
+    <None Include="GroupList.xsc">
+      <DependentUpon>GroupList.xsd</DependentUpon>
+    </None>
+    <None Include="GroupList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GroupList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="GroupList.xss">
+      <DependentUpon>GroupList.xsd</DependentUpon>
+    </None>
+    <None Include="MainAccounts.xsc">
+      <DependentUpon>MainAccounts.xsd</DependentUpon>
+    </None>
+    <None Include="MainAccounts.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MainAccounts.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MainAccounts.xss">
+      <DependentUpon>MainAccounts.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="PurchaseInvoiceNumberList.xsc">
+      <DependentUpon>PurchaseInvoiceNumberList.xsd</DependentUpon>
+    </None>
+    <None Include="PurchaseInvoiceNumberList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PurchaseInvoiceNumberList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="PurchaseInvoiceNumberList.xss">
+      <DependentUpon>PurchaseInvoiceNumberList.xsd</DependentUpon>
+    </None>
+    <None Include="PurchasePartyName.xsc">
+      <DependentUpon>PurchasePartyName.xsd</DependentUpon>
+    </None>
+    <None Include="PurchasePartyName.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PurchasePartyName.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="PurchasePartyName.xss">
+      <DependentUpon>PurchasePartyName.xsd</DependentUpon>
+    </None>
+    <None Include="SaleVoucherInvoiceNumberList.xsc">
+      <DependentUpon>SaleVoucherInvoiceNumberList.xsd</DependentUpon>
+    </None>
+    <None Include="SaleVoucherInvoiceNumberList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SaleVoucherInvoiceNumberList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SaleVoucherInvoiceNumberList.xss">
+      <DependentUpon>SaleVoucherInvoiceNumberList.xsd</DependentUpon>
+    </None>
+    <None Include="SheetAccountList.xsc">
+      <DependentUpon>SheetAccountList.xsd</DependentUpon>
+    </None>
+    <None Include="SheetAccountList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SheetAccountList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SheetAccountList.xss">
+      <DependentUpon>SheetAccountList.xsd</DependentUpon>
+    </None>
+    <None Include="State.xsc">
+      <DependentUpon>State.xsd</DependentUpon>
+    </None>
+    <None Include="State.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>State.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="State.xss">
+      <DependentUpon>State.xsd</DependentUpon>
+    </None>
+    <None Include="StockItemsList.xsc">
+      <DependentUpon>StockItemsList.xsd</DependentUpon>
+    </None>
+    <None Include="StockItemsList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StockItemsList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="StockItemsList.xss">
+      <DependentUpon>StockItemsList.xsd</DependentUpon>
+    </None>
+    <None Include="Storage.xsc">
+      <DependentUpon>Storage.xsd</DependentUpon>
+    </None>
+    <None Include="Storage.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Storage.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Storage.xss">
+      <DependentUpon>Storage.xsd</DependentUpon>
+    </None>
+    <None Include="StorageList.xsc">
+      <DependentUpon>StorageList.xsd</DependentUpon>
+    </None>
+    <None Include="StorageList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StorageList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="StorageList.xss">
+      <DependentUpon>StorageList.xsd</DependentUpon>
+    </None>
+    <None Include="TrayItemLoad.xsc">
+      <DependentUpon>TrayItemLoad.xsd</DependentUpon>
+    </None>
+    <None Include="TrayItemLoad.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TrayItemLoad.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TrayItemLoad.xss">
+      <DependentUpon>TrayItemLoad.xsd</DependentUpon>
+    </None>
+    <None Include="TrayList.xsc">
+      <DependentUpon>TrayList.xsd</DependentUpon>
+    </None>
+    <None Include="TrayList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TrayList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TrayList.xss">
+      <DependentUpon>TrayList.xsd</DependentUpon>
+    </None>
+    <None Include="Units.xsc">
+      <DependentUpon>Units.xsd</DependentUpon>
+    </None>
+    <None Include="Units.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Units.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Units.xss">
+      <DependentUpon>Units.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="rokadicon.jpg" />
+    <Resource Include="upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BarCode.jpg" />
+    <Resource Include="ItemMaster.png" />
+    <Resource Include="Journal.png" />
+    <Resource Include="Payment.png" />
+    <Resource Include="purchase-icon.jpg" />
+    <Resource Include="Receipt.png" />
+    <Resource Include="Sale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Account.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="info.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Backup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OneClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ShutDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Estimate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Paid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Due.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

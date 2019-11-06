@@ -1,0 +1,33 @@
+﻿<Window x:Class="RTSJewelERP.Loginpage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login RTSProSoft" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" HorizontalAlignment="Center" WindowStartupLocation="CenterScreen" VerticalAlignment="Center" Height="604.762" Width="1210.032">
+
+    <Window.Background>
+        <SolidColorBrush Opacity="0.8" Color="Red"/>
+    </Window.Background>
+
+    <Grid>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="411*"/>
+            <ColumnDefinition Width="742*"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="Login" Background="#f5bd88" Content="Login" HorizontalAlignment="Center" Margin="143,472,528,79" VerticalAlignment="Center" Width="108" Click="Button_Click" Height="54" RenderTransformOrigin="2.054,2.755" Grid.Column="1"/>
+        <PasswordBox Background="Black" FontWeight="Bold" FontSize="26" Foreground="White" PasswordChanged="password_PasswordChanged"  Name="password" HorizontalAlignment="Left" Width="258" Margin="67,400,0,0" VerticalAlignment="Top" Height="52" KeyDown="password_KeyDown" Grid.Column="1" />
+        <Image Source="Logo.jpg"   HorizontalAlignment="Left" Height="354" Margin="139,0,0,0" VerticalAlignment="Top" Width="954" Grid.ColumnSpan="2"/>
+        <Label Foreground="White" FontSize="23" Content="Call: @7506376936" HorizontalAlignment="Left" Margin="139,549,0,0" VerticalAlignment="Top" Width="238" Height="41"/>
+        <TextBlock FontSize="27"  Margin="424,545,117,15" Grid.Column="1">           
+    <Hyperlink Foreground="White" NavigateUri="http://www.gstbook9.com"  RequestNavigate="Hyperlink_RequestNavigate">
+       www.gstbook9.com
+    </Hyperlink>
+        </TextBlock>
+        <Label Foreground="White" FontSize="23" Content="Forgot Password" HorizontalAlignment="Left" Margin="117,544,0,0" VerticalAlignment="Top" Width="194" Height="41" Grid.Column="1"/>
+        <Button  FontSize="19" Background="#f5bd88" Content="Select Path" Grid.Column="1" HorizontalAlignment="Left" Margin="415,354,0,0" VerticalAlignment="Top" Width="108" Height="53" Click="Button_Click_1"/>
+        <TextBox  Name="backupPath" Grid.Column="1" HorizontalAlignment="Left" Height="53" Margin="528,354,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241"/>
+        <Button  FontSize="19" Background="#f5bd88"  Content="Set" Grid.Column="1" HorizontalAlignment="Left" Margin="615,412,0,0" VerticalAlignment="Top" Width="47" Height="41" Click="Button_Click_2"/>
+    </Grid>
+
+
+</Window>

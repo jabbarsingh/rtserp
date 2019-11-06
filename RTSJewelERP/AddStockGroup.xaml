@@ -1,0 +1,24 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:RTSJewelERP.Controls" x:Class="RTSJewelERP.AddStockGroup"
+        Title="AddStockGroup" Height="334" Width="931">
+    <Grid>
+
+        <Controls:AutoCompleteTextboxStockGroup LostFocus="autocompleteItemName_LostFocus" GotFocus="TextBoxHighlight_GotFocus"  TabIndex="0"  x:Name="autocompleteItemNameStockEntry"  KeyDown="Window_KeyDown"  Grid.Row="0"                                   
+			Margin="10,32,748,231" />
+        <TextBox   KeyDown="Window_KeyDown" x:Name="ItemDesc" HorizontalAlignment="Left" Height="23" Margin="90,144,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="145"/>
+
+        <TextBox  KeyDown="Window_KeyDown"  x:Name="HSN"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="743,49,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="159"/>
+        <Label  FontWeight="Bold" Content="HSN" HorizontalAlignment="Left" Margin="671,48,0,0" VerticalAlignment="Top" Width="55" Height="26"/>
+        <TextBox   KeyDown="Window_KeyDown" x:Name="GSTRate"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="743,86,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="159"/>
+        <Label  FontWeight="Bold"  Content="GSTRate" HorizontalAlignment="Left" Margin="656,82,0,0" VerticalAlignment="Top" Width="70" Height="26"/>
+
+        <Button x:Name="SaveDesign"  KeyDown="Window_KeyDown" Content="_Save" HorizontalAlignment="Left" Margin="433,206,0,0" VerticalAlignment="Top" Click="SaveDesign_Click" Width="72" Height="45"/>
+        <Label Grid.Column="0" Grid.Row="0" Content="Group/SubGroup Name" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Height="26" Width="145"/>
+        
+        <Label Content="Group Desc" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+        
+
+    </Grid>
+</Window>

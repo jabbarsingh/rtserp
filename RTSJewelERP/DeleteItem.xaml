@@ -1,0 +1,41 @@
+﻿<Window x:Class="RTSJewelERP.DeleteItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         WindowStartupLocation="CenterScreen"
+                ResizeMode="NoResize"
+      Background="SeaShell" 
+              xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Controls="clr-namespace:RTSJewelERP.Controls" 
+        Title="DeleteItem" Height="470" Width="1034">
+    <Grid>
+        <Button  Content="Delete" HorizontalAlignment="Left" Margin="454,399,0,0" VerticalAlignment="Top" Width="102" Height="32" Click="Delete_Click"/>
+        <DataGrid  AlternatingRowBackground="Salmon" AlternationCount="2" HorizontalAlignment="Left" IsReadOnly="True"  x:Name="StockRegisterGrid" Margin="10,146,0,0" VerticalAlignment="Top" Height="227" Width="1008">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Foreground" Value="Red"/>
+                    <!--<Setter Property="Background" Value="SandyBrown"/>-->
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="FontSize" Value="18"/>
+                    <Setter Property="FontFamily" Value="Arial"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <!--<Setter Property="Background" Value="Black"/>-->
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+        <Controls:AutocomplteItemTextbox  LostFocus="autocompleteItemName_LostFocus"   x:Name="autocompleteItemName"  KeyDown="Window_KeyDown"  Grid.Row="0"                                   
+        	Margin="10,10,786,331" />
+        <DatePicker IsEnabled="False" x:Name="startDateStockRegister" HorizontalAlignment="Left" Margin="393,2,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top"/>
+        <Label Content="Start Date" HorizontalAlignment="Left" Margin="323,1,0,0" VerticalAlignment="Top" Width="65"/>
+        <DatePicker  IsEnabled="False" x:Name="toDateStockRegister" HorizontalAlignment="Left" Margin="393,47,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top"/>
+        <Label Content="End Date" HorizontalAlignment="Left" Margin="323,45,0,0" VerticalAlignment="Top"/>
+        <Button Content="_Show" Margin="406,94,523,314" Click="Button_Click_StockRegister"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,118 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Controls="clr-namespace:RTSJewelERP.Controls" x:Class="RTSJewelERP.RokadMonthlyReports"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" Background="LawnGreen" 
+        Title="Rokad Book" Height="681" Width="1169">
+    <Grid>
+
+        <TabControl HorizontalAlignment="Left" Height="641" Margin="10,1,0,0" VerticalAlignment="Top" Width="1143">
+
+
+
+
+            <TabItem Header="_Trial Balance" Selector.Selected="TabTrialBalance_Selected"  >
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid  AlternatingRowBackground="Salmon" AlternationCount="2" HorizontalAlignment="Left" IsReadOnly="True"  x:Name="TrialBalanceGrid" Margin="10,110,0,0" VerticalAlignment="Top" Height="437" Width="1083">
+
+                        <!--<DataGrid.Columns>
+                            <DataGridTextColumn MinWidth="50" Width="Auto" Header="Column 1"
+                            Binding="{Binding Property1}" />
+                            <DataGridTemplateColumn Width="*" Header="Column 2">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Property2}" TextWrapping="Wrap" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>-->
+
+
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Foreground" Value="Red"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <!--<Setter Property="Background" Value="Red"/>-->
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+
+
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="FontFamily" Value="Arial"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <!--<Setter Property="Background" Value="Black"/>-->
+                            </Style>
+                        </DataGrid.RowStyle>
+                    </DataGrid>
+
+
+                    <DatePicker x:Name="startDateTrialBalance" HorizontalAlignment="Left" Margin="96,14,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top"/>
+                    <Label Content="Start Date" HorizontalAlignment="Left" Margin="26,13,0,0" VerticalAlignment="Top" Width="65"/>
+                    <DatePicker x:Name="toDateTrialBalance" HorizontalAlignment="Left" Margin="96,59,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top"/>
+                    <Label Content="End Date" HorizontalAlignment="Left" Margin="26,57,0,0" VerticalAlignment="Top"/>
+                    <Button Content="_Show" Margin="303,27,754,552" Click="Button_Click_TrialBalance"/>
+                    <Label Content="DR(नामे)" HorizontalAlignment="Left" Margin="565,561,0,0" VerticalAlignment="Top" Height="25" Width="51"/>
+                    <TextBox IsReadOnly="True" x:Name="totalDRTrialBal" HorizontalAlignment="Left" Height="25" Margin="621,561,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="119"/>
+                    <Label Content="CR(जमा)" HorizontalAlignment="Left" Margin="359,561,0,0" VerticalAlignment="Top" Height="25" Width="53"/>
+                    <TextBox IsReadOnly="True" x:Name="totalCRTrialBal" HorizontalAlignment="Left" Height="25" Margin="417,561,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="119"/>
+                    <Label x:Name="lblRokadDiff" FontSize="14"  FontWeight="Bold" Background="SlateGray" Content="पोते बाकी नामे(ClosingBal): ₹ " HorizontalAlignment="Left" Margin="756,561,0,0" VerticalAlignment="Top" Width="337" Height="35"/>
+
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="_Account Ledger" Selector.Selected="TabRokad_Selected"  >
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid  AlternatingRowBackground="Salmon" AlternationCount="2" HorizontalAlignment="Left" IsReadOnly="True"  x:Name="RokadGrid" Margin="10,110,0,0" VerticalAlignment="Top" Height="408" Width="1083">
+
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="Red"/>
+                                <!--<Setter Property="Background" Value="SandyBrown"/>-->
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="FontFamily" Value="Arial"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <!--<Setter Property="Background" Value="Black"/>-->
+                            </Style>
+                        </DataGrid.RowStyle>
+                    </DataGrid>
+                    <DatePicker x:Name="startDateRokad" HorizontalAlignment="Left" Margin="361,12,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top"/>
+                    <Label Content="Start Date" HorizontalAlignment="Left" Margin="291,11,0,0" VerticalAlignment="Top" Width="65"/>
+                    <DatePicker x:Name="toDateRokad" HorizontalAlignment="Left" Margin="361,41,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top"/>
+                    <Label Content="End Date" HorizontalAlignment="Left" Margin="291,39,0,0" VerticalAlignment="Top"/>
+                    <Button Content="_Show" Margin="523,14,540,561" Click="Button_Click_Rokad"/>
+                    <Label Content="DR(नामे)" HorizontalAlignment="Left" Margin="616,532,0,0" VerticalAlignment="Top" Height="25" Width="54"/>
+                    <TextBox IsReadOnly="True" x:Name="totalDRRokad" HorizontalAlignment="Left" Height="25" Margin="670,532,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="119"/>
+                    <Label Content="CR(जमा)" HorizontalAlignment="Left" Margin="835,532,0,0" VerticalAlignment="Top" Height="25" Width="52"/>
+                    <TextBox IsReadOnly="True" x:Name="totalCRRokad" HorizontalAlignment="Left" Height="25" Margin="892,532,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="119"/>
+                    <Controls:AutoCompleteRokadAccounts TabIndex="0"  x:Name="autocompltCustNameRokad"   KeyDown="Window_CustKeyDown"  Grid.Row="0"   LostFocus="autocompltCustNameRokad_LostFocus"                                    
+                    	Margin="19,6,893,561" />
+                    <Button x:Name="printRokadAcctLedger" Click="printRokadAcctLedger_Click"  Content="_Print" HorizontalAlignment="Left" Margin="623,14,0,0" VerticalAlignment="Top" Width="62" Height="38"/>
+                    <TextBox Background="Salmon" IsReadOnly="True" x:Name="DRBalanceRokad" HorizontalAlignment="Left" Height="25" Margin="974,578,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="119"/>
+                    <Label Content="DR(नामे) BALANCE: ₹ " HorizontalAlignment="Left" Margin="851,578,0,0" VerticalAlignment="Top" Height="25" Width="118"/>
+                    <TextBox Background="Salmon" IsReadOnly="True" x:Name="CRBalanceRokad" HorizontalAlignment="Left" Height="25" Margin="694,578,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="119"/>
+                    <Label Content="CR(जमा) BALANCE: ₹ " HorizontalAlignment="Left" Margin="567,578,0,0" VerticalAlignment="Top" Height="25" Width="122"/>
+
+
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</Window>

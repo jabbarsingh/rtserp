@@ -1,0 +1,26 @@
+﻿<Window x:Class="RTSJewelERP.TodayRate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" AllowsTransparency="True" WindowStyle="None"  WindowStartupLocation="CenterScreen" 
+        Title="TodayRate" Height="477" Width="401">
+    <Window.Background>
+        <SolidColorBrush Opacity="0.8" Color="Red"/>
+    </Window.Background>
+    <Grid Margin="0,0,20,5">
+        <TextBox Name="txtgold916RateToday" FontSize="30" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_KeyDown" HorizontalAlignment="Left" Height="38" Margin="231,48,0,0" TextWrapping="Wrap" Text="3100" VerticalAlignment="Top" Width="123"/>
+        <Label BorderBrush="Azure" BorderThickness="2" x:Name="lblGold916Rate" Background="Gold" Content="Gold Rate(916):/gm" HorizontalAlignment="Left" Margin="18,48,0,0" VerticalAlignment="Top" FontSize="18" Width="186"/>
+        <Label  BorderBrush="Azure" BorderThickness="2"  x:Name="lblGoldRate"  Background="Gold" Content="Gold Rate(Sada):/gm" HorizontalAlignment="Left" Margin="18,111,0,0" VerticalAlignment="Top"  FontSize="18" Width="186"/>
+        <Label BorderBrush="Azure" BorderThickness="2"  x:Name="lblSilverRate"  Background="Silver" Content="Silver Rate: /gm" HorizontalAlignment="Left" Margin="18,169,0,0" VerticalAlignment="Top"  FontSize="18" Width="186"/>
+        <TextBox   FontSize="30" Name="txtgoldRateToday" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_KeyDown" HorizontalAlignment="Left" Height="38" Margin="231,111,0,0" TextWrapping="Wrap" Text="2900" VerticalAlignment="Top" Width="123"/>
+        <TextBox Name="txtsilverRateToday"  FontSize="30" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_LastKeyDown" HorizontalAlignment="Left" Height="38" Margin="231,169,0,0" TextWrapping="Wrap" Text="41" VerticalAlignment="Top" Width="137"/>
+        <Label BorderBrush="Azure" BorderThickness="2"  x:Name="lblSilverRate_Copy"  Background="Silver" Content="Silver Rate(Sada):/gm" HorizontalAlignment="Left" Margin="18,222,0,0" VerticalAlignment="Top"  FontSize="18" Width="186"/>
+        <TextBox  IsEnabled="False"  Name="txtsilversadaRateToday" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_KeyDown" HorizontalAlignment="Left" Height="38" Margin="231,222,0,0" TextWrapping="Wrap" Text="39" VerticalAlignment="Top" Width="123"/>
+        <TextBox   IsEnabled="False"  x:Name="txtOldGold916RateToday" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_KeyDown" HorizontalAlignment="Left" Height="38" Margin="231,280,0,0" TextWrapping="Wrap" Text="3100" VerticalAlignment="Top" Width="123"/>
+        <Label BorderBrush="Azure" BorderThickness="2" x:Name="lblGold916Rate_Copy" Background="Gold" Content="Old Gold 916/gm" HorizontalAlignment="Left" Margin="18,280,0,0" VerticalAlignment="Top" FontSize="18" Width="186"/>
+        <Label  BorderBrush="Azure" BorderThickness="2"  x:Name="lblGoldRate_Copy"  Background="Gold" Content="Old Gold (22ct):/gm" HorizontalAlignment="Left" Margin="18,343,0,0" VerticalAlignment="Top"  FontSize="18" Width="186"/>
+        <TextBox  IsEnabled="False" x:Name="txtOldGoldSadaRateToday" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_KeyDown" HorizontalAlignment="Left" Height="38" Margin="231,343,0,0" TextWrapping="Wrap" Text="2900" VerticalAlignment="Top" Width="123"/>
+        <Label BorderBrush="Azure" BorderThickness="2"  x:Name="lblSilverRate_Copy1"  Background="Silver" Content="Old Silver Rate:/gm" HorizontalAlignment="Left" Margin="18,412,0,0" VerticalAlignment="Top"  FontSize="18" Width="186"/>
+        <TextBox  IsEnabled="False" x:Name="txtOldSilverRateToday" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_LastKeyDown" HorizontalAlignment="Left" Height="38" Margin="231,412,0,0" TextWrapping="Wrap" Text="39" VerticalAlignment="Top" Width="123"/>
+        <TextBlock  FontSize="20"  Margin="88,0,55,436"><Hyperlink Foreground="Blue" NavigateUri="https://www.livechennai.com/gold_silverrate.asp"  RequestNavigate="Hyperlink_RequestNavigate"><Run Text="GOLD-Silver Today Rate"/></Hyperlink></TextBlock>
+
+    </Grid>
+</Window>

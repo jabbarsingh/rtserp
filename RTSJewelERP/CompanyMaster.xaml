@@ -1,0 +1,138 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="RTSJewelERP.CompanyMaster" 
+      mc:Ignorable="d" Background="#f5bd88" 
+      Height="{Binding SystemParameter.PrimaryScreenHeight}"
+                  Width="1174.55" 
+    
+	Title="Company" >
+    <Grid Margin="17,10,3,10" Height="568">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="430"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="143"/>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="289"/>
+
+            <RowDefinition Height="166"/>
+        </Grid.RowDefinitions>
+
+        <TextBox  TabIndex="1" KeyDown="Window_KeyDown" KeyUp="TextBox_KeyUp"  Padding="5, 3, 5, 3"  x:Name="textBoxCompanyName"  Margin="22,21,230,63" TextChanged="textBoxCompanyName_TextChanged" />
+        <Border  BorderThickness="1" Margin="206,10,464,24" Grid.ColumnSpan="2">
+            <ScrollViewer Background="LimeGreen" VerticalScrollBarVisibility="Auto" Margin="11,9,0,9" HorizontalAlignment="Left" Width="239">
+                <StackPanel  x:Name="resultStack" Height="89" />
+            </ScrollViewer>
+        </Border>
+        <Label FontWeight="Black" FontSize="14" Content="Company" HorizontalAlignment="Left" Margin="626,-7,-223,0" VerticalAlignment="Top" Width="98" Grid.Column="1" Height="29"/>
+        <!--<ComboBox x:Name="taxtype"  HorizontalAlignment="Right" Height="23" Margin="0,78,360,0"  VerticalAlignment="Top" Width="87" Grid.Column="1">
+            <ComboBoxItem Tag="L" IsSelected="True" Content="VAT(%)"/>
+            <ComboBoxItem Tag="V" Content="CST(%)"/>
+            <ComboBoxItem Tag="T" Content="GST(%)"/>
+        </ComboBox>-->
+        <TextBox TabIndex="1" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="GSTIN" HorizontalAlignment="Left" Height="23" Margin="95,17,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="166" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="Address" HorizontalAlignment="Left" Height="23" Margin="95,48,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="166" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="Address2" HorizontalAlignment="Left" Height="23" Margin="95,79,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="166" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="Pincode" HorizontalAlignment="Left" Height="23" Margin="95,113,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="166" Grid.Row="2"/>
+        <Label Content="GSTIN" HorizontalAlignment="Left" Margin="35,17,0,0" VerticalAlignment="Top" Width="55" Grid.Row="2"/>
+        <Label Content="Address 1" HorizontalAlignment="Left" Margin="22,48,0,0" VerticalAlignment="Top" Width="68" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="City" HorizontalAlignment="Left" Height="23" Margin="95,143,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="166" Grid.Row="2"/>
+        <ComboBox GotFocus="CombopboxHighlight_GotFocus"  LostFocus="CombopboxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="State"  HorizontalAlignment="Left" Height="33" Margin="95,176,0,0"  VerticalAlignment="Top" Width="166" Grid.Row="2">
+            <ComboBoxItem Tag="33" IsSelected="True" Content="Tamil Nadu" />
+            <ComboBoxItem Tag="29" Content="Karnataka"/>
+            <ComboBoxItem Tag="37" Content="Andhra Pradesh"/>
+            <ComboBoxItem Tag="36" Content="Telengana"/>
+            <ComboBoxItem Tag="34" Content="Pondicherry"/>
+            <ComboBoxItem Tag="32" Content="Kerala"/>
+            <ComboBoxItem Tag="27" Content="Maharashtra" />
+            <ComboBoxItem Tag="30" Content="Goa"/>
+
+            <ComboBoxItem Tag="02" Content="Himachal Pradesh" />
+            <ComboBoxItem Tag="03" Content="Punjab"/>
+            <ComboBoxItem Tag="04" Content="Chandigarh"/>
+            <ComboBoxItem Tag="05" Content="Uttarakhand"/>
+            <ComboBoxItem Tag="06" Content="Haryana"/>
+            <ComboBoxItem Tag="07" Content="Delhi"/>
+            <ComboBoxItem Tag="08" Content="Rajasthan" />
+            <ComboBoxItem Tag="09" Content="Uttar Pradesh"/>
+
+            <ComboBoxItem Tag="10" Content="Bihar" />
+            <ComboBoxItem Tag="11" Content="Sikkim"/>
+            <ComboBoxItem Tag="18" Content="Assam"/>
+            <ComboBoxItem Tag="19" Content="West Bengal"/>
+            <ComboBoxItem Tag="20" Content="Jharkhand"/>
+            <ComboBoxItem Tag="21" Content="Odisha"/>
+            <ComboBoxItem Tag="22" Content="Chhattisgarh" />
+            <ComboBoxItem Tag="23" Content="Madhya Pradesh"/>
+
+            <ComboBoxItem Tag="24" Content="Gujarat"/>
+            <ComboBoxItem Tag="27" Content="Maharashtra"/>
+            <ComboBoxItem Tag="97" Content="Other Territory" />
+            <ComboBoxItem Tag="35" Content="Andaman and Nicobar Islands" />
+            <ComboBoxItem Tag="26" Content="Dadra and Nagar Haveli" />
+            <ComboBoxItem Tag="25" Content="Daman and Diu" />
+            <ComboBoxItem Tag="01" Content="Jammu and Kashmir" />
+            <ComboBoxItem Tag="12" Content="Arunachal Pradesh" />
+            <ComboBoxItem Tag="31" Content="Lakshadweep Islands" />
+
+
+        </ComboBox>
+        <ComboBox GotFocus="CombopboxHighlight_GotFocus"  LostFocus="CombopboxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="CompanyType"  HorizontalAlignment="Left" Height="33" Margin="95,220,0,0"  VerticalAlignment="Top" Width="166" Grid.Row="2">
+            <ComboBoxItem Tag="1" IsSelected="True" Content="GST" />
+            <ComboBoxItem Tag="2" Content="EST"/>
+        </ComboBox>
+
+        <Label Content="City" HorizontalAlignment="Left" Margin="40,143,0,0" VerticalAlignment="Top" Width="55" Grid.Row="2"/>
+        <TextBox  GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="Branches" HorizontalAlignment="Left" Height="23" Margin="168,259,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="93" Grid.Row="2"/>
+        <Label Content="Number Of Branches" HorizontalAlignment="Left" Margin="35,256,0,0" VerticalAlignment="Top" Width="133" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="Phone" HorizontalAlignment="Left" Height="23" Margin="115,13,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"   x:Name="Mob" HorizontalAlignment="Left" Height="23" Margin="115,43,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"   x:Name="Mob2" HorizontalAlignment="Left" Height="23" Margin="115,71,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="Email"  HorizontalAlignment="Left" Height="23" Margin="115,101,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Phone" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Width="55" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Mobile-1" HorizontalAlignment="Left" Margin="51,43,0,0" VerticalAlignment="Top" Width="64" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="54,97,0,0" VerticalAlignment="Top" Width="55" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Bank Name" HorizontalAlignment="Left" Margin="42,132,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="BankName" HorizontalAlignment="Left" Height="23" Margin="115,132,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="BAddress" HorizontalAlignment="Left" Height="23" Margin="115,165,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Bank Address" HorizontalAlignment="Left" Margin="24,162,0,0" VerticalAlignment="Top" Width="82" Grid.Column="1" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="IFSC" HorizontalAlignment="Left" Height="23" Margin="115,193,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="IFSC" HorizontalAlignment="Left" Margin="70,191,0,0" VerticalAlignment="Top" Width="40" Grid.Row="2" Grid.Column="1"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="AccNumber" HorizontalAlignment="Left" Height="23" Margin="115,224,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Account" HorizontalAlignment="Left" Margin="42,217,0,0" VerticalAlignment="Top" Width="67" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="A/C Holder Name" HorizontalAlignment="Left" Margin="10,256,0,0" VerticalAlignment="Top" Width="105" Grid.Row="2" Grid.Column="1"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="Holder" HorizontalAlignment="Left" Height="23" Margin="115,256,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" Grid.Row="2" Grid.Column="1"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="Web" HorizontalAlignment="Left" Height="23" Margin="506,13,-164,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="159" Grid.Column="1" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="LogoUrl" HorizontalAlignment="Left" Height="23" Margin="506,44,-164,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="159" Grid.Column="1" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown"  x:Name="SubTitle" HorizontalAlignment="Left" Height="23" Margin="506,77,-164,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="159" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Website" HorizontalAlignment="Left" Margin="446,13,0,0" VerticalAlignment="Top" Width="55" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Logo Select" HorizontalAlignment="Left" Margin="430,44,0,0" VerticalAlignment="Top" Width="71" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Sub Title" HorizontalAlignment="Left" Margin="446,77,0,0" VerticalAlignment="Top" Width="55" Grid.Column="1" Grid.Row="2"/>
+
+        <DatePicker x:Name="FinYeraStartDate" HorizontalAlignment="Left" Margin="509,145,-162,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top" Width="154" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Fin Yr Start" HorizontalAlignment="Left" Margin="432,143,-7,0" VerticalAlignment="Top" Width="76" Grid.Column="1" Grid.Row="2"/>
+        <DatePicker x:Name="BookStartDate" HorizontalAlignment="Left" Margin="509,179,-162,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top" Width="154" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Book Start" HorizontalAlignment="Left" Margin="435,178,-10,0" VerticalAlignment="Top" Width="76" Grid.Column="1" Grid.Row="2"/>
+        <Button Content="_Submit" Grid.Column="1" HorizontalAlignment="Left" Margin="73,42,0,0" Grid.Row="3" VerticalAlignment="Top" Width="117" Height="45" Click="Button_Click_2"/>
+
+
+        <Label Content="Address 2" HorizontalAlignment="Left" Margin="22,79,0,0" VerticalAlignment="Top" Width="68" Grid.Row="2"/>
+
+        <Label Content="STATE:" HorizontalAlignment="Left" Margin="42,176,0,0" VerticalAlignment="Top" Width="48" Height="28" RenderTransformOrigin="0.5,0.551" Grid.Row="2"/>
+
+        <Label Content="Pin Code" HorizontalAlignment="Left" Margin="22,109,0,0" VerticalAlignment="Top" Width="68" Grid.Row="2"/>
+
+        <Label Content="Mobile-1" HorizontalAlignment="Left" Margin="51,71,0,0" VerticalAlignment="Top" Width="64" Grid.Column="1" Grid.Row="2"/>
+
+        <Label Content="Type" HorizontalAlignment="Left" Margin="42,220,0,0" VerticalAlignment="Top" Width="48" Height="28" RenderTransformOrigin="0.5,0.551" Grid.Row="2"/>
+        <TextBox GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  PreviewTextInput="NumberValidationTextBox"  KeyDown="Window_KeyDown"  x:Name="CompanyID" HorizontalAlignment="Left" Height="23" Margin="506,108,-164,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="159" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Company ID" HorizontalAlignment="Left" Margin="420,108,0,0" VerticalAlignment="Top" Width="81" Grid.Column="1" Grid.Row="2"/>
+    </Grid>
+
+
+</Page>

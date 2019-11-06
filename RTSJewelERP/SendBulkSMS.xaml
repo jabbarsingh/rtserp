@@ -1,0 +1,17 @@
+﻿<Window x:Class="RTSJewelERP.SendBulkSMS"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Background="#f5bd88"         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Send Message" Height="460" Width="667">
+    <Grid>
+        <Button Content="Send" HorizontalAlignment="Left" Margin="306,399,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <ComboBox HorizontalAlignment="Left" Margin="38,10,0,0" VerticalAlignment="Top" Width="141"/>
+        <TextBox FontSize="13" Name="mobLists" Background="Gray" HorizontalAlignment="Left" Margin="38,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="173" Width="601"/>
+        <TextBox Name="smsTexts" HorizontalAlignment="Left" Height="91" Margin="38,263,0,0" TextWrapping="Wrap" Text="Dear Customer, Special Month End 20% offer for you, Hurry up Avail till 31 Aug, 2019, Thanks Rohini Tech Sols" VerticalAlignment="Top" Width="601"/>
+        <TextBox Name="senderID" HorizontalAlignment="Left" Height="23" Margin="294,20,0,0" TextWrapping="Wrap" Text="JEWELOFFR" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="authKeyVal" HorizontalAlignment="Left" Height="23" Margin="435,19,0,0" TextWrapping="Wrap" IsReadOnly="True" Text="279284AW3QGxTmmkeI5cf28957" VerticalAlignment="Top" Width="224"/>
+        <Label Content="SenderID" HorizontalAlignment="Left" Margin="230,19,0,0" VerticalAlignment="Top"/>
+        <Label Content="*6 Characters Only*" Foreground="Red" HorizontalAlignment="Left" Margin="294,-6,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

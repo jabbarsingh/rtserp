@@ -1,0 +1,20 @@
+﻿<Page x:Class="RTSJewelERP.SheetHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        Title="Sheet Home"  Height="273.948" Width="669.842">
+    <Grid VerticalAlignment="Top" Background="LightSeaGreen" Height="242">
+        <Button  x:Name="AddCust_Copy1" Content="_New Entry"  HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top" Width="174"  Height="38" FontSize="14" Click="AddItem_Click"/>
+        <Label Content="Sheet Management" HorizontalAlignment="Left" Margin="102,5,0,0" VerticalAlignment="Top" Height="87" Width="407" FontSize="45" FontStyle="Oblique"  RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.181"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.497"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button  x:Name="AddCust_Copy" Content="_View Account"  HorizontalAlignment="Left" Margin="218,179,0,0" VerticalAlignment="Top" Width="174"  Height="38" FontSize="14" Click="ViewAccount_Click"/>
+        <Button  x:Name="AddSheetAccount" Content="_Create New Sheet Account"  HorizontalAlignment="Left" Margin="454,179,0,0" VerticalAlignment="Top" Width="174"  Height="38" FontSize="14" Click="AddSheetAccount_Click"/>
+    </Grid>
+</Page>

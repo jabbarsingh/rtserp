@@ -1,0 +1,11 @@
+﻿<Window x:Class="RTSJewelERP.Backup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  WindowStartupLocation="CenterScreen" Background="#f5bd88" 
+        Title="Backup" Height="309" Width="534">
+    <Grid>
+        <Button  x:Name="Backupy" Content="Backup"  HorizontalAlignment="Left" Margin="54,32,0,0" VerticalAlignment="Top" Width="139"  Height="38" FontSize="16" Click="Backup_Click" />
+        <Button  x:Name="OnlineBackup" Content="*Online(Server) Backup"  HorizontalAlignment="Left" Margin="291,32,0,0" VerticalAlignment="Top" Width="192"  Height="38" FontSize="16" Click="Backup_Click" />
+        <Button  x:Name="GoogleDriveBackup" Content="*Google Drive Backup"  HorizontalAlignment="Left" Margin="291,199,0,0" VerticalAlignment="Top" Width="192"  Height="38" FontSize="16" Click="Backup_Click" />
+        <Button  x:Name="Backupy_Copy" Content="Other Drive"  HorizontalAlignment="Left" Margin="54,199,0,0" VerticalAlignment="Top" Width="139"  Height="38" FontSize="16" Click="OnlineBackup_Click" />
+    </Grid>
+</Window>

@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="RTSJewelERP.Controls.AutoSaleVoucherBarcodeCustName"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             
+    Panel.ZIndex="10">
+    <Canvas>
+        <TextBox x:Name="autoTextBoxCustNameBarcode" Foreground="Black"  FontSize="19" FontWeight="Bold"   Background="YellowGreen"  
+                 Height="49" MinWidth="150" TextWrapping="NoWrap" Width="227" Text="Cash" />
+        <ListBox x:Name="suggestionListBox" 
+                 SelectionChanged="suggestionListBox_SelectionChanged"
+                 Background="SeaGreen"   FontSize="19"  
+                 Visibility="Collapsed" 
+                 MinWidth="150" 
+                 Margin="0,25,0,-25"/>
+    </Canvas>
+</UserControl>
+

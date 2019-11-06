@@ -1,0 +1,40 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="#f5bd88"         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="RTSJewelERP.AddInstantBarcodeItem"
+        Title="AddInstantBarcodeItem" Height="454" Width="376">
+    <Grid>
+        <!--<ComboBox x:Name="taxtype"  HorizontalAlignment="Right" Height="23" Margin="0,78,360,0"  VerticalAlignment="Top" Width="87" Grid.Column="1">
+            <ComboBoxItem Tag="L" IsSelected="True" Content="VAT(%)"/>
+            <ComboBoxItem Tag="V" Content="CST(%)"/>
+            <ComboBoxItem Tag="T" Content="GST(%)"/>
+        </ComboBox>-->
+        <Label FontWeight="Bold" Content="Name" HorizontalAlignment="Left" Margin="61,111,0,0" VerticalAlignment="Top" Width="51" Height="27"/>
+        
+        
+
+        <TextBox FontSize="13" TabIndex="0" KeyDown="Window_CustKeyDown" TextChanged="Barcode_TextChanged" Grid.Column="0" Grid.Row="0"   x:Name="txtBarcode" Height="23" Margin="122,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="153"/>
+        <TextBox  TabIndex="1" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"   KeyDown="Window_KeyDown" x:Name="autocompleteItemNameStockEntry" HorizontalAlignment="Left" Height="28" Margin="114,111,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="231"/>
+        <TextBox  KeyDown="Window_CustKeyDown"  x:Name="ActualQty"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="122,152,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="110"/>
+        <ComboBox   KeyDown="Window_CustKeyDown" SelectedItem="Watch"  SelectionChanged="GroupName_SelectionChanged" x:Name="GroupName"  HorizontalAlignment="Left" Height="27" Margin="122,188,0,0"  VerticalAlignment="Top" Width="110"/>
+        <ComboBox  KeyDown="Window_CustKeyDown"  x:Name="SubGroupName"  HorizontalAlignment="Left" Height="28" Margin="123,233,0,0"  VerticalAlignment="Top" Width="109"/>
+        <TextBox KeyDown="Window_CustKeyDown"  GotFocus="TextBox_GotFocus" x:Name="ItemPrice"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="122,272,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="110"/>
+        <TextBox  KeyDown="Window_CustKeyDown"  GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus" x:Name="HSN"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="123,305,0,0" TextWrapping="Wrap" Text="7113" VerticalAlignment="Top" Width="109"/>
+        <TextBox Foreground="White" Background="Black"  GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus"  KeyDown="Window_CustKeyDown"  x:Name="GSTRate"  PreviewTextInput="NumberValidationTextBox"  HorizontalAlignment="Left" Height="23" Margin="123,338,0,0" TextWrapping="Wrap" Text="18" VerticalAlignment="Top" Width="109"/>
+        <Button LostFocus="AddItemRow_LostFocus" GotFocus="AddItemRow_GotFocus"   Content="_Submit" HorizontalAlignment="Left" Margin="140,375,0,0" VerticalAlignment="Top" Width="117" Height="45" Click="Button_Click_2"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="63,274,0,0" VerticalAlignment="Top" Width="42" Height="26"  FontWeight="Bold" />
+        <Label  FontWeight="Bold" Content="HSN" HorizontalAlignment="Left" Margin="71,305,0,0" VerticalAlignment="Top" Width="38" Height="26"/>
+        <Label  FontWeight="Bold"  Content="GST Rate" HorizontalAlignment="Left" Margin="49,338,0,0" VerticalAlignment="Top" Width="65" Height="26"/>
+        
+        <Label Content="Qty" Margin="63,149,262,0" VerticalAlignment="Top" Height="26" FontWeight="Bold" />
+        <Label FontWeight="Bold"  Content="Group" HorizontalAlignment="Left" Margin="63,191,0,0" VerticalAlignment="Top" Width="51" Height="26"/>
+        <Label  FontWeight="Bold"  Content="Sub Group" HorizontalAlignment="Left" Margin="49,233,0,0" VerticalAlignment="Top" Width="69" Height="26"/>
+        
+        <Label FontWeight="Bold" Content="Barcode" HorizontalAlignment="Left" Margin="61,49,0,0" VerticalAlignment="Top" Width="61" Height="27"/>
+
+        <DatePicker x:Name="FinYeraStartDate" HorizontalAlignment="Left" Margin="256,10,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top" Width="104"/>
+        <GroupBox Header="Item Details" HorizontalAlignment="Left" Margin="-1,-5,0,0" VerticalAlignment="Top" Height="430" Width="371"/>
+        
+    </Grid>
+</Window>

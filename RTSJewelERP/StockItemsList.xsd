@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StockItemsList" targetNamespace="http://tempuri.org/StockItemsList.xsd" xmlns:mstns="http://tempuri.org/StockItemsList.xsd" xmlns="http://tempuri.org/StockItemsList.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="RTSERPBasicConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="RTSERPBasicConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.RTSJewelERP.Properties.Settings.GlobalReference.Default.RTSERPBasicConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="RTSERPBasicConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="RTSERPBasicConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.RTSJewelERP.Properties.Settings.GlobalReference.Default.RTSERPBasicConnectionString2" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StockItemsByPcTableAdapter" GeneratorDataComponentClassName="StockItemsByPcTableAdapter" Name="StockItemsByPc" UserDataComponentName="StockItemsByPcTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RTSERPBasicConnectionString2 (Settings)" DbObjectName="RTSERPBasic.dbo.StockItemsByPc" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[StockItemsByPc] ([ItemUniqNumber], [ItemName], [PrintName], [UnitID], [ItemCode], [ItemDesc], [ItemBarCode], [ItemMRP], [ItemPrice], [ItemMinSalePrice], [ItemSelfValPrice], [SetCriticalLevel], [SetImageUrl], [SetDefaultStorageID], [SetDefaultSundryCreditor], [SetDefaultSundryDebtor], [DecimalPlaces], [IsBarcodeCreated], [SaleDiscount], [PurchaseDiscount], [SaleDiscountStructure], [PurchaseDiscountStructure], [ItemPurchPrice], [ItemAvgRate], [ItemStdRate], [ItemPriceLevel1], [ItemPriceLevel2], [ItemPriceLevel3], [ItemQRCode], [ItemAlias], [UnderGroupName], [UnderGroupID], [UnderSubGroupName], [UnderSubGroupID], [ActualQty], [HSN], [GSTRate], [StorageID], [TrayID], [CounterID], [OpeningStock], [OpeningStockValue], [CreationDate], [UpdateDate], [CreatedBy], [ActualWt], [LastBuyDate], [LastSaleDate], [CurrentStockValue], [LastSalePrice], [LastBuyPrice], [OpeningStockWt], [CompID], [PurchaseGSTTaxAmt], [PurchaseGSTRate], [PurchaseWtPure], [PurchaseQty], [PurchaseWasteRate], [PurchaseWasteQty], [PurchaseTotalWt], [DiscountRateOnSold], [SoldPrice], [SoldGSTRate], [SoldTaxAmount], [SoldQty], [SoldWtPure], [SoldWasteRate], [SoldDate], [SoldSundryDebtorName], [SundryCreditorName], [SoldCashCustomerName], [IsSoldFlag], [SoldStorageName], [SoldCounterName], [SoldTrayName], [SoldStorageID], [SoldCounterID], [SoldTrayID], [StorageName], [CounterName], [TrayName], [Quality], [Size], [Color], [DesignNumberPattern], [Narration], [ItemExpiry], [WarrantyPeriod], [IsDefected], [IsItemOrderedBuy], [TotaQtyPurchaseOrdered], [TotaQtySaleOrdered], [CustomerFeedbackOnItem], [MakingCharge], [RatePerGm], [WastagePerc], [PurchaseInvoice]) VALUES (@ItemUniqNumber, @ItemName, @PrintName, @UnitID, @ItemCode, @ItemDesc, @ItemBarCode, @ItemMRP, @ItemPrice, @ItemMinSalePrice, @ItemSelfValPrice, @SetCriticalLevel, @SetImageUrl, @SetDefaultStorageID, @SetDefaultSundryCreditor, @SetDefaultSundryDebtor, @DecimalPlaces, @IsBarcodeCreated, @SaleDiscount, @PurchaseDiscount, @SaleDiscountStructure, @PurchaseDiscountStructure, @ItemPurchPrice, @ItemAvgRate, @ItemStdRate, @ItemPriceLevel1, @ItemPriceLevel2, @ItemPriceLevel3, @ItemQRCode, @ItemAlias, @UnderGroupName, @UnderGroupID, @UnderSubGroupName, @UnderSubGroupID, @ActualQty, @HSN, @GSTRate, @StorageID, @TrayID, @CounterID, @OpeningStock, @OpeningStockValue, @CreationDate, @UpdateDate, @CreatedBy, @ActualWt, @LastBuyDate, @LastSaleDate, @CurrentStockValue, @LastSalePrice, @LastBuyPrice, @OpeningStockWt, @CompID, @PurchaseGSTTaxAmt, @PurchaseGSTRate, @PurchaseWtPure, @PurchaseQty, @PurchaseWasteRate, @PurchaseWasteQty, @PurchaseTotalWt, @DiscountRateOnSold, @SoldPrice, @SoldGSTRate, @SoldTaxAmount, @SoldQty, @SoldWtPure, @SoldWasteRate, @SoldDate, @SoldSundryDebtorName, @SundryCreditorName, @SoldCashCustomerName, @IsSoldFlag, @SoldStorageName, @SoldCounterName, @SoldTrayName, @SoldStorageID, @SoldCounterID, @SoldTrayID, @StorageName, @CounterName, @TrayName, @Quality, @Size, @Color, @DesignNumberPattern, @Narration, @ItemExpiry, @WarrantyPeriod, @IsDefected, @IsItemOrderedBuy, @TotaQtyPurchaseOrdered, @TotaQtySaleOrdered, @CustomerFeedbackOnItem, @MakingCharge, @RatePerGm, @WastagePerc, @PurchaseInvoice)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@ItemUniqNumber" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="ItemUniqNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@ItemName" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="ItemName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PrintName" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PrintName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@UnitID" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="UnitID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@ItemCode" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="ItemCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@ItemDesc" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="ItemDesc" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@ItemBarCode" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="ItemBarCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemMRP" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemMRP" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemPrice" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemPrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemMinSalePrice" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemMinSalePrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemSelfValPrice" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemSelfValPrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@SetCriticalLevel" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="SetCriticalLevel" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@SetImageUrl" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="SetImageUrl" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SetDefaultStorageID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SetDefaultStorageID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SetDefaultSundryCreditor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SetDefaultSundryCreditor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SetDefaultSundryDebtor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SetDefaultSundryDebtor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@DecimalPlaces" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DecimalPlaces" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@IsBarcodeCreated" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="IsBarcodeCreated" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@SaleDiscount" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="SaleDiscount" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PurchaseDiscount" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PurchaseDiscount" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@SaleDiscountStructure" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="SaleDiscountStructure" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PurchaseDiscountStructure" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PurchaseDiscountStructure" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemPurchPrice" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemPurchPrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemAvgRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemAvgRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemStdRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemStdRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemPriceLevel1" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemPriceLevel1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemPriceLevel2" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemPriceLevel2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ItemPriceLevel3" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ItemPriceLevel3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@ItemQRCode" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="ItemQRCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@ItemAlias" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="ItemAlias" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@UnderGroupName" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="UnderGroupName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@UnderGroupID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="UnderGroupID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@UnderSubGroupName" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="UnderSubGroupName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@UnderSubGroupID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="UnderSubGroupID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ActualQty" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ActualQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@HSN" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="HSN" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@GSTRate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="GSTRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@StorageID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StorageID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TrayID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TrayID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@CounterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CounterID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@OpeningStock" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="OpeningStock" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@OpeningStockValue" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="OpeningStockValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@CreationDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="CreationDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@UpdateDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="UpdateDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CreatedBy" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CreatedBy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ActualWt" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ActualWt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@LastBuyDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LastBuyDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@LastSaleDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LastSaleDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@CurrentStockValue" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="CurrentStockValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@LastSalePrice" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="LastSalePrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@LastBuyPrice" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="LastBuyPrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@OpeningStockWt" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="OpeningStockWt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@CompID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CompID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PurchaseGSTTaxAmt" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PurchaseGSTTaxAmt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PurchaseGSTRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PurchaseGSTRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PurchaseWtPure" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PurchaseWtPure" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PurchaseQty" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PurchaseQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PurchaseWasteRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PurchaseWasteRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PurchaseWasteQty" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PurchaseWasteQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PurchaseTotalWt" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PurchaseTotalWt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@DiscountRateOnSold" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="DiscountRateOnSold" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@SoldPrice" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="SoldPrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@SoldGSTRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="SoldGSTRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@SoldTaxAmount" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="SoldTaxAmount" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@SoldQty" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="SoldQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@SoldWtPure" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="SoldWtPure" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@SoldWasteRate" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="SoldWasteRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@SoldDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="SoldDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@SoldSundryDebtorName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="SoldSundryDebtorName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@SundryCreditorName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="SundryCreditorName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@SoldCashCustomerName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="SoldCashCustomerName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@IsSoldFlag" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="IsSoldFlag" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@SoldStorageName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="SoldStorageName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@SoldCounterName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="SoldCounterName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@SoldTrayName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="SoldTrayName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SoldStorageID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SoldStorageID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SoldCounterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SoldCounterID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SoldTrayID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SoldTrayID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@StorageName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="StorageName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@CounterName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="CounterName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TrayName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TrayName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Quality" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Quality" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Size" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Size" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Color" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@DesignNumberPattern" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="DesignNumberPattern" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Narration" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Narration" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@ItemExpiry" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="ItemExpiry" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@WarrantyPeriod" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="WarrantyPeriod" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@IsDefected" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="IsDefected" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@IsItemOrderedBuy" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="IsItemOrderedBuy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@TotaQtyPurchaseOrdered" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="TotaQtyPurchaseOrdered" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@TotaQtySaleOrdered" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="TotaQtySaleOrdered" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@CustomerFeedbackOnItem" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="CustomerFeedbackOnItem" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@MakingCharge" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="MakingCharge" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@RatePerGm" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="RatePerGm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@WastagePerc" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="WastagePerc" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@PurchaseInvoice" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="PurchaseInvoice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT SrNumber, ItemUniqNumber, ItemName, PrintName, UnitID, ItemCode, ItemDesc, ItemBarCode, ItemMRP, ItemPrice, ItemMinSalePrice, ItemSelfValPrice, SetCriticalLevel, SetImageUrl, SetDefaultStorageID, SetDefaultSundryCreditor, SetDefaultSundryDebtor, DecimalPlaces, IsBarcodeCreated, SaleDiscount, PurchaseDiscount, SaleDiscountStructure, PurchaseDiscountStructure, ItemPurchPrice, ItemAvgRate, ItemStdRate, ItemPriceLevel1, ItemPriceLevel2, ItemPriceLevel3, ItemQRCode, ItemAlias, UnderGroupName, UnderGroupID, UnderSubGroupName, UnderSubGroupID, ActualQty, HSN, GSTRate, StorageID, TrayID, CounterID, OpeningStock, OpeningStockValue, CreationDate, UpdateDate, CreatedBy, ActualWt, LastBuyDate, LastSaleDate, CurrentStockValue, LastSalePrice, LastBuyPrice, OpeningStockWt, CompID, PurchaseGSTTaxAmt, PurchaseGSTRate, PurchaseWtPure, PurchaseQty, PurchaseWasteRate, PurchaseWasteQty, PurchaseTotalWt, DiscountRateOnSold, SoldPrice, SoldGSTRate, SoldTaxAmount, SoldQty, SoldWtPure, SoldWasteRate, SoldDate, SoldSundryDebtorName, SundryCreditorName, SoldCashCustomerName, IsSoldFlag, SoldStorageName, SoldCounterName, SoldTrayName, SoldStorageID, SoldCounterID, SoldTrayID, StorageName, CounterName, TrayName, Quality, Size, Color, DesignNumberPattern, Narration, ItemExpiry, WarrantyPeriod, IsDefected, IsItemOrderedBuy, TotaQtyPurchaseOrdered, TotaQtySaleOrdered, CustomerFeedbackOnItem, MakingCharge, RatePerGm, WastagePerc, PurchaseInvoice FROM dbo.StockItemsByPc</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SrNumber" DataSetColumn="SrNumber" />
+              <Mapping SourceColumn="ItemUniqNumber" DataSetColumn="ItemUniqNumber" />
+              <Mapping SourceColumn="ItemName" DataSetColumn="ItemName" />
+              <Mapping SourceColumn="PrintName" DataSetColumn="PrintName" />
+              <Mapping SourceColumn="UnitID" DataSetColumn="UnitID" />
+              <Mapping SourceColumn="ItemCode" DataSetColumn="ItemCode" />
+              <Mapping SourceColumn="ItemDesc" DataSetColumn="ItemDesc" />
+              <Mapping SourceColumn="ItemBarCode" DataSetColumn="ItemBarCode" />
+              <Mapping SourceColumn="ItemMRP" DataSetColumn="ItemMRP" />
+              <Mapping SourceColumn="ItemPrice" DataSetColumn="ItemPrice" />
+              <Mapping SourceColumn="ItemMinSalePrice" DataSetColumn="ItemMinSalePrice" />
+              <Mapping SourceColumn="ItemSelfValPrice" DataSetColumn="ItemSelfValPrice" />
+              <Mapping SourceColumn="SetCriticalLevel" DataSetColumn="SetCriticalLevel" />
+              <Mapping SourceColumn="SetImageUrl" DataSetColumn="SetImageUrl" />
+              <Mapping SourceColumn="SetDefaultStorageID" DataSetColumn="SetDefaultStorageID" />
+              <Mapping SourceColumn="SetDefaultSundryCreditor" DataSetColumn="SetDefaultSundryCreditor" />
+              <Mapping SourceColumn="SetDefaultSundryDebtor" DataSetColumn="SetDefaultSundryDebtor" />
+              <Mapping SourceColumn="DecimalPlaces" DataSetColumn="DecimalPlaces" />
+              <Mapping SourceColumn="IsBarcodeCreated" DataSetColumn="IsBarcodeCreated" />
+              <Mapping SourceColumn="SaleDiscount" DataSetColumn="SaleDiscount" />
+              <Mapping SourceColumn="PurchaseDiscount" DataSetColumn="PurchaseDiscount" />
+              <Mapping SourceColumn="SaleDiscountStructure" DataSetColumn="SaleDiscountStructure" />
+              <Mapping SourceColumn="PurchaseDiscountStructure" DataSetColumn="PurchaseDiscountStructure" />
+              <Mapping SourceColumn="ItemPurchPrice" DataSetColumn="ItemPurchPrice" />
+              <Mapping SourceColumn="ItemAvgRate" DataSetColumn="ItemAvgRate" />
+              <Mapping SourceColumn="ItemStdRate" DataSetColumn="ItemStdRate" />
+              <Mapping SourceColumn="ItemPriceLevel1" DataSetColumn="ItemPriceLevel1" />
+              <Mapping SourceColumn="ItemPriceLevel2" DataSetColumn="ItemPriceLevel2" />
+              <Mapping SourceColumn="ItemPriceLevel3" DataSetColumn="ItemPriceLevel3" />
+              <Mapping SourceColumn="ItemQRCode" DataSetColumn="ItemQRCode" />
+              <Mapping SourceColumn="ItemAlias" DataSetColumn="ItemAlias" />
+              <Mapping SourceColumn="UnderGroupName" DataSetColumn="UnderGroupName" />
+              <Mapping SourceColumn="UnderGroupID" DataSetColumn="UnderGroupID" />
+              <Mapping SourceColumn="UnderSubGroupName" DataSetColumn="UnderSubGroupName" />
+              <Mapping SourceColumn="UnderSubGroupID" DataSetColumn="UnderSubGroupID" />
+              <Mapping SourceColumn="ActualQty" DataSetColumn="ActualQty" />
+              <Mapping SourceColumn="HSN" DataSetColumn="HSN" />
+              <Mapping SourceColumn="GSTRate" DataSetColumn="GSTRate" />
+              <Mapping SourceColumn="StorageID" DataSetColumn="StorageID" />
+              <Mapping SourceColumn="TrayID" DataSetColumn="TrayID" />
+              <Mapping SourceColumn="CounterID" DataSetColumn="CounterID" />
+              <Mapping SourceColumn="OpeningStock" DataSetColumn="OpeningStock" />
+              <Mapping SourceColumn="OpeningStockValue" DataSetColumn="OpeningStockValue" />
+              <Mapping SourceColumn="CreationDate" DataSetColumn="CreationDate" />
+              <Mapping SourceColumn="UpdateDate" DataSetColumn="UpdateDate" />
+              <Mapping SourceColumn="CreatedBy" DataSetColumn="CreatedBy" />
+              <Mapping SourceColumn="ActualWt" DataSetColumn="ActualWt" />
+              <Mapping SourceColumn="LastBuyDate" DataSetColumn="LastBuyDate" />
+              <Mapping SourceColumn="LastSaleDate" DataSetColumn="LastSaleDate" />
+              <Mapping SourceColumn="CurrentStockValue" DataSetColumn="CurrentStockValue" />
+              <Mapping SourceColumn="LastSalePrice" DataSetColumn="LastSalePrice" />
+              <Mapping SourceColumn="LastBuyPrice" DataSetColumn="LastBuyPrice" />
+              <Mapping SourceColumn="OpeningStockWt" DataSetColumn="OpeningStockWt" />
+              <Mapping SourceColumn="CompID" DataSetColumn="CompID" />
+              <Mapping SourceColumn="PurchaseGSTTaxAmt" DataSetColumn="PurchaseGSTTaxAmt" />
+              <Mapping SourceColumn="PurchaseGSTRate" DataSetColumn="PurchaseGSTRate" />
+              <Mapping SourceColumn="PurchaseWtPure" DataSetColumn="PurchaseWtPure" />
+              <Mapping SourceColumn="PurchaseQty" DataSetColumn="PurchaseQty" />
+              <Mapping SourceColumn="PurchaseWasteRate" DataSetColumn="PurchaseWasteRate" />
+              <Mapping SourceColumn="PurchaseWasteQty" DataSetColumn="PurchaseWasteQty" />
+              <Mapping SourceColumn="PurchaseTotalWt" DataSetColumn="PurchaseTotalWt" />
+              <Mapping SourceColumn="DiscountRateOnSold" DataSetColumn="DiscountRateOnSold" />
+              <Mapping SourceColumn="SoldPrice" DataSetColumn="SoldPrice" />
+              <Mapping SourceColumn="SoldGSTRate" DataSetColumn="SoldGSTRate" />
+              <Mapping SourceColumn="SoldTaxAmount" DataSetColumn="SoldTaxAmount" />
+              <Mapping SourceColumn="SoldQty" DataSetColumn="SoldQty" />
+              <Mapping SourceColumn="SoldWtPure" DataSetColumn="SoldWtPure" />
+              <Mapping SourceColumn="SoldWasteRate" DataSetColumn="SoldWasteRate" />
+              <Mapping SourceColumn="SoldDate" DataSetColumn="SoldDate" />
+              <Mapping SourceColumn="SoldSundryDebtorName" DataSetColumn="SoldSundryDebtorName" />
+              <Mapping SourceColumn="SundryCreditorName" DataSetColumn="SundryCreditorName" />
+              <Mapping SourceColumn="SoldCashCustomerName" DataSetColumn="SoldCashCustomerName" />
+              <Mapping SourceColumn="IsSoldFlag" DataSetColumn="IsSoldFlag" />
+              <Mapping SourceColumn="SoldStorageName" DataSetColumn="SoldStorageName" />
+              <Mapping SourceColumn="SoldCounterName" DataSetColumn="SoldCounterName" />
+              <Mapping SourceColumn="SoldTrayName" DataSetColumn="SoldTrayName" />
+              <Mapping SourceColumn="SoldStorageID" DataSetColumn="SoldStorageID" />
+              <Mapping SourceColumn="SoldCounterID" DataSetColumn="SoldCounterID" />
+              <Mapping SourceColumn="SoldTrayID" DataSetColumn="SoldTrayID" />
+              <Mapping SourceColumn="StorageName" DataSetColumn="StorageName" />
+              <Mapping SourceColumn="CounterName" DataSetColumn="CounterName" />
+              <Mapping SourceColumn="TrayName" DataSetColumn="TrayName" />
+              <Mapping SourceColumn="Quality" DataSetColumn="Quality" />
+              <Mapping SourceColumn="Size" DataSetColumn="Size" />
+              <Mapping SourceColumn="Color" DataSetColumn="Color" />
+              <Mapping SourceColumn="DesignNumberPattern" DataSetColumn="DesignNumberPattern" />
+              <Mapping SourceColumn="Narration" DataSetColumn="Narration" />
+              <Mapping SourceColumn="ItemExpiry" DataSetColumn="ItemExpiry" />
+              <Mapping SourceColumn="WarrantyPeriod" DataSetColumn="WarrantyPeriod" />
+              <Mapping SourceColumn="IsDefected" DataSetColumn="IsDefected" />
+              <Mapping SourceColumn="IsItemOrderedBuy" DataSetColumn="IsItemOrderedBuy" />
+              <Mapping SourceColumn="TotaQtyPurchaseOrdered" DataSetColumn="TotaQtyPurchaseOrdered" />
+              <Mapping SourceColumn="TotaQtySaleOrdered" DataSetColumn="TotaQtySaleOrdered" />
+              <Mapping SourceColumn="CustomerFeedbackOnItem" DataSetColumn="CustomerFeedbackOnItem" />
+              <Mapping SourceColumn="MakingCharge" DataSetColumn="MakingCharge" />
+              <Mapping SourceColumn="RatePerGm" DataSetColumn="RatePerGm" />
+              <Mapping SourceColumn="WastagePerc" DataSetColumn="WastagePerc" />
+              <Mapping SourceColumn="PurchaseInvoice" DataSetColumn="PurchaseInvoice" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="StockItemsList" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="StockItemsList" msprop:Generator_UserDSName="StockItemsList">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="StockItemsByPc" msprop:Generator_TableClassName="StockItemsByPcDataTable" msprop:Generator_TableVarName="tableStockItemsByPc" msprop:Generator_TablePropName="StockItemsByPc" msprop:Generator_RowDeletingName="StockItemsByPcRowDeleting" msprop:Generator_RowChangingName="StockItemsByPcRowChanging" msprop:Generator_RowEvHandlerName="StockItemsByPcRowChangeEventHandler" msprop:Generator_RowDeletedName="StockItemsByPcRowDeleted" msprop:Generator_UserTableName="StockItemsByPc" msprop:Generator_RowChangedName="StockItemsByPcRowChanged" msprop:Generator_RowEvArgName="StockItemsByPcRowChangeEvent" msprop:Generator_RowClassName="StockItemsByPcRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SrNumber" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnSrNumber" msprop:Generator_ColumnPropNameInRow="SrNumber" msprop:Generator_ColumnPropNameInTable="SrNumberColumn" msprop:Generator_UserColumnName="SrNumber" type="xs:long" />
+              <xs:element name="ItemUniqNumber" msprop:Generator_ColumnVarNameInTable="columnItemUniqNumber" msprop:Generator_ColumnPropNameInRow="ItemUniqNumber" msprop:Generator_ColumnPropNameInTable="ItemUniqNumberColumn" msprop:Generator_UserColumnName="ItemUniqNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItemName" msprop:Generator_ColumnVarNameInTable="columnItemName" msprop:Generator_ColumnPropNameInRow="ItemName" msprop:Generator_ColumnPropNameInTable="ItemNameColumn" msprop:Generator_UserColumnName="ItemName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PrintName" msprop:Generator_ColumnVarNameInTable="columnPrintName" msprop:Generator_ColumnPropNameInRow="PrintName" msprop:Generator_ColumnPropNameInTable="PrintNameColumn" msprop:Generator_UserColumnName="PrintName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UnitID" msprop:Generator_ColumnVarNameInTable="columnUnitID" msprop:Generator_ColumnPropNameInRow="UnitID" msprop:Generator_ColumnPropNameInTable="UnitIDColumn" msprop:Generator_UserColumnName="UnitID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItemCode" msprop:Generator_ColumnVarNameInTable="columnItemCode" msprop:Generator_ColumnPropNameInRow="ItemCode" msprop:Generator_ColumnPropNameInTable="ItemCodeColumn" msprop:Generator_UserColumnName="ItemCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItemDesc" msprop:Generator_ColumnVarNameInTable="columnItemDesc" msprop:Generator_ColumnPropNameInRow="ItemDesc" msprop:Generator_ColumnPropNameInTable="ItemDescColumn" msprop:Generator_UserColumnName="ItemDesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItemBarCode" msprop:Generator_ColumnVarNameInTable="columnItemBarCode" msprop:Generator_ColumnPropNameInRow="ItemBarCode" msprop:Generator_ColumnPropNameInTable="ItemBarCodeColumn" msprop:Generator_UserColumnName="ItemBarCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItemMRP" msprop:Generator_ColumnVarNameInTable="columnItemMRP" msprop:Generator_ColumnPropNameInRow="ItemMRP" msprop:Generator_ColumnPropNameInTable="ItemMRPColumn" msprop:Generator_UserColumnName="ItemMRP" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemPrice" msprop:Generator_ColumnVarNameInTable="columnItemPrice" msprop:Generator_ColumnPropNameInRow="ItemPrice" msprop:Generator_ColumnPropNameInTable="ItemPriceColumn" msprop:Generator_UserColumnName="ItemPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemMinSalePrice" msprop:Generator_ColumnVarNameInTable="columnItemMinSalePrice" msprop:Generator_ColumnPropNameInRow="ItemMinSalePrice" msprop:Generator_ColumnPropNameInTable="ItemMinSalePriceColumn" msprop:Generator_UserColumnName="ItemMinSalePrice" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemSelfValPrice" msprop:Generator_ColumnVarNameInTable="columnItemSelfValPrice" msprop:Generator_ColumnPropNameInRow="ItemSelfValPrice" msprop:Generator_ColumnPropNameInTable="ItemSelfValPriceColumn" msprop:Generator_UserColumnName="ItemSelfValPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="SetCriticalLevel" msprop:Generator_ColumnVarNameInTable="columnSetCriticalLevel" msprop:Generator_ColumnPropNameInRow="SetCriticalLevel" msprop:Generator_ColumnPropNameInTable="SetCriticalLevelColumn" msprop:Generator_UserColumnName="SetCriticalLevel" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SetImageUrl" msprop:Generator_ColumnVarNameInTable="columnSetImageUrl" msprop:Generator_ColumnPropNameInRow="SetImageUrl" msprop:Generator_ColumnPropNameInTable="SetImageUrlColumn" msprop:Generator_UserColumnName="SetImageUrl" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SetDefaultStorageID" msprop:Generator_ColumnVarNameInTable="columnSetDefaultStorageID" msprop:Generator_ColumnPropNameInRow="SetDefaultStorageID" msprop:Generator_ColumnPropNameInTable="SetDefaultStorageIDColumn" msprop:Generator_UserColumnName="SetDefaultStorageID" type="xs:int" minOccurs="0" />
+              <xs:element name="SetDefaultSundryCreditor" msprop:Generator_ColumnVarNameInTable="columnSetDefaultSundryCreditor" msprop:Generator_ColumnPropNameInRow="SetDefaultSundryCreditor" msprop:Generator_ColumnPropNameInTable="SetDefaultSundryCreditorColumn" msprop:Generator_UserColumnName="SetDefaultSundryCreditor" type="xs:int" minOccurs="0" />
+              <xs:element name="SetDefaultSundryDebtor" msprop:Generator_ColumnVarNameInTable="columnSetDefaultSundryDebtor" msprop:Generator_ColumnPropNameInRow="SetDefaultSundryDebtor" msprop:Generator_ColumnPropNameInTable="SetDefaultSundryDebtorColumn" msprop:Generator_UserColumnName="SetDefaultSundryDebtor" type="xs:int" minOccurs="0" />
+              <xs:element name="DecimalPlaces" msprop:Generator_ColumnVarNameInTable="columnDecimalPlaces" msprop:Generator_ColumnPropNameInRow="DecimalPlaces" msprop:Generator_ColumnPropNameInTable="DecimalPlacesColumn" msprop:Generator_UserColumnName="DecimalPlaces" type="xs:int" minOccurs="0" />
+              <xs:element name="IsBarcodeCreated" msprop:Generator_ColumnVarNameInTable="columnIsBarcodeCreated" msprop:Generator_ColumnPropNameInRow="IsBarcodeCreated" msprop:Generator_ColumnPropNameInTable="IsBarcodeCreatedColumn" msprop:Generator_UserColumnName="IsBarcodeCreated" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SaleDiscount" msprop:Generator_ColumnVarNameInTable="columnSaleDiscount" msprop:Generator_ColumnPropNameInRow="SaleDiscount" msprop:Generator_ColumnPropNameInTable="SaleDiscountColumn" msprop:Generator_UserColumnName="SaleDiscount" type="xs:double" minOccurs="0" />
+              <xs:element name="PurchaseDiscount" msprop:Generator_ColumnVarNameInTable="columnPurchaseDiscount" msprop:Generator_ColumnPropNameInRow="PurchaseDiscount" msprop:Generator_ColumnPropNameInTable="PurchaseDiscountColumn" msprop:Generator_UserColumnName="PurchaseDiscount" type="xs:double" minOccurs="0" />
+              <xs:element name="SaleDiscountStructure" msprop:Generator_ColumnVarNameInTable="columnSaleDiscountStructure" msprop:Generator_ColumnPropNameInRow="SaleDiscountStructure" msprop:Generator_ColumnPropNameInTable="SaleDiscountStructureColumn" msprop:Generator_UserColumnName="SaleDiscountStructure" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PurchaseDiscountStructure" msprop:Generator_ColumnVarNameInTable="columnPurchaseDiscountStructure" msprop:Generator_ColumnPropNameInRow="PurchaseDiscountStructure" msprop:Generator_ColumnPropNameInTable="PurchaseDiscountStructureColumn" msprop:Generator_UserColumnName="PurchaseDiscountStructure" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItemPurchPrice" msprop:Generator_ColumnVarNameInTable="columnItemPurchPrice" msprop:Generator_ColumnPropNameInRow="ItemPurchPrice" msprop:Generator_ColumnPropNameInTable="ItemPurchPriceColumn" msprop:Generator_UserColumnName="ItemPurchPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemAvgRate" msprop:Generator_ColumnVarNameInTable="columnItemAvgRate" msprop:Generator_ColumnPropNameInRow="ItemAvgRate" msprop:Generator_ColumnPropNameInTable="ItemAvgRateColumn" msprop:Generator_UserColumnName="ItemAvgRate" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemStdRate" msprop:Generator_ColumnVarNameInTable="columnItemStdRate" msprop:Generator_ColumnPropNameInRow="ItemStdRate" msprop:Generator_ColumnPropNameInTable="ItemStdRateColumn" msprop:Generator_UserColumnName="ItemStdRate" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemPriceLevel1" msprop:Generator_ColumnVarNameInTable="columnItemPriceLevel1" msprop:Generator_ColumnPropNameInRow="ItemPriceLevel1" msprop:Generator_ColumnPropNameInTable="ItemPriceLevel1Column" msprop:Generator_UserColumnName="ItemPriceLevel1" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemPriceLevel2" msprop:Generator_ColumnVarNameInTable="columnItemPriceLevel2" msprop:Generator_ColumnPropNameInRow="ItemPriceLevel2" msprop:Generator_ColumnPropNameInTable="ItemPriceLevel2Column" msprop:Generator_UserColumnName="ItemPriceLevel2" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemPriceLevel3" msprop:Generator_ColumnVarNameInTable="columnItemPriceLevel3" msprop:Generator_ColumnPropNameInRow="ItemPriceLevel3" msprop:Generator_ColumnPropNameInTable="ItemPriceLevel3Column" msprop:Generator_UserColumnName="ItemPriceLevel3" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemQRCode" msprop:Generator_ColumnVarNameInTable="columnItemQRCode" msprop:Generator_ColumnPropNameInRow="ItemQRCode" msprop:Generator_ColumnPropNameInTable="ItemQRCodeColumn" msprop:Generator_UserColumnName="ItemQRCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItemAlias" msprop:Generator_ColumnVarNameInTable="columnItemAlias" msprop:Generator_ColumnPropNameInRow="ItemAlias" msprop:Generator_ColumnPropNameInTable="ItemAliasColumn" msprop:Generator_UserColumnName="ItemAlias" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UnderGroupName" msprop:Generator_ColumnVarNameInTable="columnUnderGroupName" msprop:Generator_ColumnPropNameInRow="UnderGroupName" msprop:Generator_ColumnPropNameInTable="UnderGroupNameColumn" msprop:Generator_UserColumnName="UnderGroupName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UnderGroupID" msprop:Generator_ColumnVarNameInTable="columnUnderGroupID" msprop:Generator_ColumnPropNameInRow="UnderGroupID" msprop:Generator_ColumnPropNameInTable="UnderGroupIDColumn" msprop:Generator_UserColumnName="UnderGroupID" type="xs:long" minOccurs="0" />
+              <xs:element name="UnderSubGroupName" msprop:Generator_ColumnVarNameInTable="columnUnderSubGroupName" msprop:Generator_ColumnPropNameInRow="UnderSubGroupName" msprop:Generator_ColumnPropNameInTable="UnderSubGroupNameColumn" msprop:Generator_UserColumnName="UnderSubGroupName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UnderSubGroupID" msprop:Generator_ColumnVarNameInTable="columnUnderSubGroupID" msprop:Generator_ColumnPropNameInRow="UnderSubGroupID" msprop:Generator_ColumnPropNameInTable="UnderSubGroupIDColumn" msprop:Generator_UserColumnName="UnderSubGroupID" type="xs:long" minOccurs="0" />
+              <xs:element name="ActualQty" msprop:Generator_ColumnVarNameInTable="columnActualQty" msprop:Generator_ColumnPropNameInRow="ActualQty" msprop:Generator_ColumnPropNameInTable="ActualQtyColumn" msprop:Generator_UserColumnName="ActualQty" type="xs:double" minOccurs="0" />
+              <xs:element name="HSN" msprop:Generator_ColumnVarNameInTable="columnHSN" msprop:Generator_ColumnPropNameInRow="HSN" msprop:Generator_ColumnPropNameInTable="HSNColumn" msprop:Generator_UserColumnName="HSN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GSTRate" msprop:Generator_ColumnVarNameInTable="columnGSTRate" msprop:Generator_ColumnPropNameInRow="GSTRate" msprop:Generator_ColumnPropNameInTable="GSTRateColumn" msprop:Generator_UserColumnName="GSTRate" type="xs:int" minOccurs="0" />
+              <xs:element name="StorageID" msprop:Generator_ColumnVarNameInTable="columnStorageID" msprop:Generator_ColumnPropNameInRow="StorageID" msprop:Generator_ColumnPropNameInTable="StorageIDColumn" msprop:Generator_UserColumnName="StorageID" type="xs:int" minOccurs="0" />
+              <xs:element name="TrayID" msprop:Generator_ColumnVarNameInTable="columnTrayID" msprop:Generator_ColumnPropNameInRow="TrayID" msprop:Generator_ColumnPropNameInTable="TrayIDColumn" msprop:Generator_UserColumnName="TrayID" type="xs:int" minOccurs="0" />
+              <xs:element name="CounterID" msprop:Generator_ColumnVarNameInTable="columnCounterID" msprop:Generator_ColumnPropNameInRow="CounterID" msprop:Generator_ColumnPropNameInTable="CounterIDColumn" msprop:Generator_UserColumnName="CounterID" type="xs:int" minOccurs="0" />
+              <xs:element name="OpeningStock" msprop:Generator_ColumnVarNameInTable="columnOpeningStock" msprop:Generator_ColumnPropNameInRow="OpeningStock" msprop:Generator_ColumnPropNameInTable="OpeningStockColumn" msprop:Generator_UserColumnName="OpeningStock" type="xs:double" minOccurs="0" />
+              <xs:element name="OpeningStockValue" msprop:Generator_ColumnVarNameInTable="columnOpeningStockValue" msprop:Generator_ColumnPropNameInRow="OpeningStockValue" msprop:Generator_ColumnPropNameInTable="OpeningStockValueColumn" msprop:Generator_UserColumnName="OpeningStockValue" type="xs:double" minOccurs="0" />
+              <xs:element name="CreationDate" msprop:Generator_ColumnVarNameInTable="columnCreationDate" msprop:Generator_ColumnPropNameInRow="CreationDate" msprop:Generator_ColumnPropNameInTable="CreationDateColumn" msprop:Generator_UserColumnName="CreationDate" type="xs:dateTime" />
+              <xs:element name="UpdateDate" msprop:Generator_ColumnVarNameInTable="columnUpdateDate" msprop:Generator_ColumnPropNameInRow="UpdateDate" msprop:Generator_ColumnPropNameInTable="UpdateDateColumn" msprop:Generator_UserColumnName="UpdateDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CreatedBy" msprop:Generator_ColumnVarNameInTable="columnCreatedBy" msprop:Generator_ColumnPropNameInRow="CreatedBy" msprop:Generator_ColumnPropNameInTable="CreatedByColumn" msprop:Generator_UserColumnName="CreatedBy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ActualWt" msprop:Generator_ColumnVarNameInTable="columnActualWt" msprop:Generator_ColumnPropNameInRow="ActualWt" msprop:Generator_ColumnPropNameInTable="ActualWtColumn" msprop:Generator_UserColumnName="ActualWt" type="xs:double" minOccurs="0" />
+              <xs:element name="LastBuyDate" msprop:Generator_ColumnVarNameInTable="columnLastBuyDate" msprop:Generator_ColumnPropNameInRow="LastBuyDate" msprop:Generator_ColumnPropNameInTable="LastBuyDateColumn" msprop:Generator_UserColumnName="LastBuyDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LastSaleDate" msprop:Generator_ColumnVarNameInTable="columnLastSaleDate" msprop:Generator_ColumnPropNameInRow="LastSaleDate" msprop:Generator_ColumnPropNameInTable="LastSaleDateColumn" msprop:Generator_UserColumnName="LastSaleDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CurrentStockValue" msprop:Generator_ColumnVarNameInTable="columnCurrentStockValue" msprop:Generator_ColumnPropNameInRow="CurrentStockValue" msprop:Generator_ColumnPropNameInTable="CurrentStockValueColumn" msprop:Generator_UserColumnName="CurrentStockValue" type="xs:double" minOccurs="0" />
+              <xs:element name="LastSalePrice" msprop:Generator_ColumnVarNameInTable="columnLastSalePrice" msprop:Generator_ColumnPropNameInRow="LastSalePrice" msprop:Generator_ColumnPropNameInTable="LastSalePriceColumn" msprop:Generator_UserColumnName="LastSalePrice" type="xs:double" minOccurs="0" />
+              <xs:element name="LastBuyPrice" msprop:Generator_ColumnVarNameInTable="columnLastBuyPrice" msprop:Generator_ColumnPropNameInRow="LastBuyPrice" msprop:Generator_ColumnPropNameInTable="LastBuyPriceColumn" msprop:Generator_UserColumnName="LastBuyPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="OpeningStockWt" msprop:Generator_ColumnVarNameInTable="columnOpeningStockWt" msprop:Generator_ColumnPropNameInRow="OpeningStockWt" msprop:Generator_ColumnPropNameInTable="OpeningStockWtColumn" msprop:Generator_UserColumnName="OpeningStockWt" type="xs:double" minOccurs="0" />
+              <xs:element name="CompID" msprop:Generator_ColumnVarNameInTable="columnCompID" msprop:Generator_ColumnPropNameInRow="CompID" msprop:Generator_ColumnPropNameInTable="CompIDColumn" msprop:Generator_UserColumnName="CompID" type="xs:int" />
+              <xs:element name="PurchaseGSTTaxAmt" msprop:Generator_ColumnVarNameInTable="columnPurchaseGSTTaxAmt" msprop:Generator_ColumnPropNameInRow="PurchaseGSTTaxAmt" msprop:Generator_ColumnPropNameInTable="PurchaseGSTTaxAmtColumn" msprop:Generator_UserColumnName="PurchaseGSTTaxAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="PurchaseGSTRate" msprop:Generator_ColumnVarNameInTable="columnPurchaseGSTRate" msprop:Generator_ColumnPropNameInRow="PurchaseGSTRate" msprop:Generator_ColumnPropNameInTable="PurchaseGSTRateColumn" msprop:Generator_UserColumnName="PurchaseGSTRate" type="xs:double" minOccurs="0" />
+              <xs:element name="PurchaseWtPure" msprop:Generator_ColumnVarNameInTable="columnPurchaseWtPure" msprop:Generator_ColumnPropNameInRow="PurchaseWtPure" msprop:Generator_ColumnPropNameInTable="PurchaseWtPureColumn" msprop:Generator_UserColumnName="PurchaseWtPure" type="xs:double" minOccurs="0" />
+              <xs:element name="PurchaseQty" msprop:Generator_ColumnVarNameInTable="columnPurchaseQty" msprop:Generator_ColumnPropNameInRow="PurchaseQty" msprop:Generator_ColumnPropNameInTable="PurchaseQtyColumn" msprop:Generator_UserColumnName="PurchaseQty" type="xs:double" minOccurs="0" />
+              <xs:element name="PurchaseWasteRate" msprop:Generator_ColumnVarNameInTable="columnPurchaseWasteRate" msprop:Generator_ColumnPropNameInRow="PurchaseWasteRate" msprop:Generator_ColumnPropNameInTable="PurchaseWasteRateColumn" msprop:Generator_UserColumnName="PurchaseWasteRate" type="xs:double" minOccurs="0" />
+              <xs:element name="PurchaseWasteQty" msprop:Generator_ColumnVarNameInTable="columnPurchaseWasteQty" msprop:Generator_ColumnPropNameInRow="PurchaseWasteQty" msprop:Generator_ColumnPropNameInTable="PurchaseWasteQtyColumn" msprop:Generator_UserColumnName="PurchaseWasteQty" type="xs:double" minOccurs="0" />
+              <xs:element name="PurchaseTotalWt" msprop:Generator_ColumnVarNameInTable="columnPurchaseTotalWt" msprop:Generator_ColumnPropNameInRow="PurchaseTotalWt" msprop:Generator_ColumnPropNameInTable="PurchaseTotalWtColumn" msprop:Generator_UserColumnName="PurchaseTotalWt" type="xs:double" minOccurs="0" />
+              <xs:element name="DiscountRateOnSold" msprop:Generator_ColumnVarNameInTable="columnDiscountRateOnSold" msprop:Generator_ColumnPropNameInRow="DiscountRateOnSold" msprop:Generator_ColumnPropNameInTable="DiscountRateOnSoldColumn" msprop:Generator_UserColumnName="DiscountRateOnSold" type="xs:double" minOccurs="0" />
+              <xs:element name="SoldPrice" msprop:Generator_ColumnVarNameInTable="columnSoldPrice" msprop:Generator_ColumnPropNameInRow="SoldPrice" msprop:Generator_ColumnPropNameInTable="SoldPriceColumn" msprop:Generator_UserColumnName="SoldPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="SoldGSTRate" msprop:Generator_ColumnVarNameInTable="columnSoldGSTRate" msprop:Generator_ColumnPropNameInRow="SoldGSTRate" msprop:Generator_ColumnPropNameInTable="SoldGSTRateColumn" msprop:Generator_UserColumnName="SoldGSTRate" type="xs:double" minOccurs="0" />
+              <xs:element name="SoldTaxAmount" msprop:Generator_ColumnVarNameInTable="columnSoldTaxAmount" msprop:Generator_ColumnPropNameInRow="SoldTaxAmount" msprop:Generator_ColumnPropNameInTable="SoldTaxAmountColumn" msprop:Generator_UserColumnName="SoldTaxAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="SoldQty" msprop:Generator_ColumnVarNameInTable="columnSoldQty" msprop:Generator_ColumnPropNameInRow="SoldQty" msprop:Generator_ColumnPropNameInTable="SoldQtyColumn" msprop:Generator_UserColumnName="SoldQty" type="xs:double" minOccurs="0" />
+              <xs:element name="SoldWtPure" msprop:Generator_ColumnVarNameInTable="columnSoldWtPure" msprop:Generator_ColumnPropNameInRow="SoldWtPure" msprop:Generator_ColumnPropNameInTable="SoldWtPureColumn" msprop:Generator_UserColumnName="SoldWtPure" type="xs:double" minOccurs="0" />
+              <xs:element name="SoldWasteRate" msprop:Generator_ColumnVarNameInTable="columnSoldWasteRate" msprop:Generator_ColumnPropNameInRow="SoldWasteRate" msprop:Generator_ColumnPropNameInTable="SoldWasteRateColumn" msprop:Generator_UserColumnName="SoldWasteRate" type="xs:double" minOccurs="0" />
+              <xs:element name="SoldDate" msprop:Generator_ColumnVarNameInTable="columnSoldDate" msprop:Generator_ColumnPropNameInRow="SoldDate" msprop:Generator_ColumnPropNameInTable="SoldDateColumn" msprop:Generator_UserColumnName="SoldDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SoldSundryDebtorName" msprop:Generator_ColumnVarNameInTable="columnSoldSundryDebtorName" msprop:Generator_ColumnPropNameInRow="SoldSundryDebtorName" msprop:Generator_ColumnPropNameInTable="SoldSundryDebtorNameColumn" msprop:Generator_UserColumnName="SoldSundryDebtorName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SundryCreditorName" msprop:Generator_ColumnVarNameInTable="columnSundryCreditorName" msprop:Generator_ColumnPropNameInRow="SundryCreditorName" msprop:Generator_ColumnPropNameInTable="SundryCreditorNameColumn" msprop:Generator_UserColumnName="SundryCreditorName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoldCashCustomerName" msprop:Generator_ColumnVarNameInTable="columnSoldCashCustomerName" msprop:Generator_ColumnPropNameInRow="SoldCashCustomerName" msprop:Generator_ColumnPropNameInTable="SoldCashCustomerNameColumn" msprop:Generator_UserColumnName="SoldCashCustomerName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IsSoldFlag" msprop:Generator_ColumnVarNameInTable="columnIsSoldFlag" msprop:Generator_ColumnPropNameInRow="IsSoldFlag" msprop:Generator_ColumnPropNameInTable="IsSoldFlagColumn" msprop:Generator_UserColumnName="IsSoldFlag" type="xs:boolean" />
+              <xs:element name="SoldStorageName" msprop:Generator_ColumnVarNameInTable="columnSoldStorageName" msprop:Generator_ColumnPropNameInRow="SoldStorageName" msprop:Generator_ColumnPropNameInTable="SoldStorageNameColumn" msprop:Generator_UserColumnName="SoldStorageName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoldCounterName" msprop:Generator_ColumnVarNameInTable="columnSoldCounterName" msprop:Generator_ColumnPropNameInRow="SoldCounterName" msprop:Generator_ColumnPropNameInTable="SoldCounterNameColumn" msprop:Generator_UserColumnName="SoldCounterName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoldTrayName" msprop:Generator_ColumnVarNameInTable="columnSoldTrayName" msprop:Generator_ColumnPropNameInRow="SoldTrayName" msprop:Generator_ColumnPropNameInTable="SoldTrayNameColumn" msprop:Generator_UserColumnName="SoldTrayName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoldStorageID" msprop:Generator_ColumnVarNameInTable="columnSoldStorageID" msprop:Generator_ColumnPropNameInRow="SoldStorageID" msprop:Generator_ColumnPropNameInTable="SoldStorageIDColumn" msprop:Generator_UserColumnName="SoldStorageID" type="xs:int" minOccurs="0" />
+              <xs:element name="SoldCounterID" msprop:Generator_ColumnVarNameInTable="columnSoldCounterID" msprop:Generator_ColumnPropNameInRow="SoldCounterID" msprop:Generator_ColumnPropNameInTable="SoldCounterIDColumn" msprop:Generator_UserColumnName="SoldCounterID" type="xs:int" minOccurs="0" />
+              <xs:element name="SoldTrayID" msprop:Generator_ColumnVarNameInTable="columnSoldTrayID" msprop:Generator_ColumnPropNameInRow="SoldTrayID" msprop:Generator_ColumnPropNameInTable="SoldTrayIDColumn" msprop:Generator_UserColumnName="SoldTrayID" type="xs:int" minOccurs="0" />
+              <xs:element name="StorageName" msprop:Generator_ColumnVarNameInTable="columnStorageName" msprop:Generator_ColumnPropNameInRow="StorageName" msprop:Generator_ColumnPropNameInTable="StorageNameColumn" msprop:Generator_UserColumnName="StorageName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CounterName" msprop:Generator_ColumnVarNameInTable="columnCounterName" msprop:Generator_ColumnPropNameInRow="CounterName" msprop:Generator_ColumnPropNameInTable="CounterNameColumn" msprop:Generator_UserColumnName="CounterName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TrayName" msprop:Generator_ColumnVarNameInTable="columnTrayName" msprop:Generator_ColumnPropNameInRow="TrayName" msprop:Generator_ColumnPropNameInTable="TrayNameColumn" msprop:Generator_UserColumnName="TrayName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Quality" msprop:Generator_ColumnVarNameInTable="columnQuality" msprop:Generator_ColumnPropNameInRow="Quality" msprop:Generator_ColumnPropNameInTable="QualityColumn" msprop:Generator_UserColumnName="Quality" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_UserColumnName="Size" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Color" msprop:Generator_ColumnVarNameInTable="columnColor" msprop:Generator_ColumnPropNameInRow="Color" msprop:Generator_ColumnPropNameInTable="ColorColumn" msprop:Generator_UserColumnName="Color" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DesignNumberPattern" msprop:Generator_ColumnVarNameInTable="columnDesignNumberPattern" msprop:Generator_ColumnPropNameInRow="DesignNumberPattern" msprop:Generator_ColumnPropNameInTable="DesignNumberPatternColumn" msprop:Generator_UserColumnName="DesignNumberPattern" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Narration" msprop:Generator_ColumnVarNameInTable="columnNarration" msprop:Generator_ColumnPropNameInRow="Narration" msprop:Generator_ColumnPropNameInTable="NarrationColumn" msprop:Generator_UserColumnName="Narration" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItemExpiry" msprop:Generator_ColumnVarNameInTable="columnItemExpiry" msprop:Generator_ColumnPropNameInRow="ItemExpiry" msprop:Generator_ColumnPropNameInTable="ItemExpiryColumn" msprop:Generator_UserColumnName="ItemExpiry" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="WarrantyPeriod" msprop:Generator_ColumnVarNameInTable="columnWarrantyPeriod" msprop:Generator_ColumnPropNameInRow="WarrantyPeriod" msprop:Generator_ColumnPropNameInTable="WarrantyPeriodColumn" msprop:Generator_UserColumnName="WarrantyPeriod" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IsDefected" msprop:Generator_ColumnVarNameInTable="columnIsDefected" msprop:Generator_ColumnPropNameInRow="IsDefected" msprop:Generator_ColumnPropNameInTable="IsDefectedColumn" msprop:Generator_UserColumnName="IsDefected" type="xs:boolean" />
+              <xs:element name="IsItemOrderedBuy" msprop:Generator_ColumnVarNameInTable="columnIsItemOrderedBuy" msprop:Generator_ColumnPropNameInRow="IsItemOrderedBuy" msprop:Generator_ColumnPropNameInTable="IsItemOrderedBuyColumn" msprop:Generator_UserColumnName="IsItemOrderedBuy" type="xs:boolean" />
+              <xs:element name="TotaQtyPurchaseOrdered" msprop:Generator_ColumnVarNameInTable="columnTotaQtyPurchaseOrdered" msprop:Generator_ColumnPropNameInRow="TotaQtyPurchaseOrdered" msprop:Generator_ColumnPropNameInTable="TotaQtyPurchaseOrderedColumn" msprop:Generator_UserColumnName="TotaQtyPurchaseOrdered" type="xs:double" minOccurs="0" />
+              <xs:element name="TotaQtySaleOrdered" msprop:Generator_ColumnVarNameInTable="columnTotaQtySaleOrdered" msprop:Generator_ColumnPropNameInRow="TotaQtySaleOrdered" msprop:Generator_ColumnPropNameInTable="TotaQtySaleOrderedColumn" msprop:Generator_UserColumnName="TotaQtySaleOrdered" type="xs:double" minOccurs="0" />
+              <xs:element name="CustomerFeedbackOnItem" msprop:Generator_ColumnVarNameInTable="columnCustomerFeedbackOnItem" msprop:Generator_ColumnPropNameInRow="CustomerFeedbackOnItem" msprop:Generator_ColumnPropNameInTable="CustomerFeedbackOnItemColumn" msprop:Generator_UserColumnName="CustomerFeedbackOnItem" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MakingCharge" msprop:Generator_ColumnVarNameInTable="columnMakingCharge" msprop:Generator_ColumnPropNameInRow="MakingCharge" msprop:Generator_ColumnPropNameInTable="MakingChargeColumn" msprop:Generator_UserColumnName="MakingCharge" type="xs:double" minOccurs="0" />
+              <xs:element name="RatePerGm" msprop:Generator_ColumnVarNameInTable="columnRatePerGm" msprop:Generator_ColumnPropNameInRow="RatePerGm" msprop:Generator_ColumnPropNameInTable="RatePerGmColumn" msprop:Generator_UserColumnName="RatePerGm" type="xs:double" minOccurs="0" />
+              <xs:element name="WastagePerc" msprop:Generator_ColumnVarNameInTable="columnWastagePerc" msprop:Generator_ColumnPropNameInRow="WastagePerc" msprop:Generator_ColumnPropNameInTable="WastagePercColumn" msprop:Generator_UserColumnName="WastagePerc" type="xs:double" minOccurs="0" />
+              <xs:element name="PurchaseInvoice" msprop:Generator_ColumnVarNameInTable="columnPurchaseInvoice" msprop:Generator_ColumnPropNameInRow="PurchaseInvoice" msprop:Generator_ColumnPropNameInTable="PurchaseInvoiceColumn" msprop:Generator_UserColumnName="PurchaseInvoice" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

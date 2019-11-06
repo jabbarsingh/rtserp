@@ -1,0 +1,71 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   xmlns:Controls="clr-namespace:RTSJewelERP.Controls" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="RTSJewelERP.ReadyMadeItemAllocation"
+        ResizeMode="NoResize"
+         WindowStartupLocation="CenterScreen" Background="#f5bd88" 
+        Title="Item Allocation" Height="519" Width="804">
+    <Grid>
+        <Label Content="Design#" HorizontalAlignment="Left" Margin="49,0,0,0"  FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="Size" x:Name="lblsize" HorizontalAlignment="Left" Margin="162,90,0,0"  FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="Color" HorizontalAlignment="Left" Margin="244,90,0,0"  FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="Qty" HorizontalAlignment="Left" Margin="339,90,0,0"  FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="Unit" HorizontalAlignment="Left" Margin="408,90,0,0"  FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="Rate" HorizontalAlignment="Left" Margin="560,90,0,0"  FontWeight="Bold" VerticalAlignment="Top"/>
+
+
+
+
+        <ComboBox SelectionChanged="Size_SelectionChanged" TabIndex="2" KeyDown="Window_KeyDown"   GotFocus="CombopboxHighlight_GotFocus"  LostFocus="CombopboxHighlight_LostFocus" x:Name="Size" HorizontalAlignment="Left" Margin="138,118,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox TabIndex="4" GotFocus="TextBoxHighlight_GotFocusQTYCloth"  LostFocus="TextBoxHighlight_LostFocus" PreviewTextInput="NumberValidationTextBox" Text="1" Grid.Row="0"    KeyDown="Window_KeyDown"  x:Name="txtQty" Height="23" Margin="330,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="52"/>
+        <ComboBox  SelectedItem="Pc" TabIndex="5" KeyDown="Window_KeyDown"   GotFocus="CombopboxHighlight_GotFocus"  LostFocus="CombopboxHighlight_LostFocus" x:Name="cmbUnits" HorizontalAlignment="Left" Margin="397,119,0,0" VerticalAlignment="Top" Width="62"/>
+        <TextBox TabIndex="7" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus" PreviewTextInput="NumberValidationTextBox" Text="" Grid.Row="0"    KeyDown="Window_KeyDown"  x:Name="txtPrice" Height="23" Margin="539,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="78"/>
+        <Button LostFocus="AddItemRow_LostFocus" GotFocus="AddItemRow_GotFocus"   KeyDown="Window_KeyDown" x:Name="AddItemRow"  Content="_Add" Margin="646,111,95,0" VerticalAlignment="Top" Height="34" Click="Button_Click"/>
+        
+        <DataGrid IsTabStop="False"  x:Name="CartGrid" Margin="22,150,23,102" LoadingRow="CartGrid_LoadingRow" SelectionChanged="CartGrid_SelectionChanged">
+            <DataGrid.Columns >
+                <DataGridTemplateColumn  Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate  >
+                        <DataTemplate>
+                            <Button IsTabStop="False" Click="ButtonBase_OnClick" CommandParameter="{Binding Id}" Content="Delete"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn  Header="View">
+                    <DataGridTemplateColumn.CellTemplate  >
+                        <DataTemplate>
+                            <Button IsTabStop="False" Click="ButtonBase_OnClick" CommandParameter="{Binding Id}" Content="View"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        <Label Content="Qty:" x:Name="lblTotalQtyItem" Margin="121,0,559,61" Height="26" VerticalAlignment="Bottom"/>
+        
+        <Controls:AutoCompleteUnderGroupList TabIndex="0"  LostFocus="autocompleteGroupName_LostFocus" GotFocus="TextBoxHighlight_GotFocus"   x:Name="autocompleteItemName"  KeyDown="Window_CustKeyDown"  Grid.Row="0"                                   
+			Margin="316,17,262,423" />
+
+        <Button Content="+" HorizontalAlignment="Right" Margin="0,26,216,0" VerticalAlignment="Top" FontSize="15" Width="22" Click="Button_Click_5" Height="24"/>
+        <Image   x:Name="infoItem" Source="info.JPG" MouseDown="infoitem_MouseDown"  HorizontalAlignment="Left" Height="19" Margin="546,26,0,0" VerticalAlignment="Top" Width="14"/>
+        <TextBox TabIndex="6" GotFocus="TextBoxHighlight_GotFocus"  LostFocus="TextBoxHighlight_LostFocus" x:Name="txtDiscPerc"   KeyDown="Window_KeyDown" HorizontalAlignment="Left" Text="0" PreviewTextInput="NumberValidationTextBox"  Margin="471,119,0,348" TextWrapping="Wrap" Width="47"/>
+        <Label Grid.Row="0" Content="Disc (%)" HorizontalAlignment="Left" Margin="471,88,0,0" VerticalAlignment="Top" Height="26" Width="51"/>
+        <Label Grid.Column="0" Grid.Row="0" Content="Store" HorizontalAlignment="Left" Margin="16,93,0,0" VerticalAlignment="Top" Height="26" Width="44"/>
+        <TextBox IsReadOnly="True"  x:Name="cmbStorage" HorizontalAlignment="Left" Margin="18,118,0,0" VerticalAlignment="Top" Width="26" Height="22"/>
+        <TextBox IsReadOnly="True"   x:Name="cmbTray" HorizontalAlignment="Left" Margin="69,118,0,0" VerticalAlignment="Top" Width="27" Height="22"/>
+        <Label Grid.Column="0" Grid.Row="0" Content="Tray" HorizontalAlignment="Left" Margin="65,93,0,0" VerticalAlignment="Top" Height="26" Width="31"/>
+        <Label Content="Total: ₹" Background="DimGray" x:Name="lbTotal" Margin="622,0,33,61" Height="26" VerticalAlignment="Bottom"/>
+        <Label Visibility="Collapsed" Content="Tax: ₹" x:Name="lbTotalTax" Margin="356,0,324,10" Height="26" VerticalAlignment="Bottom"/>
+        <Label Content="Discount: ₹" x:Name="lblTotalDiscByItem" Margin="289,0,391,61" Height="26" VerticalAlignment="Bottom"/>
+        <Button IsTabStop="False" x:Name="PrintInvBtn" Content="_Save" Margin="622,0,94,10"  Height="38" VerticalAlignment="Bottom" Click="PrintInvBtn_Click" />
+        <Label Content="Avg. Rate: ₹" x:Name="lblAverageRate" Margin="451,0,229,61" Height="26" VerticalAlignment="Bottom"/>
+        <TextBox IsReadOnly="True" x:Name="invoiceNumber"  KeyDown="Window_KeyDown_Invoice"   HorizontalAlignment="Left" Height="23" Margin="702,6,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="86"/>
+        <Label Content="Invoice# " HorizontalAlignment="Left" Margin="636,6,0,0" VerticalAlignment="Top" Width="61" FontSize="12" FontWeight="Bold" Height="24" RenderTransformOrigin="3.909,0.413"/>
+        <Label Content="Voucher#" HorizontalAlignment="Left" Margin="635,37,0,0" VerticalAlignment="Top" Width="62" FontSize="12" FontWeight="Bold" Height="24"/>
+        <TextBox IsReadOnly="True" x:Name="VoucherNumber" HorizontalAlignment="Left" Height="23" Margin="702,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" />
+        <Controls:AutoCompleteDesignPatternBatchList  TabIndex="1"  LostFocus="autocompleteItemName_LostFocus" GotFocus="TextBoxHighlight_GotFocus"   x:Name="DesignPattern"  KeyDown="Window_CustKeyDown"  Grid.Row="0"                                   
+			Margin="7,26,559,392" />
+        <DatePicker x:Name="invDate"  HorizontalAlignment="Left" Margin="693,74,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top" Width="95" Height="24"/>
+        <Button Content="_Design" Name="addDesignPattern" HorizontalAlignment="Left" Margin="244,26,0,0" VerticalAlignment="Top" Width="50" Height="35" Click="addDesignPattern_Click"/>
+        <ComboBox SelectionChanged="Color_SelectionChanged"  TabIndex="3" KeyDown="Window_KeyDown"   GotFocus="CombopboxHighlight_GotFocus"  LostFocus="CombopboxHighlight_LostFocus" x:Name="Color" HorizontalAlignment="Left" Margin="226,118,0,0" VerticalAlignment="Top" Width="90"/>
+    </Grid>
+</Window>

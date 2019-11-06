@@ -1,0 +1,103 @@
+﻿<Window x:Class="RTSJewelERP.RokadEntry"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
+        Height="{Binding SystemParameter.PrimaryScreenHeight}"
+                 Width="1293.55"  
+        
+        
+        Title="Rokad Book" >
+
+    <Grid >
+        <Menu IsMainMenu="True" Name="Company" HorizontalAlignment="Left" FontSize="16" Height="35" Margin="0,0,-55,0" VerticalAlignment="Top" Width="1341">
+            <MenuItem Header="Company" Visibility="Visible" Name="compMenu"  Width="89">
+                <MenuItem Header="_New" >
+                </MenuItem>
+                <MenuItem Header="_Edit" >
+                </MenuItem>
+                <MenuItem Header="_View List" >
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Admin" Width="67">
+
+                <MenuItem Header="Users" />
+                <MenuItem Header="Roles" />
+                <MenuItem Header="Pemissions"/>
+            </MenuItem>
+            <MenuItem Header="Pledge Master" Width="127">
+
+                <MenuItem Header="Ornament" />
+                <MenuItem Header="Account" />
+                <MenuItem Header="Customer Notice" />
+                <MenuItem Header="Auction" />
+                <MenuItem Header="Ornament Group" />
+                <MenuItem Header="Interest Settings" />
+            </MenuItem>
+            <MenuItem Header="Pledge Transaction" Width="163">
+                <MenuItem Header="New Bill" />
+
+                <MenuItem Header="Bank Potali" />
+                <MenuItem Header="Bank Bill Closing">
+                </MenuItem>
+                <MenuItem Header="Notice Entry" />
+                <MenuItem Header="Auction Entry" />
+
+                <MenuItem Header="Stock Entry">
+
+                    <MenuItem Header="Edit" />
+                    <MenuItem Header="View List" />
+                </MenuItem>
+                <MenuItem Header="Storage" />
+                <MenuItem Header="Stock Transfer" />
+                <MenuItem Header="Physical Stock" />
+            </MenuItem>
+            <MenuItem Header="Pledge Report" Width="132">
+
+                <MenuItem Header="Edit Invoice" />
+                <MenuItem Header="View List" />
+                <MenuItem Header="To E-Way Bill" />
+            </MenuItem>
+            <MenuItem Header="Cutomer Details" Width="140">
+
+                <MenuItem Header="Edit Invoice" />
+                <MenuItem Header="View List" />
+            </MenuItem>
+            <MenuItem Header="Ornament Details" Width="152">
+                <!--<MenuItem Header="Add Payment"  Click="MenuItem_NewPaymentClick"/>-->
+                <MenuItem Header="Edit Payment" />
+                <MenuItem Header="View List" />
+            </MenuItem>
+            <MenuItem Header="Bank Details" Width="110">
+                <!--<MenuItem Header="Add Receipt" Click="MenuItem_NewReceiptClick"/>-->
+                <MenuItem Header="Edit Receipt" />
+                <MenuItem Header="View List" />
+            </MenuItem>
+            <MenuItem Header="GST/Tax Report" Width="135">
+                <!--<MenuItem Header="Add Journal"  Click="MenuItem_NewJournalClick"/>-->
+                <MenuItem Header="Edit Journal" />
+                <MenuItem Header="View List" />
+            </MenuItem>
+            <MenuItem Header="Notice Details">
+                <MenuItem Header="Add" />
+                <MenuItem Header="Edit" />
+                <MenuItem Header="View List" />
+            </MenuItem>
+            <MenuItem Header="Settings">
+                <!--<MenuItem Header="Add" Click="NewConfig_Click" />-->
+                <MenuItem Header="Edit" />
+                <MenuItem Header="View List" />
+                <!--<MenuItem Header="Factory Restore DB" Click="ResetFactory_Click" />
+                <MenuItem Header="What You Want" Click="WhatUWant_Click" />
+                <MenuItem Header="Stock Reset" Click="ResetInventory_Click" />
+                <MenuItem Header="Select Business" Click="SelectBusiness_Click" />-->
+            </MenuItem>
+
+
+
+        </Menu>
+
+        <DataGrid SelectionUnit="Cell" SelectionMode="Single" ItemsSource="{Binding Data}" SelectedCellsChanged="DataGrid_OnSelectedCellsChanged" Margin="22,137,68,164">
+           
+        </DataGrid>
+        <TextBox x:Name="textBox" DockPanel.Dock="Top" Margin="22,137,1100,330" Text="fdfdfd" />
+    </Grid>
+</Window>

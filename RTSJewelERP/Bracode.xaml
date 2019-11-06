@@ -1,0 +1,23 @@
+﻿<Page x:Class="RTSJewelERP.Bracode"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" Background="#f5bd88"
+	Title="Bracode" Height="345" Width="479">
+
+    <Grid>
+        <Button Content="Generate" HorizontalAlignment="Left" Margin="190,234,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click" Height="59"/>
+        <Label Content="Item Name" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="ItemName" HorizontalAlignment="Left" Height="23" Margin="98,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Auto Bar Code#" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Width="98"/>
+        <TextBox Name="AutoBarCodeNumber" HorizontalAlignment="Left" Height="23" Margin="98,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="30,109,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="Price" HorizontalAlignment="Left" Height="23" Margin="98,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Scanned Code" HorizontalAlignment="Left" Margin="233,31,0,0" VerticalAlignment="Top" Width="85"/>
+        <TextBox Name="ScannedCode" HorizontalAlignment="Left" Height="23" Margin="323,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135"/>
+        <TextBox Name="quality" HorizontalAlignment="Left" Height="23" Margin="204,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="size" HorizontalAlignment="Left" Height="23" Margin="30,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Page>

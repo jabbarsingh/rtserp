@@ -1,0 +1,10 @@
+﻿<Window x:Class="RTSJewelERP.AttachDetach"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  WindowStartupLocation="CenterScreen"
+        Title="AttachDetach" Background="Black" Height="300" Width="300">
+    <Grid>
+        <Button FontWeight="Bold" Name="attach" Click="attach_Click" Content="_ATTACH" HorizontalAlignment="Left" Margin="44,76,0,0" VerticalAlignment="Top" Width="101" Height="48"/>
+        <Button Name="detach"  FontWeight="Bold" Click="detach_Click" Content="_DETACH" HorizontalAlignment="Left" Margin="165,76,0,0" VerticalAlignment="Top" Width="89" Height="48"/>
+
+    </Grid>
+</Window>
