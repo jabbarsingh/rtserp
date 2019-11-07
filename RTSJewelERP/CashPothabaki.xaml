@@ -474,7 +474,7 @@
             <TabItem Header="_Stock Book" Selector.Selected="TabInventory_Selected"  >
 
                 <Grid>
-                    <DataGrid HorizontalAlignment="Left" IsReadOnly="True"  x:Name="StockInventSummaryGrid" Margin="10,183,0,0" VerticalAlignment="Top" Height="338" Width="1083">
+                    <DataGrid HorizontalAlignment="Left" IsReadOnly="True" PreviewKeyDown="StockInventSummaryGrid_PreviewKeyDown"  x:Name="StockInventSummaryGrid" Margin="10,183,0,0" VerticalAlignment="Top" Height="338" Width="1083">
                         <DataGrid.ColumnHeaderStyle>
                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                 <Setter Property="FontWeight" Value="Bold"/>
@@ -500,28 +500,35 @@
                     <DatePicker x:Name="toDateStockInvent" HorizontalAlignment="Left" Margin="89,56,0,0" SelectedDate="{x:Static System:DateTime.Now}" VerticalAlignment="Top"/>
                     <Label Content="End Date" HorizontalAlignment="Left" Margin="19,54,0,0" VerticalAlignment="Top"/>
                     <Button Content="Show" HorizontalAlignment="Left" Margin="108,91,0,0" VerticalAlignment="Top" Width="74" Height="41" Click="Button_Click_StockSummaryInventory" />
-                    <Label Content="Gold(gms) " HorizontalAlignment="Left" Margin="312,45,0,0" VerticalAlignment="Top" Height="37" Width="65"/>
-                    <TextBox Background="Gold" IsReadOnly="True" Name="goldInInvent" HorizontalAlignment="Left" Height="30" Margin="382,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
-                    <Label Content="Silver(gms)" HorizontalAlignment="Left" Margin="310,82,0,0" VerticalAlignment="Top" Height="33" Width="67"/>
-                    <TextBox   Background="Silver" IsReadOnly="True" x:Name="silverInInvent" HorizontalAlignment="Left" Height="25" Margin="382,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
-                    <TextBox IsReadOnly="True" x:Name="oldGoldInInvent" HorizontalAlignment="Left" Height="24" Margin="701,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
-                    <Label Content="Old Silver(gms)" HorizontalAlignment="Left" Margin="607,151,0,0" VerticalAlignment="Top" Height="26" Width="89"/>
-                    <TextBox IsReadOnly="True" x:Name="oldSilverInInvent" HorizontalAlignment="Left" Height="24" Margin="701,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
-                    <Label Content="Old Gold(gms)" HorizontalAlignment="Left" Margin="607,117,0,0" VerticalAlignment="Top" Height="29" Width="89"/>
+                    <Label Content="Gold(gms) " HorizontalAlignment="Left" Margin="777,21,0,0" VerticalAlignment="Top" Height="37" Width="65"/>
+                    <TextBox Background="Gold" IsReadOnly="True" Name="goldInInvent" HorizontalAlignment="Left" Height="30" Margin="847,21,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
+                    <Label Content="Silver(gms)" HorizontalAlignment="Left" Margin="775,58,0,0" VerticalAlignment="Top" Height="33" Width="67"/>
+                    <TextBox   Background="Silver" IsReadOnly="True" x:Name="silverInInvent" HorizontalAlignment="Left" Height="25" Margin="847,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
+                    <TextBox IsReadOnly="True" x:Name="oldGoldInInvent" HorizontalAlignment="Left" Height="24" Margin="632,108,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
+                    <Label Content="Old Silver(gms)" HorizontalAlignment="Left" Margin="538,142,0,0" VerticalAlignment="Top" Height="26" Width="89"/>
+                    <TextBox IsReadOnly="True" x:Name="oldSilverInInvent" HorizontalAlignment="Left" Height="24" Margin="632,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
+                    <Label Content="Old Gold(gms)" HorizontalAlignment="Left" Margin="538,108,0,0" VerticalAlignment="Top" Height="29" Width="89"/>
                     <Label Content="Available Stock Inventory" HorizontalAlignment="Left" Margin="10,153,0,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" Height="30"/>
-                    <Label Content="Gold(gms)-SADA" HorizontalAlignment="Left" Margin="731,37,0,0" VerticalAlignment="Top" Height="37" Width="101"/>
-                    <TextBox  Background="Goldenrod" IsReadOnly="True" x:Name="goldInsadaInvent" HorizontalAlignment="Left" Height="30" Margin="836,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
-                    <Label Content="Silver(gms)-SADA" HorizontalAlignment="Left" Margin="731,74,0,0" VerticalAlignment="Top" Height="33" Width="105"/>
-                    <TextBox  Background="Gray" IsReadOnly="True" x:Name="silverInsadaInvent" HorizontalAlignment="Left" Height="25" Margin="836,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
+                    <Label Content="Gold(gms)-SADA" HorizontalAlignment="Left" Margin="742,107,0,0" VerticalAlignment="Top" Height="37" Width="101"/>
+                    <TextBox  Background="Goldenrod" IsReadOnly="True" x:Name="goldInsadaInvent" HorizontalAlignment="Left" Height="30" Margin="847,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
+                    <Label Content="Silver(gms)-SADA" HorizontalAlignment="Left" Margin="742,144,0,0" VerticalAlignment="Top" Height="33" Width="105"/>
+                    <TextBox  Background="Gray" IsReadOnly="True" x:Name="silverInsadaInvent" HorizontalAlignment="Left" Height="25" Margin="847,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
                     <Button Content="_Print"  Click="printSaleStockBookLedger_Click" HorizontalAlignment="Left" Margin="201,95,0,0" VerticalAlignment="Top" Width="66" Height="37"/>
-                    <Label Content="Gold(Qty) " HorizontalAlignment="Left" Margin="476,42,0,0" VerticalAlignment="Top" Height="37" Width="65"/>
-                    <TextBox  Background="Gold" IsReadOnly="True" x:Name="goldInInventQty" HorizontalAlignment="Left" Height="30" Margin="546,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
-                    <Label Content="Silver(Qty)" HorizontalAlignment="Left" Margin="474,79,0,0" VerticalAlignment="Top" Height="33" Width="67"/>
-                    <TextBox  Background="Silver" IsReadOnly="True" x:Name="silverInInventQty" HorizontalAlignment="Left" Height="25" Margin="546,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
-                    <Label Content="Gold(Qty)-SADA" HorizontalAlignment="Left" Margin="919,34,0,0" VerticalAlignment="Top" Height="37" Width="101"/>
-                    <TextBox   Background="Goldenrod" IsReadOnly="True" x:Name="goldInsadaInventQty" HorizontalAlignment="Left" Height="30" Margin="1024,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
-                    <Label Content="Silver(Qty)-SADA" HorizontalAlignment="Left" Margin="919,71,0,0" VerticalAlignment="Top" Height="33" Width="105"/>
-                    <TextBox  Background="Gray" IsReadOnly="True" x:Name="silverInsadaInventQty" HorizontalAlignment="Left" Height="25" Margin="1024,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
+                    <Label Content="Gold(Qty) " HorizontalAlignment="Left" Margin="941,18,0,0" VerticalAlignment="Top" Height="37" Width="65"/>
+                    <TextBox  Background="Gold" IsReadOnly="True" x:Name="goldInInventQty" HorizontalAlignment="Left" Height="30" Margin="1010,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
+                    <Label Content="Silver(Qty)" HorizontalAlignment="Left" Margin="939,55,0,0" VerticalAlignment="Top" Height="33" Width="67"/>
+                    <TextBox  Background="Silver" IsReadOnly="True" x:Name="silverInInventQty" HorizontalAlignment="Left" Height="25" Margin="1010,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83"/>
+                    <Label Content="Gold(Qty)-SADA" HorizontalAlignment="Left" Margin="924,105,0,0" VerticalAlignment="Top" Height="37" Width="101"/>
+                    <TextBox   Background="Goldenrod" IsReadOnly="True" x:Name="goldInsadaInventQty" HorizontalAlignment="Left" Height="30" Margin="1029,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
+                    <Label Content="Silver(Qty)-SADA" HorizontalAlignment="Left" Margin="924,142,0,0" VerticalAlignment="Top" Height="33" Width="105"/>
+                    <TextBox  Background="Gray" IsReadOnly="True" x:Name="silverInsadaInventQty" HorizontalAlignment="Left" Height="25" Margin="1029,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
+                    <TextBox  x:Name="itemBarcodeFilter" HorizontalAlignment="Left" Height="30" Margin="383,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
+                    <CheckBox Name="isSoldOutChkbFilter" Content="Sold" HorizontalAlignment="Left" Margin="338,41,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="isQtyGreaterZero" Content="Qty &gt; 0" HorizontalAlignment="Left" Margin="419,38,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="isWtGreaterZero" Content="Weight &gt; 0" HorizontalAlignment="Left" Margin="502,38,0,0" VerticalAlignment="Top"/>
+                    <ComboBox   KeyDown="Window_CustKeyDown" SelectedItem=""  SelectionChanged="GroupName_SelectionChanged" x:Name="GroupName"  HorizontalAlignment="Left" Height="27" Margin="383,77,0,0"  VerticalAlignment="Top" Width="110"/>
+                    <Label Content="Scan Barcode" HorizontalAlignment="Left" Margin="297,0,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Group" HorizontalAlignment="Left" Margin="332,77,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
 

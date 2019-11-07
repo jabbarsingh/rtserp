@@ -361,13 +361,13 @@ namespace RTSJewelERP
             var custAdpt = new CompanyTableAdapter();
             var custInfoVal = custAdpt.GetData();
 
-            CompName.ItemsSource = custInfoVal.Where(c => (c.Alias.Trim() == "GST"))
-.Select(x => (x.CompanyName.Trim() + "-" + x.CompanyID)).Distinct().ToList();
+//            CompName.ItemsSource = custInfoVal.Where(c => (c.Alias.Trim() == "GST"))
+//.Select(x => (x.CompanyName.Trim() + "-" + x.CompanyID)).Distinct().ToList();
 
             //Background="#f5bd88"  set for GST else Light Blue
 
-//            CompName.ItemsSource = custInfoVal.Where(c => (c.Alias.Trim() == "EST"))
-//.Select(x => (x.CompanyName.Trim() + "-" + x.CompanyID)).Distinct().ToList();
+            CompName.ItemsSource = custInfoVal.Where(c => (c.Alias.Trim() == "EST"))
+.Select(x => (x.CompanyName.Trim() + "-" + x.CompanyID)).Distinct().ToList();
 
 
 

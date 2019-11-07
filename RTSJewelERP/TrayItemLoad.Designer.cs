@@ -295,10 +295,6 @@ namespace RTSJewelERP {
             
             private global::System.Data.DataColumn columnUpdateDate;
             
-            private global::System.Data.DataColumn columnStorageName;
-            
-            private global::System.Data.DataColumn columnCompID;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TrayItemAllocationDataTable() {
@@ -398,22 +394,6 @@ namespace RTSJewelERP {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn StorageNameColumn {
-                get {
-                    return this.columnStorageName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CompIDColumn {
-                get {
-                    return this.columnCompID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +429,7 @@ namespace RTSJewelERP {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TrayItemAllocationRow AddTrayItemAllocationRow(string TrayName, string ItemName, string ItemBarCode, string Category, double Qty, double Weight, System.DateTime AddDate, System.DateTime UpdateDate, string StorageName, int CompID) {
+            public TrayItemAllocationRow AddTrayItemAllocationRow(string TrayName, string ItemName, string ItemBarCode, string Category, double Qty, double Weight, System.DateTime AddDate, System.DateTime UpdateDate) {
                 TrayItemAllocationRow rowTrayItemAllocationRow = ((TrayItemAllocationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TrayName,
@@ -459,9 +439,7 @@ namespace RTSJewelERP {
                         Qty,
                         Weight,
                         AddDate,
-                        UpdateDate,
-                        StorageName,
-                        CompID};
+                        UpdateDate};
                 rowTrayItemAllocationRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTrayItemAllocationRow);
                 return rowTrayItemAllocationRow;
@@ -492,8 +470,6 @@ namespace RTSJewelERP {
                 this.columnWeight = base.Columns["Weight"];
                 this.columnAddDate = base.Columns["AddDate"];
                 this.columnUpdateDate = base.Columns["UpdateDate"];
-                this.columnStorageName = base.Columns["StorageName"];
-                this.columnCompID = base.Columns["CompID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -515,18 +491,10 @@ namespace RTSJewelERP {
                 base.Columns.Add(this.columnAddDate);
                 this.columnUpdateDate = new global::System.Data.DataColumn("UpdateDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUpdateDate);
-                this.columnStorageName = new global::System.Data.DataColumn("StorageName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStorageName);
-                this.columnCompID = new global::System.Data.DataColumn("CompID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCompID);
                 this.columnTrayName.MaxLength = 2147483647;
                 this.columnItemName.MaxLength = 2147483647;
                 this.columnItemBarCode.MaxLength = 2147483647;
                 this.columnCategory.MaxLength = 2147483647;
-                this.columnAddDate.AllowDBNull = false;
-                this.columnUpdateDate.AllowDBNull = false;
-                this.columnStorageName.MaxLength = 2147483647;
-                this.columnCompID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -767,7 +735,12 @@ namespace RTSJewelERP {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime AddDate {
                 get {
-                    return ((global::System.DateTime)(this[this.tableTrayItemAllocation.AddDateColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableTrayItemAllocation.AddDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AddDate\' in table \'TrayItemAllocation\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTrayItemAllocation.AddDateColumn] = value;
@@ -778,37 +751,15 @@ namespace RTSJewelERP {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime UpdateDate {
                 get {
-                    return ((global::System.DateTime)(this[this.tableTrayItemAllocation.UpdateDateColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableTrayItemAllocation.UpdateDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UpdateDate\' in table \'TrayItemAllocation\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTrayItemAllocation.UpdateDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string StorageName {
-                get {
-                    try {
-                        return ((string)(this[this.tableTrayItemAllocation.StorageNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'StorageName\' in table \'TrayItemAllocation\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTrayItemAllocation.StorageNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int CompID {
-                get {
-                    return ((int)(this[this.tableTrayItemAllocation.CompIDColumn]));
-                }
-                set {
-                    this[this.tableTrayItemAllocation.CompIDColumn] = value;
                 }
             }
             
@@ -886,14 +837,26 @@ namespace RTSJewelERP {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsStorageNameNull() {
-                return this.IsNull(this.tableTrayItemAllocation.StorageNameColumn);
+            public bool IsAddDateNull() {
+                return this.IsNull(this.tableTrayItemAllocation.AddDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetStorageNameNull() {
-                this[this.tableTrayItemAllocation.StorageNameColumn] = global::System.Convert.DBNull;
+            public void SetAddDateNull() {
+                this[this.tableTrayItemAllocation.AddDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUpdateDateNull() {
+                return this.IsNull(this.tableTrayItemAllocation.UpdateDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUpdateDateNull() {
+                this[this.tableTrayItemAllocation.UpdateDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1064,12 +1027,12 @@ namespace RTSJewelERP.TrayItemLoadTableAdapters {
             tableMapping.ColumnMappings.Add("Weight", "Weight");
             tableMapping.ColumnMappings.Add("AddDate", "AddDate");
             tableMapping.ColumnMappings.Add("UpdateDate", "UpdateDate");
-            tableMapping.ColumnMappings.Add("StorageName", "StorageName");
-            tableMapping.ColumnMappings.Add("CompID", "CompID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TrayItemAllocation] ([TrayName], [ItemName], [ItemBarCode], [Category], [Qty], [Weight], [AddDate], [UpdateDate], [StorageName], [CompID]) VALUES (@TrayName, @ItemName, @ItemBarCode, @Category, @Qty, @Weight, @AddDate, @UpdateDate, @StorageName, @CompID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TrayItemAllocation] ([TrayName], [ItemName], [ItemBarCode], [C" +
+                "ategory], [Qty], [Weight], [AddDate], [UpdateDate]) VALUES (@TrayName, @ItemName" +
+                ", @ItemBarCode, @Category, @Qty, @Weight, @AddDate, @UpdateDate)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TrayName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TrayName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1079,15 +1042,13 @@ namespace RTSJewelERP.TrayItemLoadTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Weight", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Weight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AddDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UpdateDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StorageName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::RTSJewelERP.Properties.Settings.Default.RTSERPBasicConnectionString2;
+            this._connection.ConnectionString = global::RTSJewelERP.Properties.Settings.Default.RTSERPBasicConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1097,7 +1058,7 @@ namespace RTSJewelERP.TrayItemLoadTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT TrayName, ItemName, ItemBarCode, Category, Qty, Weight, AddDate, UpdateDat" +
-                "e, StorageName, CompID FROM dbo.TrayItemAllocation";
+                "e FROM dbo.TrayItemAllocation";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1158,7 +1119,7 @@ namespace RTSJewelERP.TrayItemLoadTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string TrayName, string ItemName, string ItemBarCode, string Category, global::System.Nullable<double> Qty, global::System.Nullable<double> Weight, System.DateTime AddDate, System.DateTime UpdateDate, string StorageName, int CompID) {
+        public virtual int Insert(string TrayName, string ItemName, string ItemBarCode, string Category, global::System.Nullable<double> Qty, global::System.Nullable<double> Weight, global::System.Nullable<global::System.DateTime> AddDate, global::System.Nullable<global::System.DateTime> UpdateDate) {
             if ((TrayName == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -1195,15 +1156,18 @@ namespace RTSJewelERP.TrayItemLoadTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(AddDate));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(UpdateDate));
-            if ((StorageName == null)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            if ((AddDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(AddDate.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(StorageName));
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[9].Value = ((int)(CompID));
+            if ((UpdateDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(UpdateDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

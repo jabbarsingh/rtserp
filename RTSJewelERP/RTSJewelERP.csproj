@@ -260,7 +260,6 @@
     </Compile>
     <Compile Include="MainAccounts.cs">
       <DependentUpon>MainAccounts.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainAccounts.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -488,6 +487,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Units.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateItemInstantly.xaml.cs">
+      <DependentUpon>UpdateItemInstantly.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewAccountLedger.xaml.cs">
       <DependentUpon>ViewAccountLedger.xaml</DependentUpon>
@@ -918,6 +920,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TodayRate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateItemInstantly.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

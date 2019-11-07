@@ -1,4 +1,5 @@
 ﻿using iTextSharp.text;
+using RTSJewelERP.GroupListTableAdapters;
 using RTSJewelERP.MainAccountsTableAdapters;
 using RTSJewelERP.StateTableAdapters;
 using RTSJewelERP.TrayListTableAdapters;
@@ -77,6 +78,7 @@ namespace RTSJewelERP
             BindComboBoxTrayList(cmbTrayLists);
             BindComboBoxMainAccountType(cmbMainType);
             BindComboBox(cmbStates);
+            BindComboBoxGroupName(GroupName);
             //itemnames = itemName;
             //companyId = CompID;
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc); // Esc Key Close Window
@@ -265,6 +267,24 @@ namespace RTSJewelERP
 
         }
 
+
+        public void BindComboBoxGroupName(ComboBox groupname)
+        {
+            var custAdpt = new StockGroupsTableAdapter();
+            var custInfoVal = custAdpt.GetData();
+            //var LinqRes = (from UserRec in custInfoVal
+            //               orderby UserRec.GroupName ascending
+            //               //select (UserRec.StorageName + "- ID:" + UserRec.StorageID)).Distinct();
+            //               select (UserRec.GroupName.Trim())).Distinct();
+            //GroupName.ItemsSource = LinqRes;
+
+            GroupName.ItemsSource = custInfoVal.Where(c => (c.ParentGroupName.Trim() == "Main"))
+         .Select(x => x.GroupName.Trim()).Distinct().ToList();
+
+
+            // comboBoxName.SelectedValueBinding = new Binding("Col6");
+
+        }
 
         public void BindComboBox(ComboBox cmbStates)
         {
@@ -2841,6 +2861,18 @@ namespace RTSJewelERP
 
         private void TabInventory_Selected(object sender, RoutedEventArgs e)
         {
+
+            goldInInvent.Clear();
+            goldInInventQty.Clear();
+            silverInInventQty.Clear();
+            // goldOutInvent.Clear();
+            oldGoldInInvent.Clear();
+            goldInsadaInvent.Clear();
+            goldInsadaInventQty.Clear();
+            silverInInventQty.Clear();
+            silverInsadaInvent.Clear();
+            silverInsadaInventQty.Clear();
+
             goldInInvent.Clear();
            // goldOutInvent.Clear();
             oldGoldInInvent.Clear();
@@ -2882,23 +2914,108 @@ namespace RTSJewelERP
             }
             enddt = yeard + "/" + monthd + "/" + dayd;
 
+            string sqlFilterQuery = "";
+            if (itemBarcodeFilter.Text.Trim() !="")
+            {
+                sqlFilterQuery = "And ItemBarCode='" + itemBarcodeFilter.Text.Trim() + "' ";
+            }
+            bool isSoldChecked= false;
+            if (isSoldOutChkbFilter.IsChecked == true)
+            {
+                isSoldChecked = true;
+                sqlFilterQuery = sqlFilterQuery + " And IsSoldFlag= 1";
+            }
+
+            //if (isSoldOutChkbFilter.IsChecked == true)
+            //{
+            //    sqlFilterQuery = sqlFilterQuery + " And IsSoldFlag= 1 ";
+            //}
+
+            if (GroupName.Text != "")
+            {
+                sqlFilterQuery = sqlFilterQuery + " And Ltrim(rtrim(UnderGroupName))='" + GroupName.Text.Trim() + "'";
+            }
             using (SqlConnection con = new SqlConnection())
             {
                 con.ConnectionString = ConfigurationManager.ConnectionStrings["ConStrRTSErp"].ConnectionString;
                 con.Open();
                 //select SUM(CAST(DR AS float)) As DebtAmount  from ReceiptVouchers where UPPER(LTRIM(RTRIM(DebtorAccountName)))='CASH' --and  TransactionDate <= '" + enddt + "' and TransactionDate >= '" + sdt + "'
                 // select SUM(CAST(CR AS float)) As CreditAmount  from PaymentVouchers where UPPER(LTRIM(RTRIM(CreditorAccountName)))='CASH' --and TransactionDate  <= '" + enddt + "' and TransactionDate >= '" + sdt + "'
+                string sqlQueryS = "";
+                
+                sqlQueryS = "SELECT  SrNumber As [SrNo], Ltrim(rtrim([ItemName]))  As [Item Name],Ltrim(rtrim([ItemBarCode]))  As [Barcode],Ltrim(rtrim(UnderGroupName)) As [Group] ,Ltrim(rtrim(UnderSubGroupName))  As [Sub Group], ActualQty, ActualWt,[GSTRate], [IsSoldFlag] As [SoldOut],[UnitID],[ItemPrice],[CompID] FROM StockItemsByPc WHERE  CompID = '" + CompID + "' and ItemName not like  '%Purchase%' ORDER BY UnderGroupName";
 
-
+                if (sqlFilterQuery != "")
+                {
+                    sqlQueryS = "SELECT  SrNumber As [SrNo], Ltrim(rtrim([ItemName]))  As [Item Name],Ltrim(rtrim([ItemBarCode]))  As [Barcode],Ltrim(rtrim(UnderGroupName)) As [Group] ,Ltrim(rtrim(UnderSubGroupName))  As [Sub Group], ActualQty, ActualWt,[GSTRate], [IsSoldFlag] As [SoldOut],[UnitID],[ItemPrice],[CompID] FROM StockItemsByPc WHERE  CompID = '" + CompID + "' and ItemName not like  '%Purchase%' " + sqlFilterQuery + " ORDER BY UnderGroupName ";
+                }
                 //select * from ReceiptVouchers where  CompID = '" + companyId + "'"  Union  select * from PaymentVouchers where  CompID = '" + companyId + "'"
 
-                SqlCommand com = new SqlCommand("SELECT Ltrim(rtrim([ItemName]))  As [Item Name],Ltrim(rtrim([ItemBarCode]))  As [Barcode],Ltrim(rtrim(UnderGroupName)) As [Group] ,Ltrim(rtrim(UnderSubGroupName))  As [Sub Group], ActualQty, ActualWt,[GSTRate] FROM StockItemsByPc WHERE  CompID = '" + CompID + "' and ItemName not like  '%Purchase%' ORDER BY UnderGroupName", con);
+                SqlCommand com = new SqlCommand(sqlQueryS, con);
                 SqlDataAdapter sda = new SqlDataAdapter(com);
                 System.Data.DataTable dt2 = new System.Data.DataTable("Stock Summary");
                 sda.Fill(dt2);
                 StockInventSummaryGrid.ItemsSource = dt2.DefaultView;
                 StockInventSummaryGrid.AutoGenerateColumns = true;
                 StockInventSummaryGrid.CanUserAddRows = false;
+
+
+
+
+                //string grpName = "General";
+                //double tptalWt = 0;
+                //double tptalQty = 0;
+
+                //double sumDr = 0;
+                //double sumCr = 0;
+                //foreach (DataRow row in dt2.Rows)
+                //{
+                //    //sumDr +=  Convert.ToDouble(row["DR"]);
+                //    tptalWt = tptalWt + ((row["ActualWt"] != DBNull.Value) ? (Convert.ToDouble(row["ActualWt"])) : 0);
+                //    tptalQty = tptalQty + ((row["ActualQty"] != DBNull.Value) ? (Convert.ToDouble(row["ActualQty"])) : 0);
+
+                //    if (grpName.Trim() == "Gold")
+                //    {
+                //        goldInInvent.Text = tptalWt.ToString();
+                //        goldInInventQty.Text = tptalQty.ToString();
+                //    }
+                //    if (grpName.Trim() == "Gold Sada")
+                //    {
+                //        goldInsadaInvent.Text = tptalWt.ToString();
+                //        goldInsadaInventQty.Text = tptalQty.ToString();
+                //    }
+                //    if (grpName.Trim() == "Silver")
+                //    {
+                //        silverInInvent.Text = tptalWt.ToString();
+                //        silverInInventQty.Text = tptalQty.ToString();
+                //    }
+                //    if (grpName.Trim() == "Silver Sada")
+                //    {
+                //        silverInsadaInvent.Text = tptalWt.ToString();
+                //        silverInsadaInventQty.Text = tptalQty.ToString();
+                //    }
+                //    if (grpName.Trim() == "Old Gold")
+                //    {
+                //        oldGoldInInvent.Text = tptalWt.ToString();
+
+                //    }
+                //    if (grpName.Trim() == "Old Silver")
+                //    {
+                //        oldSilverInInvent.Text = tptalWt.ToString();
+
+                //    }
+
+
+                //}
+
+
+
+
+
+
+
+
+
             }
 
 
@@ -2915,6 +3032,10 @@ namespace RTSJewelERP
                 com.Parameters.Add(new SqlParameter("@StartDate", sdt));
                 com.Parameters.Add(new SqlParameter("@EndDate", enddt));
                 com.Parameters.Add(new SqlParameter("@CompID", CompID));
+                com.Parameters.Add(new SqlParameter("@ItemBarCode", itemBarcodeFilter.Text.Trim()));
+                com.Parameters.Add(new SqlParameter("@IsSoldFlag", isSoldChecked));
+                com.Parameters.Add(new SqlParameter("@GroupName", GroupName.Text.Trim()));
+
                 SqlDataAdapter sda = new SqlDataAdapter(com);
                 SqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
@@ -2965,9 +3086,19 @@ namespace RTSJewelERP
 
         private void Button_Click_StockSummaryInventory(object sender, RoutedEventArgs e)
         {
+
             goldInInvent.Clear();
+            goldInInventQty.Clear();
+            silverInInventQty.Clear();
             // goldOutInvent.Clear();
             oldGoldInInvent.Clear();
+            goldInsadaInvent.Clear();
+            goldInsadaInventQty.Clear();
+            silverInInventQty.Clear();
+            silverInsadaInvent.Clear();
+            silverInsadaInventQty.Clear();
+
+              
             //oldGoldOutInvent.Clear();
             silverInInvent.Clear();
             //  silverOutInvent.Clear();
@@ -3006,6 +3137,27 @@ namespace RTSJewelERP
             }
             enddt = yeard + "/" + monthd + "/" + dayd;
 
+            string sqlFilterQuery = "";
+            if (itemBarcodeFilter.Text.Trim() != "")
+            {
+                sqlFilterQuery = "And ItemBarCode='" + itemBarcodeFilter.Text.Trim() + "' ";
+            }
+            bool isSoldChecked = false;
+            if (isSoldOutChkbFilter.IsChecked == true)
+            {
+                isSoldChecked = true;
+                sqlFilterQuery = sqlFilterQuery + " And IsSoldFlag= 1";
+            }
+
+            //if (isSoldOutChkbFilter.IsChecked == true)
+            //{
+            //    sqlFilterQuery = sqlFilterQuery + " And IsSoldFlag= 1 ";
+            //}
+            if (GroupName.Text != "")
+            {
+                sqlFilterQuery = sqlFilterQuery + " And Ltrim(rtrim(UnderGroupName))='" + GroupName.Text.Trim() + "'";
+            }
+
             using (SqlConnection con = new SqlConnection())
             {
                 con.ConnectionString = ConfigurationManager.ConnectionStrings["ConStrRTSErp"].ConnectionString;
@@ -3013,10 +3165,22 @@ namespace RTSJewelERP
                 //select SUM(CAST(DR AS float)) As DebtAmount  from ReceiptVouchers where UPPER(LTRIM(RTRIM(DebtorAccountName)))='CASH' --and  TransactionDate <= '" + enddt + "' and TransactionDate >= '" + sdt + "'
                 // select SUM(CAST(CR AS float)) As CreditAmount  from PaymentVouchers where UPPER(LTRIM(RTRIM(CreditorAccountName)))='CASH' --and TransactionDate  <= '" + enddt + "' and TransactionDate >= '" + sdt + "'
 
+                string sqlQueryS = "";
+
+                sqlQueryS = "SELECT  SrNumber As [SrNo], Ltrim(rtrim([ItemName]))  As [Item Name],Ltrim(rtrim([ItemBarCode]))  As [Barcode],Ltrim(rtrim(UnderGroupName)) As [Group] ,Ltrim(rtrim(UnderSubGroupName))  As [Sub Group], ActualQty, ActualWt,[GSTRate], [IsSoldFlag] As [SoldOut],[UnitID],[ItemPrice],[CompID] FROM StockItemsByPc WHERE  CompID = '" + CompID + "' and ItemName not like  '%Purchase%' ORDER BY UnderGroupName";
+
+                if (sqlFilterQuery != "")
+                {
+                    sqlQueryS = "SELECT  SrNumber As [SrNo], Ltrim(rtrim([ItemName]))  As [Item Name],Ltrim(rtrim([ItemBarCode]))  As [Barcode],Ltrim(rtrim(UnderGroupName)) As [Group] ,Ltrim(rtrim(UnderSubGroupName))  As [Sub Group], ActualQty, ActualWt,[GSTRate], [IsSoldFlag] As [SoldOut],[UnitID],[ItemPrice],[CompID] FROM StockItemsByPc WHERE  CompID = '" + CompID + "' and ItemName not like  '%Purchase%' " + sqlFilterQuery + " ORDER BY UnderGroupName ";
+                }
+                //select * from ReceiptVouchers where  CompID = '" + companyId + "'"  Union  select * from PaymentVouchers where  CompID = '" + companyId + "'"
+
+                SqlCommand com = new SqlCommand(sqlQueryS, con);
+
 
                 //select * from ReceiptVouchers where  CompID = '" + companyId + "'"  Union  select * from PaymentVouchers where  CompID = '" + companyId + "'"
 
-                SqlCommand com = new SqlCommand("SELECT Ltrim(rtrim([ItemName]))  As [Item Name],Ltrim(rtrim([ItemBarCode]))  As [Barcode],Ltrim(rtrim(UnderGroupName)) As [Group] ,Ltrim(rtrim(UnderSubGroupName))  As [Sub Group], ActualQty, ActualWt,[GSTRate] FROM StockItemsByPc WHERE  CompID = '" + CompID + "' and ItemName not like  '%Purchase%' ORDER BY UnderGroupName", con);
+                //SqlCommand com = new SqlCommand("SELECT SrNumber As [SrNo], Ltrim(rtrim([ItemName]))  As [Item Name],Ltrim(rtrim([ItemBarCode]))  As [Barcode],Ltrim(rtrim(UnderGroupName)) As [Group] ,Ltrim(rtrim(UnderSubGroupName))  As [Sub Group], ActualQty, ActualWt,[GSTRate] , [IsSoldFlag]  As [SoldOut],[UnitID],[ItemPrice],[CompID] FROM StockItemsByPc WHERE  CompID = '" + CompID + "' and ItemName not like  '%Purchase%' ORDER BY UnderGroupName", con);
                 SqlDataAdapter sda = new SqlDataAdapter(com);
                 System.Data.DataTable dt2 = new System.Data.DataTable("Stock Summary");
                 sda.Fill(dt2);
@@ -3039,6 +3203,9 @@ namespace RTSJewelERP
                 com.Parameters.Add(new SqlParameter("@StartDate", sdt));
                 com.Parameters.Add(new SqlParameter("@EndDate", enddt));
                 com.Parameters.Add(new SqlParameter("@CompID", CompID));
+                com.Parameters.Add(new SqlParameter("@ItemBarCode", itemBarcodeFilter.Text.Trim()));
+                com.Parameters.Add(new SqlParameter("@IsSoldFlag", isSoldChecked));
+                com.Parameters.Add(new SqlParameter("@GroupName", GroupName.Text.Trim()));
                 SqlDataAdapter sda = new SqlDataAdapter(com);
                 SqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
@@ -3082,6 +3249,16 @@ namespace RTSJewelERP
                 }
 
             }
+
+        }
+
+        private void GroupName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if (GroupName.SelectedItem != null)
+            //{
+            //    string storagenameselected = GroupName.SelectedItem.ToString();
+            //    BindComboBoxSubGroup(storagenameselected);
+            //}
 
         }
 
@@ -8125,6 +8302,53 @@ namespace RTSJewelERP
                 MessageBox.Show("In Excel Export ");
 
             }
+
+        }
+
+        private void StockInventSummaryGrid_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+
+
+
+            var uiElement = e.OriginalSource as UIElement;
+            if (e.Key == Key.Enter && uiElement != null)
+            {
+                DataRowView row = (DataRowView)StockInventSummaryGrid.SelectedItems[0];
+                string srnumber = row["SrNo"].ToString();
+                string itemname = row["Item Name"].ToString();
+                string itembarcode = row["Barcode"].ToString();
+                string group = row["Group"].ToString();
+                string issold = row["SoldOut"].ToString();
+                string qty = row["ActualQty"].ToString();
+                string wt = row["ActualWt"].ToString();
+                string price = row["ItemPrice"].ToString();
+                string gstrate = row["GSTRate"].ToString();
+                string compid = row["CompID"].ToString();
+                //string accountnametrialbal = row["Particular"].ToString();
+                //string accountnametrialbal = row["Particular"].ToString();
+
+                //string startdatev = startDateTrialBalance.SelectedDate.ToString();
+                //string enddatev = toDateTrialBalance.SelectedDate.ToString();
+
+                //string customerName = row["CustomerName"].ToString();
+                //string otherCharge = row["AnyotherCharges"].ToString();
+                //string statecodeCust = row["GSTIN"].ToString();
+                //statecodeCust = statecodeCust.Trim().Substring(0, 2);
+
+                //SaleVoucherJewellLatha viewBillObj = new SaleVoucherJewellLatha();
+
+                //if (saleHomeIcon == "SaleVoucherJewellLatha")
+                //{
+                UpdateItemInstantly sv = new UpdateItemInstantly(srnumber, itemname, itembarcode, group, issold, qty, wt, price,gstrate,compid);
+                sv.ShowDialog();
+                //}
+
+
+                e.Handled = true;
+                //uiElement.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+
+            }
+
 
         }
 

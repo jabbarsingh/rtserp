@@ -7379,6 +7379,57 @@ namespace RTSJewelERP
             btn.Background = Brushes.BlueViolet;
             btn.Foreground = Brushes.White;
 
+
+
+            double drate = 0;
+            //double discperct = 0;
+            double dAmt = 0;
+            double dAmtLessGST = 0;
+            double dGst = 0;
+            double dGstAmt = 0;
+            double dWastePerc = 0;
+            double dWt = 0;
+            double dTotalWt = 0;
+
+            try
+            {
+                dAmt = (txtAmount.Text.Trim() == "") ? 0 : Convert.ToDouble(txtAmount.Text.Trim());
+                if (dAmt > 0)
+                {
+                    drate = (txtPrice.Text.Trim() == "") ? 0 : Convert.ToDouble(txtPrice.Text.Trim());
+                    dWt = (txtWeight.Text.Trim() == "") ? 0 : Convert.ToDouble(txtWeight.Text.Trim());
+                    dGst = 0;// (txtGSTRateAuto.Text.Trim() == "") ? 0 : Convert.ToDouble(txtGSTRateAuto.Text.Trim());
+                    //dGstAmt = Math.Round((dAmt * dGst / 100), 4);
+                    //dGstAmt = (dAmt * dGst / 100);
+                    dAmtLessGST = dAmt;
+                    //dTotalWt = Math.Round(dAmtLessGST / drate, 6);
+                    dTotalWt = dAmtLessGST / drate;
+                    //dTotalWt = Math.Round(dAmtLessGST / drate, 4);
+                    //dWastePerc = Math.Round(((dTotalWt - dWt) * 100 / dWt), 4);
+                    if ((autocompleteBarCodeItemName.autoTextBoxBarCodeItemName.Text.Trim().ToUpper() == "OLD GOLD") || (autocompleteBarCodeItemName.autoTextBoxBarCodeItemName.Text.Trim().ToUpper() == "OLD SILVER"))
+                    {
+                        dWastePerc = Math.Round(((dWt - dTotalWt) * 100) / dWt, 4);
+                    }
+                    else
+                    {
+                        dWastePerc = Math.Round(((dTotalWt - dWt) * 100) / dWt, 4);
+                    }
+                    //dWastePerc = Math.Round(dWastePerc, 2);
+                    //discPrice = drate - (drate * discperct / 100);
+                    txtWastePercAuto.Text = dWastePerc.ToString();
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please enter valid data");
+            }
+
+
+
            // Total = Math.Round(((s.MC + ((s.BilledWt + (s.BilledWt * s.WastagePerc / 100)) * s.ItemPrice)) - ((s.MC + ((s.BilledWt + (s.BilledWt * s.WastagePerc / 100)) * s.ItemPrice)) * s.SaleDiscountPerc / 100)) + (((s.MC + ( (s.BilledWt + (s.BilledWt * s.WastagePerc / 100)) * s.ItemPrice)) - ((s.MC + ( (s.BilledWt + (s.BilledWt * s.WastagePerc / 100)) * s.ItemPrice)) * s.SaleDiscountPerc / 100)) * s.GSTRate / 100), 2),
 
              double dGstrateAutoVal = (txtGSTRateAuto.Text == "") ? 0.0 : Convert.ToDouble(txtGSTRateAuto.Text);

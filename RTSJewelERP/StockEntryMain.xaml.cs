@@ -793,16 +793,16 @@ namespace RTSJewelERP
             FileStream fs = File.Open(@"C:\ViewBill\Barcode\Barcode-" + barcodenumber + ".pdf", FileMode.Create);
            // Document document = new Document(iTextSharp.text.PageSize.A5, 2f, 2f, 170f, 2f);// from 159
 
-            Document document = new Document(retangulo,15f,0f,0f,0f);
+            Document document = new Document(retangulo,18f,0f,0f,0f);
             //commented below for memort=y stream
             PdfWriter writer = PdfWriter.GetInstance(document, fs);
             document.Open();
             PdfContentByte cb = writer.DirectContent;
-            BaseFont outraFonte = BaseFont.CreateFont(BaseFont.COURIER, BaseFont.CP1252, false, false);
+            BaseFont outraFonte = BaseFont.CreateFont(BaseFont.COURIER_BOLD, BaseFont.CP1252, false, false);
             Barcode128 codeEAN13 = null;
             codeEAN13 = new Barcode128();
             codeEAN13.CodeType = Barcode.CODE128;
-            codeEAN13.BarHeight = 9;  //Set this Barcode height
+            codeEAN13.BarHeight = 11;  //Set this Barcode height 9
 
             if (txtBarcode.Text.Trim().Trim() != "")
             {
@@ -858,7 +858,7 @@ namespace RTSJewelERP
             barcodeTable.AddCell(itemdetails);
             ForFirmCell.AddElement(imgBarCode1); //imgBarCode1ForFirmCell.
             barcodeTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
-            ForFirmCell.PaddingTop = 15;  //12 
+            ForFirmCell.PaddingTop = 13;  //12 
             barcodeTable.AddCell(ForFirmCell);
             document.Add(barcodeTable);
 

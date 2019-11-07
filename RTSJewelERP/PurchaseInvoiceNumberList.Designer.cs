@@ -303,8 +303,6 @@ namespace RTSJewelERP {
             
             private global::System.Data.DataColumn columnCompID;
             
-            private global::System.Data.DataColumn columnDueAmount;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PurchaseVouchersDataTable() {
@@ -436,14 +434,6 @@ namespace RTSJewelERP {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DueAmountColumn {
-                get {
-                    return this.columnDueAmount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +469,7 @@ namespace RTSJewelERP {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PurchaseVouchersRow AddPurchaseVouchersRow(long VoucherNumber, string VoucherType, string AccountName, long AccountNumber, string InvoiceNumber, double InvoiceAmt, System.DateTime TransactionDate, System.DateTime CreationDate, System.DateTime UpdateDate, string CreatedBy, int CompID, double DueAmount) {
+            public PurchaseVouchersRow AddPurchaseVouchersRow(long VoucherNumber, string VoucherType, string AccountName, long AccountNumber, string InvoiceNumber, double InvoiceAmt, System.DateTime TransactionDate, System.DateTime CreationDate, System.DateTime UpdateDate, string CreatedBy, int CompID) {
                 PurchaseVouchersRow rowPurchaseVouchersRow = ((PurchaseVouchersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -493,8 +483,7 @@ namespace RTSJewelERP {
                         CreationDate,
                         UpdateDate,
                         CreatedBy,
-                        CompID,
-                        DueAmount};
+                        CompID};
                 rowPurchaseVouchersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPurchaseVouchersRow);
                 return rowPurchaseVouchersRow;
@@ -529,7 +518,6 @@ namespace RTSJewelERP {
                 this.columnUpdateDate = base.Columns["UpdateDate"];
                 this.columnCreatedBy = base.Columns["CreatedBy"];
                 this.columnCompID = base.Columns["CompID"];
-                this.columnDueAmount = base.Columns["DueAmount"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -559,8 +547,6 @@ namespace RTSJewelERP {
                 base.Columns.Add(this.columnCreatedBy);
                 this.columnCompID = new global::System.Data.DataColumn("CompID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCompID);
-                this.columnDueAmount = new global::System.Data.DataColumn("DueAmount", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDueAmount);
                 this.columnSrNumber.AutoIncrement = true;
                 this.columnSrNumber.AutoIncrementSeed = -1;
                 this.columnSrNumber.AutoIncrementStep = -1;
@@ -891,22 +877,6 @@ namespace RTSJewelERP {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double DueAmount {
-                get {
-                    try {
-                        return ((double)(this[this.tablePurchaseVouchers.DueAmountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DueAmount\' in table \'PurchaseVouchers\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePurchaseVouchers.DueAmountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsVoucherNumberNull() {
                 return this.IsNull(this.tablePurchaseVouchers.VoucherNumberColumn);
             }
@@ -1011,18 +981,6 @@ namespace RTSJewelERP {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCreatedByNull() {
                 this[this.tablePurchaseVouchers.CreatedByColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDueAmountNull() {
-                return this.IsNull(this.tablePurchaseVouchers.DueAmountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDueAmountNull() {
-                this[this.tablePurchaseVouchers.DueAmountColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1197,11 +1155,10 @@ namespace RTSJewelERP.PurchaseInvoiceNumberListTableAdapters {
             tableMapping.ColumnMappings.Add("UpdateDate", "UpdateDate");
             tableMapping.ColumnMappings.Add("CreatedBy", "CreatedBy");
             tableMapping.ColumnMappings.Add("CompID", "CompID");
-            tableMapping.ColumnMappings.Add("DueAmount", "DueAmount");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[PurchaseVouchers] ([VoucherNumber], [VoucherType], [AccountName], [AccountNumber], [InvoiceNumber], [InvoiceAmt], [TransactionDate], [CreationDate], [UpdateDate], [CreatedBy], [CompID], [DueAmount]) VALUES (@VoucherNumber, @VoucherType, @AccountName, @AccountNumber, @InvoiceNumber, @InvoiceAmt, @TransactionDate, @CreationDate, @UpdateDate, @CreatedBy, @CompID, @DueAmount)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[PurchaseVouchers] ([VoucherNumber], [VoucherType], [AccountName], [AccountNumber], [InvoiceNumber], [InvoiceAmt], [TransactionDate], [CreationDate], [UpdateDate], [CreatedBy], [CompID]) VALUES (@VoucherNumber, @VoucherType, @AccountName, @AccountNumber, @InvoiceNumber, @InvoiceAmt, @TransactionDate, @CreationDate, @UpdateDate, @CreatedBy, @CompID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VoucherNumber", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VoucherNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VoucherType", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VoucherType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1214,14 +1171,13 @@ namespace RTSJewelERP.PurchaseInvoiceNumberListTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UpdateDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreatedBy", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreatedBy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DueAmount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DueAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::RTSJewelERP.Properties.Settings.Default.RTSERPBasicConnectionString2;
+            this._connection.ConnectionString = global::RTSJewelERP.Properties.Settings.Default.RTSERPBasicConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1231,8 +1187,8 @@ namespace RTSJewelERP.PurchaseInvoiceNumberListTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT SrNumber, VoucherNumber, VoucherType, AccountName, AccountNumber, InvoiceN" +
-                "umber, InvoiceAmt, TransactionDate, CreationDate, UpdateDate, CreatedBy, CompID," +
-                " DueAmount FROM dbo.PurchaseVouchers";
+                "umber, InvoiceAmt, TransactionDate, CreationDate, UpdateDate, CreatedBy, CompID " +
+                "FROM dbo.PurchaseVouchers";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1293,7 +1249,7 @@ namespace RTSJewelERP.PurchaseInvoiceNumberListTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<long> VoucherNumber, string VoucherType, string AccountName, global::System.Nullable<long> AccountNumber, string InvoiceNumber, global::System.Nullable<double> InvoiceAmt, global::System.Nullable<global::System.DateTime> TransactionDate, System.DateTime CreationDate, global::System.Nullable<global::System.DateTime> UpdateDate, string CreatedBy, int CompID, global::System.Nullable<double> DueAmount) {
+        public virtual int Insert(global::System.Nullable<long> VoucherNumber, string VoucherType, string AccountName, global::System.Nullable<long> AccountNumber, string InvoiceNumber, global::System.Nullable<double> InvoiceAmt, global::System.Nullable<global::System.DateTime> TransactionDate, System.DateTime CreationDate, global::System.Nullable<global::System.DateTime> UpdateDate, string CreatedBy, int CompID) {
             if ((VoucherNumber.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((long)(VoucherNumber.Value));
             }
@@ -1350,12 +1306,6 @@ namespace RTSJewelERP.PurchaseInvoiceNumberListTableAdapters {
                 this.Adapter.InsertCommand.Parameters[9].Value = ((string)(CreatedBy));
             }
             this.Adapter.InsertCommand.Parameters[10].Value = ((int)(CompID));
-            if ((DueAmount.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((double)(DueAmount.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

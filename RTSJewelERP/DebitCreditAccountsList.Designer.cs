@@ -335,12 +335,6 @@ namespace RTSJewelERP {
             
             private global::System.Data.DataColumn columnShippingAddr2;
             
-            private global::System.Data.DataColumn columnDiscount;
-            
-            private global::System.Data.DataColumn columnPrintName;
-            
-            private global::System.Data.DataColumn columnCreditDays;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AccountsListDataTable() {
@@ -600,30 +594,6 @@ namespace RTSJewelERP {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DiscountColumn {
-                get {
-                    return this.columnDiscount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PrintNameColumn {
-                get {
-                    return this.columnPrintName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CreditDaysColumn {
-                get {
-                    return this.columnCreditDays;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -686,10 +656,7 @@ namespace RTSJewelERP {
                         bool IsInventoryAffected, 
                         int CompID, 
                         string ShippingAddr1, 
-                        string ShippingAddr2, 
-                        string Discount, 
-                        string PrintName, 
-                        string CreditDays) {
+                        string ShippingAddr2) {
                 AccountsListRow rowAccountsListRow = ((AccountsListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -719,10 +686,7 @@ namespace RTSJewelERP {
                         IsInventoryAffected,
                         CompID,
                         ShippingAddr1,
-                        ShippingAddr2,
-                        Discount,
-                        PrintName,
-                        CreditDays};
+                        ShippingAddr2};
                 rowAccountsListRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAccountsListRow);
                 return rowAccountsListRow;
@@ -773,9 +737,6 @@ namespace RTSJewelERP {
                 this.columnCompID = base.Columns["CompID"];
                 this.columnShippingAddr1 = base.Columns["ShippingAddr1"];
                 this.columnShippingAddr2 = base.Columns["ShippingAddr2"];
-                this.columnDiscount = base.Columns["Discount"];
-                this.columnPrintName = base.Columns["PrintName"];
-                this.columnCreditDays = base.Columns["CreditDays"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -837,12 +798,6 @@ namespace RTSJewelERP {
                 base.Columns.Add(this.columnShippingAddr1);
                 this.columnShippingAddr2 = new global::System.Data.DataColumn("ShippingAddr2", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnShippingAddr2);
-                this.columnDiscount = new global::System.Data.DataColumn("Discount", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDiscount);
-                this.columnPrintName = new global::System.Data.DataColumn("PrintName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrintName);
-                this.columnCreditDays = new global::System.Data.DataColumn("CreditDays", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCreditDays);
                 this.columnAcctID.AutoIncrement = true;
                 this.columnAcctID.AutoIncrementSeed = -1;
                 this.columnAcctID.AutoIncrementStep = -1;
@@ -871,9 +826,6 @@ namespace RTSJewelERP {
                 this.columnCompID.AllowDBNull = false;
                 this.columnShippingAddr1.MaxLength = 2147483647;
                 this.columnShippingAddr2.MaxLength = 2147483647;
-                this.columnDiscount.MaxLength = 2147483647;
-                this.columnPrintName.MaxLength = 2147483647;
-                this.columnCreditDays.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1444,54 +1396,6 @@ namespace RTSJewelERP {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Discount {
-                get {
-                    try {
-                        return ((string)(this[this.tableAccountsList.DiscountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Discount\' in table \'AccountsList\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAccountsList.DiscountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PrintName {
-                get {
-                    try {
-                        return ((string)(this[this.tableAccountsList.PrintNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PrintName\' in table \'AccountsList\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAccountsList.PrintNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CreditDays {
-                get {
-                    try {
-                        return ((string)(this[this.tableAccountsList.CreditDaysColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CreditDays\' in table \'AccountsList\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAccountsList.CreditDaysColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPrimaryAcctIDNull() {
                 return this.IsNull(this.tableAccountsList.PrimaryAcctIDColumn);
             }
@@ -1777,42 +1681,6 @@ namespace RTSJewelERP {
             public void SetShippingAddr2Null() {
                 this[this.tableAccountsList.ShippingAddr2Column] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDiscountNull() {
-                return this.IsNull(this.tableAccountsList.DiscountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDiscountNull() {
-                this[this.tableAccountsList.DiscountColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPrintNameNull() {
-                return this.IsNull(this.tableAccountsList.PrintNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPrintNameNull() {
-                this[this.tableAccountsList.PrintNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCreditDaysNull() {
-                return this.IsNull(this.tableAccountsList.CreditDaysColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCreditDaysNull() {
-                this[this.tableAccountsList.CreditDaysColumn] = global::System.Convert.DBNull;
-            }
         }
         
         /// <summary>
@@ -2002,13 +1870,10 @@ namespace RTSJewelERP.DebitCreditAccountsListTableAdapters {
             tableMapping.ColumnMappings.Add("CompID", "CompID");
             tableMapping.ColumnMappings.Add("ShippingAddr1", "ShippingAddr1");
             tableMapping.ColumnMappings.Add("ShippingAddr2", "ShippingAddr2");
-            tableMapping.ColumnMappings.Add("Discount", "Discount");
-            tableMapping.ColumnMappings.Add("PrintName", "PrintName");
-            tableMapping.ColumnMappings.Add("CreditDays", "CreditDays");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[AccountsList] ([AcctName], [PrimaryAcctID], [PrimaryAcctName], [AcctDesc], [Alias], [Address1], [Address2], [City], [State], [PINCode], [Mobile1], [Mobile2], [Phone], [GSTIN], [Email], [PAN], [Website], [OpBalanceDR], [OpBalanceCR], [AccountRules], [CreationDate], [UpdateDate], [CreatedBy], [IsInventoryAffected], [CompID], [ShippingAddr1], [ShippingAddr2], [Discount], [PrintName], [CreditDays]) VALUES (@AcctName, @PrimaryAcctID, @PrimaryAcctName, @AcctDesc, @Alias, @Address1, @Address2, @City, @State, @PINCode, @Mobile1, @Mobile2, @Phone, @GSTIN, @Email, @PAN, @Website, @OpBalanceDR, @OpBalanceCR, @AccountRules, @CreationDate, @UpdateDate, @CreatedBy, @IsInventoryAffected, @CompID, @ShippingAddr1, @ShippingAddr2, @Discount, @PrintName, @CreditDays)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[AccountsList] ([AcctName], [PrimaryAcctID], [PrimaryAcctName], [AcctDesc], [Alias], [Address1], [Address2], [City], [State], [PINCode], [Mobile1], [Mobile2], [Phone], [GSTIN], [Email], [PAN], [Website], [OpBalanceDR], [OpBalanceCR], [AccountRules], [CreationDate], [UpdateDate], [CreatedBy], [IsInventoryAffected], [CompID], [ShippingAddr1], [ShippingAddr2]) VALUES (@AcctName, @PrimaryAcctID, @PrimaryAcctName, @AcctDesc, @Alias, @Address1, @Address2, @City, @State, @PINCode, @Mobile1, @Mobile2, @Phone, @GSTIN, @Email, @PAN, @Website, @OpBalanceDR, @OpBalanceCR, @AccountRules, @CreationDate, @UpdateDate, @CreatedBy, @IsInventoryAffected, @CompID, @ShippingAddr1, @ShippingAddr2)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AcctName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AcctName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PrimaryAcctID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PrimaryAcctID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2037,16 +1902,13 @@ namespace RTSJewelERP.DebitCreditAccountsListTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingAddr1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingAddr1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingAddr2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingAddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Discount", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Discount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PrintName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PrintName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreditDays", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreditDays", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::RTSJewelERP.Properties.Settings.Default.RTSERPBasicConnectionString2;
+            this._connection.ConnectionString = global::RTSJewelERP.Properties.Settings.Default.RTSERPBasicConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2055,7 +1917,7 @@ namespace RTSJewelERP.DebitCreditAccountsListTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT AcctID, AcctName, PrimaryAcctID, PrimaryAcctName, AcctDesc, Alias, Address1, Address2, City, State, PINCode, Mobile1, Mobile2, Phone, GSTIN, Email, PAN, Website, OpBalanceDR, OpBalanceCR, AccountRules, CreationDate, UpdateDate, CreatedBy, IsInventoryAffected, CompID, ShippingAddr1, ShippingAddr2, Discount, PrintName, CreditDays FROM dbo.AccountsList";
+            this._commandCollection[0].CommandText = @"SELECT AcctID, AcctName, PrimaryAcctID, PrimaryAcctName, AcctDesc, Alias, Address1, Address2, City, State, PINCode, Mobile1, Mobile2, Phone, GSTIN, Email, PAN, Website, OpBalanceDR, OpBalanceCR, AccountRules, CreationDate, UpdateDate, CreatedBy, IsInventoryAffected, CompID, ShippingAddr1, ShippingAddr2 FROM dbo.AccountsList";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2143,10 +2005,7 @@ namespace RTSJewelERP.DebitCreditAccountsListTableAdapters {
                     global::System.Nullable<bool> IsInventoryAffected, 
                     int CompID, 
                     string ShippingAddr1, 
-                    string ShippingAddr2, 
-                    string Discount, 
-                    string PrintName, 
-                    string CreditDays) {
+                    string ShippingAddr2) {
             if ((AcctName == null)) {
                 throw new global::System.ArgumentNullException("AcctName");
             }
@@ -2298,24 +2157,6 @@ namespace RTSJewelERP.DebitCreditAccountsListTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[26].Value = ((string)(ShippingAddr2));
-            }
-            if ((Discount == null)) {
-                this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(Discount));
-            }
-            if ((PrintName == null)) {
-                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(PrintName));
-            }
-            if ((CreditDays == null)) {
-                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(CreditDays));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -34,6 +34,7 @@ using System.Windows.Shapes;
 using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 using System.Timers;
+using RTSJewelERP.UnitsTableAdapters;
 
 
 namespace RTSJewelERP
@@ -116,7 +117,7 @@ namespace RTSJewelERP
 
 
             InitializeComponent();
-
+            BindComboBoxUnits(cmbUnits);
 
             BindComboBoxGroupName(GroupName);
 
@@ -252,6 +253,19 @@ namespace RTSJewelERP
 
 
             //TodayRateGet();
+        }
+
+
+        public void BindComboBoxUnits(ComboBox cmbUnitsList)
+        {
+            var custAdpt = new UnitsTableAdapter();
+            var custInfoVal = custAdpt.GetData();
+            var LinqRes = (from UserRec in custInfoVal
+                           orderby UserRec.Name ascending
+                           //select (UserRec.StorageName + "- ID:" + UserRec.StorageID)).Distinct();
+                           select (UserRec.Name.Trim())).Distinct();
+            cmbUnits.ItemsSource = LinqRes;
+            // comboBoxName.SelectedValueBinding = new Binding("Col6");
         }
 
 
@@ -1115,7 +1129,8 @@ namespace RTSJewelERP
                             GSTRate = 0,// (txtGSTRateAuto.Text.Trim() == "") ? 0 : Convert.ToInt16(txtGSTRateAuto.Text.Trim()),
                             ItemBarCode = (txtBarCode.Text.Trim() == "") ? "" : Convert.ToString(txtBarCode.Text.Trim()),
                             UnderGroupName = (GroupName.Text == "") ? "Gold" : GroupName.Text,
-                            TrayID = trayID
+                            TrayID = trayID,
+                            UnitID = (cmbUnits.Text != "") ? cmbUnits.Text : "gm"
 
                         });
 
@@ -1178,7 +1193,8 @@ namespace RTSJewelERP
                             GSTRate = 0,// (txtGSTRateAuto.Text.Trim() == "") ? 0 : Convert.ToInt16(txtGSTRateAuto.Text),
                             ItemBarCode = (txtBarCode.Text.Trim() == "") ? "" : Convert.ToString(txtBarCode.Text.Trim()),
                             UnderGroupName = (GroupName.Text == "") ? "Gold" : GroupName.Text,
-                            TrayID = trayID
+                            TrayID = trayID,
+                            UnitID = (cmbUnits.Text != "") ? cmbUnits.Text : "gm"
                         });
 
                         //perform  query on Shopping Cart to select certain fields and perform subtotal operation 
@@ -1360,7 +1376,8 @@ namespace RTSJewelERP
                                 SaleDiscountPerc = (txtDiscPerc.Text == "") ? 0.0 : Convert.ToDouble(txtDiscPerc.Text),
                                 GSTRate = (txtGSTRate.Text == "") ? 0 : Convert.ToInt16(txtGSTRate.Text),
                                 ItemBarCode = (txtBarCode.Text == "") ? "" : Convert.ToString(txtBarCode.Text.Trim()),
-                                UnderGroupName = (GroupName.Text == "") ? "Gold" : GroupName.Text
+                                UnderGroupName = (GroupName.Text == "") ? "Gold" : GroupName.Text,
+                                UnitID = (cmbUnits.Text != "") ? cmbUnits.Text : "gm"
                             });
 
                             //perform  query on Shopping Cart to select certain fields and perform subtotal operation 
@@ -1419,7 +1436,8 @@ namespace RTSJewelERP
                                 SaleDiscountPerc = (txtDiscPerc.Text == "") ? 0.0 : Convert.ToDouble(txtDiscPerc.Text),
                                 GSTRate = (txtGSTRate.Text == "") ? 0 : Convert.ToInt16(txtGSTRate.Text),
                                 ItemBarCode = (txtBarCode.Text == "") ? "" : Convert.ToString(txtBarCode.Text.Trim()),
-                                UnderGroupName = (GroupName.Text == "") ? "Gold" : GroupName.Text
+                                UnderGroupName = (GroupName.Text == "") ? "Gold" : GroupName.Text,
+                                UnitID = (cmbUnits.Text != "") ? cmbUnits.Text : "gm"
                             });
 
                             //perform  query on Shopping Cart to select certain fields and perform subtotal operation 
@@ -1568,6 +1586,7 @@ namespace RTSJewelERP
                                 Product = s.ItemName,
                                 //HSN = s.HSN,
                                 Qty = s.BilledQty,
+                                UOM = s.UnitID,
                                 Wt = s.BilledWt,
                                 Wast = s.WastagePerc,
                                 TotalWt = Math.Round((s.BilledWt + (s.BilledWt * s.WastagePerc / 100)), 3),
@@ -2315,13 +2334,16 @@ namespace RTSJewelERP
                             DataGridCell cellQty = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(2);
                             TextBlock qtyText = cellQty.Content as TextBlock;
 
-                            DataGridCell cellQtyWt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(3);
+                            DataGridCell cellUnitID = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(3);
+                            TextBlock txtcellUnitID = cellUnitID.Content as TextBlock;
+
+                            DataGridCell cellQtyWt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(4);
                             TextBlock qtyWt = cellQtyWt.Content as TextBlock;
 
-                            DataGridCell cellWastePerc = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(4);
+                            DataGridCell cellWastePerc = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(5);
                             TextBlock txtcellWastePerc = cellWastePerc.Content as TextBlock;
 
-                            DataGridCell celltotalWt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(5);
+                            DataGridCell celltotalWt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(6);
                             TextBlock txtcelltotalWt = celltotalWt.Content as TextBlock;
 
                             //DataGridCell cellHSN = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(2);
@@ -2330,32 +2352,32 @@ namespace RTSJewelERP
                             //DataGridCell cellUnit = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(4);
                             //ComboBox unitText = cellUnit.Content as ComboBox;
 
-                            DataGridCell cellPrice = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(7);
+                            DataGridCell cellPrice = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(8);
                             TextBlock priceText = cellPrice.Content as TextBlock;
 
-                            DataGridCell cellAmount = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(8);
+                            DataGridCell cellAmount = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(9);
                             TextBlock txtCellAmount = cellAmount.Content as TextBlock;
 
-                            DataGridCell discRate = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(9);
+                            DataGridCell discRate = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(10);
                             TextBlock txtdiscRate = discRate.Content as TextBlock;
 
-                            DataGridCell cellTaxableAmt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(10);
+                            DataGridCell cellTaxableAmt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(11);
                             TextBlock txtTaxableAmt = cellTaxableAmt.Content as TextBlock;
 
-                            DataGridCell cellTotal = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(12);
+                            DataGridCell cellTotal = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(13);
                             TextBlock totalText = cellTotal.Content as TextBlock;
 
-                            DataGridCell gstRate = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(11);
+                            DataGridCell gstRate = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(12);
                             TextBlock txtgstRate = gstRate.Content as TextBlock;
 
-                            DataGridCell gstTax = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(13);
+                            DataGridCell gstTax = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(14);
                             TextBlock txtgsTax = gstTax.Content as TextBlock;
 
 
 
 
 
-                            DataGridCell cellMC = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(6);
+                            DataGridCell cellMC = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(7);
                             TextBlock txtcellMC = cellMC.Content as TextBlock;
 
                             //DataGridCell cellStoreID = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(11);
@@ -2369,16 +2391,16 @@ namespace RTSJewelERP
 
                             //Get Voucher Number
 
-                            DataGridCell cellItemBarcode = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(14);
+                            DataGridCell cellItemBarcode = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(15);
                             //TextBlock txtItemNam = cellItemName.Content as TextBlock;
                             TextBlock txtItemBarcode = cellItemBarcode.Content as TextBlock;
 
 
-                            DataGridCell cellItemGroupName = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(15);
+                            DataGridCell cellItemGroupName = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(16);
                             //TextBlock txtItemNam = cellItemName.Content as TextBlock;
                             TextBlock txtItemGroupName = cellItemGroupName.Content as TextBlock;
 
-                            DataGridCell cellTrayID = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(16);
+                            DataGridCell cellTrayID = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(17);
                             //TextBlock txtItemNam = cellItemName.Content as TextBlock;
                             TextBlock txtTrayID = cellTrayID.Content as TextBlock;
 
@@ -2388,7 +2410,9 @@ namespace RTSJewelERP
 
 
                             string querySalesInventory = "";
-                            querySalesInventory = "insert into SalesVoucherInventoryByPc(VoucherNumber, VoucherType,InvoiceNumber,ItemName,HSN,SalePrice,GSTRate,GSTTax,Discount,TaxablelAmount,TotalAmount,MakingCharge,WastePerc, BilledQty,BilledWt,TotalBilledWt,TransactionDate,FromConsumedStorageID,FromConsumedTrayID,FromConsumedCounterID,CompID,Amount, ItemBarCode) Values ( '" + VoucherNumber.Text + "','Sale Voucher','" + invoiceNumber.Text.Trim() + "','" + txtItemNam.Text.Trim() + "','" + HSN.Text + "','" + priceText.Text + "','" + txtgstRate.Text + "','" + txtgsTax.Text + "','" + txtdiscRate.Text + "', '" + txtTaxableAmt.Text + "','" + totalText.Text + "','" + txtcellMC.Text + "','" + txtcellWastePerc.Text + "','" + qtyText.Text + "','" + qtyWt.Text + "','" + txtcelltotalWt.Text + "', '" + InvdateValue + "','1','" + txtTrayID.Text + "','1', '" + CompID + "','" + txtCellAmount.Text + "','" + txtItemBarcode.Text + "')";
+                            //querySalesInventory = "insert into SalesVoucherInventoryByPc(VoucherNumber, VoucherType,InvoiceNumber,ItemName,HSN,SalePrice,GSTRate,GSTTax,Discount,TaxablelAmount,TotalAmount,MakingCharge,WastePerc, BilledQty,BilledWt,TotalBilledWt,TransactionDate,FromConsumedStorageID,FromConsumedTrayID,FromConsumedCounterID,CompID,Amount, ItemBarCode) Values ( '" + VoucherNumber.Text + "','Sale Voucher','" + invoiceNumber.Text.Trim() + "','" + txtItemNam.Text.Trim() + "','" + HSN.Text + "','" + priceText.Text + "','" + txtgstRate.Text + "','" + txtgsTax.Text + "','" + txtdiscRate.Text + "', '" + txtTaxableAmt.Text + "','" + totalText.Text + "','" + txtcellMC.Text + "','" + txtcellWastePerc.Text + "','" + qtyText.Text + "','" + qtyWt.Text + "','" + txtcelltotalWt.Text + "', '" + InvdateValue + "','1','" + txtTrayID.Text + "','1', '" + CompID + "','" + txtCellAmount.Text + "','" + txtItemBarcode.Text + "')";
+
+                            querySalesInventory = "insert into SalesVoucherInventoryByPc(VoucherNumber, VoucherType,InvoiceNumber,ItemName,HSN,SalePrice,GSTRate,GSTTax,Discount,TaxablelAmount,TotalAmount,MakingCharge,WastePerc, BilledQty,BilledWt,TotalBilledWt,TransactionDate,FromConsumedStorageID,FromConsumedTrayID,FromConsumedCounterID,CompID,Amount, ItemBarCode, UnitID) Values ( '" + VoucherNumber.Text + "','Sale Voucher','" + invoiceNumber.Text.Trim() + "','" + txtItemNam.Text.Trim() + "','" + HSN.Text + "','" + priceText.Text + "','" + txtgstRate.Text + "','" + txtgsTax.Text + "','" + txtdiscRate.Text + "', '" + txtTaxableAmt.Text + "','" + totalText.Text + "','" + txtcellMC.Text + "','" + txtcellWastePerc.Text + "','" + qtyText.Text + "','" + qtyWt.Text + "','" + txtcelltotalWt.Text + "', '" + InvdateValue + "','0','" + txtTrayID.Text + "','1', '" + CompID + "','" + txtCellAmount.Text + "','" + txtItemBarcode.Text + "','" + txtcellUnitID.Text + "')";
 
 
                             ////Insert into SalesInventory 
@@ -3458,13 +3482,16 @@ namespace RTSJewelERP
                             DataGridCell cellQty = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(2);
                             TextBlock qtyText = cellQty.Content as TextBlock;
 
-                            DataGridCell cellQtyWt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(3);
+                            DataGridCell cellUnitID = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(3);
+                            TextBlock txtcellUnitID = cellUnitID.Content as TextBlock;
+
+                            DataGridCell cellQtyWt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(4);
                             TextBlock qtyWt = cellQtyWt.Content as TextBlock;
 
-                            DataGridCell cellWastePerc = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(4);
+                            DataGridCell cellWastePerc = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(5);
                             TextBlock txtcellWastePerc = cellWastePerc.Content as TextBlock;
 
-                            DataGridCell celltotalWt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(5);
+                            DataGridCell celltotalWt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(6);
                             TextBlock txtcelltotalWt = celltotalWt.Content as TextBlock;
 
                             //DataGridCell cellHSN = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(2);
@@ -3473,32 +3500,32 @@ namespace RTSJewelERP
                             //DataGridCell cellUnit = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(4);
                             //ComboBox unitText = cellUnit.Content as ComboBox;
 
-                            DataGridCell cellPrice = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(7);
+                            DataGridCell cellPrice = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(8);
                             TextBlock priceText = cellPrice.Content as TextBlock;
 
-                            DataGridCell cellAmount = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(8);
+                            DataGridCell cellAmount = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(9);
                             TextBlock txtCellAmount = cellAmount.Content as TextBlock;
 
-                            DataGridCell discRate = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(9);
+                            DataGridCell discRate = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(10);
                             TextBlock txtdiscRate = discRate.Content as TextBlock;
 
-                            DataGridCell cellTaxableAmt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(10);
+                            DataGridCell cellTaxableAmt = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(11);
                             TextBlock txtTaxableAmt = cellTaxableAmt.Content as TextBlock;
 
-                            DataGridCell cellTotal = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(12);
+                            DataGridCell cellTotal = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(13);
                             TextBlock totalText = cellTotal.Content as TextBlock;
 
-                            DataGridCell gstRate = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(11);
+                            DataGridCell gstRate = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(12);
                             TextBlock txtgstRate = gstRate.Content as TextBlock;
 
-                            DataGridCell gstTax = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(13);
+                            DataGridCell gstTax = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(14);
                             TextBlock txtgsTax = gstTax.Content as TextBlock;
 
 
 
 
 
-                            DataGridCell cellMC = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(6);
+                            DataGridCell cellMC = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(7);
                             TextBlock txtcellMC = cellMC.Content as TextBlock;
 
                             //DataGridCell cellStoreID = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(11);
@@ -3512,16 +3539,16 @@ namespace RTSJewelERP
 
                             //Get Voucher Number
 
-                            DataGridCell cellItemBarcode = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(14);
+                            DataGridCell cellItemBarcode = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(15);
                             //TextBlock txtItemNam = cellItemName.Content as TextBlock;
                             TextBlock txtItemBarcode = cellItemBarcode.Content as TextBlock;
 
 
-                            DataGridCell cellItemGroupName = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(15);
+                            DataGridCell cellItemGroupName = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(16);
                             //TextBlock txtItemNam = cellItemName.Content as TextBlock;
                             TextBlock txtItemGroupName = cellItemGroupName.Content as TextBlock;
 
-                            DataGridCell cellTrayID = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(16);
+                            DataGridCell cellTrayID = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(17);
                             //TextBlock txtItemNam = cellItemName.Content as TextBlock;
                             TextBlock txtTrayID = cellTrayID.Content as TextBlock;
 
@@ -3531,7 +3558,7 @@ namespace RTSJewelERP
 
 
                             string querySalesInventory = "";
-                            querySalesInventory = "insert into SalesVoucherInventoryByPc(VoucherNumber, VoucherType,InvoiceNumber,ItemName,HSN,SalePrice,GSTRate,GSTTax,Discount,TaxablelAmount,TotalAmount,MakingCharge,WastePerc, BilledQty,BilledWt,TotalBilledWt,TransactionDate,FromConsumedStorageID,FromConsumedTrayID,FromConsumedCounterID,CompID,Amount, ItemBarCode) Values ( '" + VoucherNumber.Text + "','Sale Voucher','" + invoiceNumber.Text.Trim() + "','" + txtItemNam.Text.Trim() + "','" + HSN.Text + "','" + priceText.Text + "','" + txtgstRate.Text + "','" + txtgsTax.Text + "','" + txtdiscRate.Text + "', '" + txtTaxableAmt.Text + "','" + totalText.Text + "','" + txtcellMC.Text + "','" + txtcellWastePerc.Text + "','" + qtyText.Text + "','" + qtyWt.Text + "','" + txtcelltotalWt.Text + "', '" + InvdateValue + "','0','" + txtTrayID.Text + "','1', '" + CompID + "','" + txtCellAmount.Text + "','" + txtItemBarcode.Text + "')";
+                            querySalesInventory = "insert into SalesVoucherInventoryByPc(VoucherNumber, VoucherType,InvoiceNumber,ItemName,HSN,SalePrice,GSTRate,GSTTax,Discount,TaxablelAmount,TotalAmount,MakingCharge,WastePerc, BilledQty,BilledWt,TotalBilledWt,TransactionDate,FromConsumedStorageID,FromConsumedTrayID,FromConsumedCounterID,CompID,Amount, ItemBarCode, UnitID) Values ( '" + VoucherNumber.Text + "','Sale Voucher','" + invoiceNumber.Text.Trim() + "','" + txtItemNam.Text.Trim() + "','" + HSN.Text + "','" + priceText.Text + "','" + txtgstRate.Text + "','" + txtgsTax.Text + "','" + txtdiscRate.Text + "', '" + txtTaxableAmt.Text + "','" + totalText.Text + "','" + txtcellMC.Text + "','" + txtcellWastePerc.Text + "','" + qtyText.Text + "','" + qtyWt.Text + "','" + txtcelltotalWt.Text + "', '" + InvdateValue + "','0','" + txtTrayID.Text + "','1', '" + CompID + "','" + txtCellAmount.Text + "','" + txtItemBarcode.Text + "','" + txtcellUnitID .Text+ "')";
 
                             SqlCommand myCommandSVInventory = new SqlCommand(querySalesInventory, myConSVInventoryStr);
                             myCommandSVInventory.Connection = myConSVInventoryStr;
@@ -4423,7 +4450,8 @@ namespace RTSJewelERP
                 printDlg.PrintTicket.PageOrientation = PageOrientation.Portrait;
 
                 // Create a FlowDocument dynamically.
-                FlowDocument doc = CreateFlowDocumentJewellery();
+                FlowDocument doc = CreateFlowDocumentJewellery();  //
+                //FlowDocument doc = CreateFlowDocumentJewellerySimpleSlipFormat(); 
                 doc.ColumnWidth = 600;
                 doc.Name = "FlowDoc";
                 doc.PageHeight = 1000;  //doc.PageHeight = 600; revert back to 600, its just changed for Prakash Jewellery due to Landscape view
@@ -5323,6 +5351,867 @@ namespace RTSJewelERP
 
 
         }
+
+
+        /// <summary>
+        /// This method creates a dynamic FlowDocument. You can add anything to this
+        /// FlowDocument that you would like to send to the printer
+        /// </summary>
+        /// <returns></returns>
+        private FlowDocument CreateFlowDocumentJewellerySimpleSlipFormat()
+        {
+            //  Get Confirmation that data saved successfull, 
+
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConStrRTSErp"].ConnectionString);
+            //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLExpress;Database=RTSProSoft;Trusted_Connection=Yes;");
+            con.Open();
+            string sql = "select  * from Company where CompanyID =  " + CompID + "";
+            SqlCommand cmd = new SqlCommand(sql);
+            cmd.Connection = con;
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            //tmpProduct = new Product();
+            string CompanyName = "";
+            string GSTIN = "";
+            string Address = "";
+            string Address2 = "";
+            string City = "";
+            string State = "";
+            string Mob = "";
+            string Phone = "";
+            string Email = "";
+            string Web = "";
+            string Branches = "";
+            string LogoUrl = "";
+            string SubTitle = "";
+            string BankName = "";
+            string BAddress = "";
+            string IFSC = "";
+            string AccNumber = "";
+            string Holder = "";
+            string PinCode = "";
+            while (reader.Read())
+            {
+
+                //var CustID = reader.GetValue(0).ToString();
+                CompanyName = (reader["CompanyName"] != DBNull.Value) ? (reader.GetString(1).Trim()) : "";
+                GSTIN = (reader["GSTIN"] != DBNull.Value) ? (reader.GetString(3).Trim()) : "";
+                Address = (reader["Address1"] != DBNull.Value) ? (reader.GetString(5).Trim()) : "";
+                Address2 = (reader["Address2"] != DBNull.Value) ? (reader.GetString(6).Trim()) : "";
+                City = (reader["City"] != DBNull.Value) ? (reader.GetString(7).Trim()) : "";
+
+                State = (reader["State"] != DBNull.Value) ? (reader.GetString(8).Trim()) : "";
+                PinCode = (reader["PINCode"] != DBNull.Value) ? (reader.GetString(9).Trim()) : "";
+                Mob = (reader["Mobile1"] != DBNull.Value) ? (reader.GetString(10).Trim()) : "";
+                Phone = (reader["Phone"] != DBNull.Value) ? (reader.GetString(12).Trim()) : "";
+
+                Email = (reader["Email"] != DBNull.Value) ? (reader.GetString(13).Trim()) : "";
+                //FinYeraStartDate  = (reader["FinYearStartDate"] != DBNull.Value) ? (reader.GetString(17).Trim()) : "";
+                //BookStartDate  = (reader["BookStartDate"] != DBNull.Value) ? (reader.GetString(18).Trim()) : "";
+                Web = (reader["Website"] != DBNull.Value) ? (reader.GetString(15).Trim()) : "";
+                Branches = (reader["NumberOfBranches"] != DBNull.Value) ? (reader.GetInt32(16)).ToString() : "";
+                LogoUrl = (reader["LogoPath"] != DBNull.Value) ? (reader.GetString(26).Trim()) : "";
+                SubTitle = (reader["SubTitle"] != DBNull.Value) ? (reader.GetString(25).Trim()) : "";
+
+                BankName = (reader["BankName"] != DBNull.Value) ? (reader.GetString(20).Trim()) : "";
+                BAddress = (reader["BAddress"] != DBNull.Value) ? (reader.GetString(21).Trim()) : "";
+                IFSC = (reader["IFSC"] != DBNull.Value) ? (reader.GetString(22).Trim()) : "";
+                AccNumber = (reader["AccNumber"] != DBNull.Value) ? (reader.GetString(23).Trim()) : "";
+                Holder = (reader["Holder"] != DBNull.Value) ? (reader.GetString(24).Trim()) : "";
+
+
+            }
+            reader.Close();
+
+
+
+
+            ////This code works fine for all
+            //// create document and register styles
+            //FlowDocument doc = new FlowDocument();
+            //doc.ColumnWidth = 1024;
+            //doc.Name = "FlowDoc";
+            //doc.PageHeight = 600;
+            //doc.PageWidth = 800;
+            //doc.MinPageWidth = 800;
+
+            //Below code for Prakash Jewellery due to Landscape view issue
+            // create document and register styles
+            FlowDocument doc = new FlowDocument();
+            doc.ColumnWidth = 1024;
+            doc.Name = "FlowDoc";
+            doc.PageHeight = 1000;
+            doc.PageWidth = 800;
+            doc.MinPageWidth = 800;
+
+
+
+            Font colorHighlight = new Font(Font.FontFamily.TIMES_ROMAN, 8f, Font.BOLD, BaseColor.BLACK);
+            /* style for products table header, assigned via type + class selectors */
+
+            System.Windows.Documents.Table completeTable = new System.Windows.Documents.Table();
+
+            TableRow rowoncompleteTable = new TableRow();
+            ThicknessConverter tc1completeTable = new ThicknessConverter();
+            //// Create Table Borders
+            completeTable.BorderThickness = (Thickness)tc1completeTable.ConvertFromString("0.0001in");
+
+
+
+
+
+            System.Windows.Documents.Table headertbl = new System.Windows.Documents.Table();
+
+            System.Windows.Documents.Paragraph p = new System.Windows.Documents.Paragraph();
+
+            Span s = new Span();
+
+            s = new Span(new Run(CompanyName));
+            s.FontWeight = FontWeights.ExtraBold;
+            s.FontSize = 20;
+
+
+            s.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            Span a1 = new Span();
+            a1 = new Span(new Run("GSTIN: " + GSTIN));
+            a1.FontWeight = FontWeights.Bold;
+            a1.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            Span a2 = new Span();
+            a2 = new Span(new Run(Address + "," + Address2 + "," + City + "-" + PinCode + "," + State));
+            a2.FontSize = 11;
+            a2.FontWeight = FontWeights.Bold;
+            a2.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            Span a2Moba = new Span();
+            a2Moba = new Span(new Run("Mob:" + Mob));
+            a2Moba.FontSize = 10;
+            a2Moba.FontWeight = FontWeights.Bold;
+            a2Moba.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+
+            Span a3 = new Span();
+            a3 = new Span(new Run("Estimation"));
+            a3.FontWeight = FontWeights.Bold;
+            a3.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            Span a4 = new Span();
+            a4 = new Span(new Run("Est# " + invoiceNumber.Text));
+            a4.FontWeight = FontWeights.Bold;
+            a4.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            Span a4acc = new Span();
+            a4acc = new Span(new Run("M/S. " + autocompltCustName.autoTextBoxCustNameBarcode.Text + " : " + CashCustName.Text));
+            a4acc.FontWeight = FontWeights.Bold;
+            a4acc.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+
+            Span a4date = new Span();
+            a4date = new Span(new Run("Date: " + invDate.Text));
+            a4date.FontWeight = FontWeights.Bold;
+            a4date.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            Span a5 = new Span();
+            a5 = new Span(new Run("---------------------------------------------------------------------------------------------------------"));
+            //a5.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            p.FontSize = 12;
+            p.Inlines.Add(a3);// Add the span content into paragraph.  
+            p.Inlines.Add(s);// Add the span content into paragraph.  
+
+            p.Inlines.Add(a2);// Add the span content into paragraph. 
+            p.Inlines.Add(a2Moba);// Add the span content into paragraph. 
+            //p.Inlines.Add(a3);// Add the span content into paragraph.  
+
+            p.Inlines.Add(a4);// Add the span content into paragraph.  
+            p.Inlines.Add(a4acc);// Add the span content into paragraph.  
+            p.Inlines.Add(a4date);// Add the span content into paragraph.  
+            // p.Inlines.Add(a5);// Add the span content into paragraph. 
+
+            //If we have some dynamic text the span in flow document does not under "    " as space and we need to use "\t"  for space.  
+            // s = new Span(new Run(s1 + "\t" + s2));//we need to use \t for space between s1 and s2 content.  
+            //s.Inlines.Add(new LineBreak());
+            //p.Inlines.Add(s);
+            //Give style and formatting to paragraph content.  
+            p.FontSize = 13;
+            p.FontStyle = FontStyles.Normal;
+            p.TextAlignment = TextAlignment.Center;
+            p.FontFamily = new FontFamily("Century Gothic");
+            p.BorderBrush = Brushes.Black;
+            TableRow rowoneHeadertbl = new TableRow();
+            ThicknessConverter tc1head = new ThicknessConverter();
+            //// Create Table Borders
+            headertbl.BorderThickness = (Thickness)tc1head.ConvertFromString("0.0000in");
+
+            var rowgrpHeadertable = new TableRowGroup();
+
+            ThicknessConverter tc22234 = new ThicknessConverter();
+            // rowone.Background = Brushes.Silver;
+            TableCell txtcellHeadtble12 = new TableCell(p);
+            txtcellHeadtble12.BorderBrush = Brushes.Black;
+            txtcellHeadtble12.BorderThickness = (Thickness)tc22234.ConvertFromString("0.0000in");
+            rowoneHeadertbl.Cells.Add(txtcellHeadtble12);
+
+            rowoneHeadertbl.FontSize = 11;
+            rowoneHeadertbl.FontWeight = FontWeights.Bold;
+            rowoneHeadertbl.FontFamily = new FontFamily("Century Gothic");
+            //rowoneHeadertbl.Cells.Add(new TableCell(p));
+            rowgrpHeadertable.Rows.Add(rowoneHeadertbl);
+            headertbl.RowGroups.Add(rowgrpHeadertable);
+
+            headertbl.Padding = new Thickness(0);
+
+            //doc.Blocks.Add(p);
+
+            System.Windows.Documents.Table t5 = new System.Windows.Documents.Table();
+
+            t5.Padding = new Thickness(0);
+            for (int i = 0; i < CartGrid.Items.Count; i++)
+            {
+                //TableColumn tc = new TableColumn();
+
+                t5.Columns.Add(new TableColumn() { Width = GridLength.Auto });
+
+            }
+
+            ThicknessConverter tc1 = new ThicknessConverter();
+            //// Create Table Borders
+            t5.BorderThickness = (Thickness)tc1.ConvertFromString("0.02in");
+
+            int count1 = CartGrid.Items.Count;
+            var rg1 = new TableRowGroup();
+
+            TableRow rowheadertable1 = new TableRow();
+
+
+
+            rowheadertable1.Background = Brushes.Silver;
+            rowheadertable1.FontSize = 12;
+            rowheadertable1.FontFamily = new FontFamily("Century Gothic");
+            rowheadertable1.FontWeight = FontWeights.Bold;
+
+            ThicknessConverter tc222 = new ThicknessConverter();
+
+            //TableCell tcell3sr = new TableCell(new System.Windows.Documents.Paragraph(new Run("Sr")));
+            ////tcell3.ColumnSpan = 3;
+            //tcell3sr.BorderBrush = Brushes.Black;
+            //tcell3sr.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell3sr);
+
+            TableCell tcellfirst = new TableCell(new System.Windows.Documents.Paragraph(new Run("Product")));
+            tcellfirst.ColumnSpan = 3;
+            tcellfirst.BorderBrush = Brushes.Black;
+            tcellfirst.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable1.Cells.Add(tcellfirst);
+
+            //TableCell tcell2 = new TableCell(new System.Windows.Documents.Paragraph(new Run("HSN")));
+            ////tcell2.ColumnSpan = 3;
+            //tcell2.BorderBrush = Brushes.Black;
+            //tcell2.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell2);
+
+            TableCell tcell3 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Qty")));
+            //tcell3.ColumnSpan = 3;
+            tcell3.BorderBrush = Brushes.Black;
+            tcell3.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable1.Cells.Add(tcell3);
+
+            TableCell tcell4 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Wt/Pc")));
+            //tcell4.ColumnSpan = 3;
+            tcell4.BorderBrush = Brushes.Black;
+            tcell4.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable1.Cells.Add(tcell4);
+
+            //TableCell tcell5 = new TableCell(new System.Windows.Documents.Paragraph(new Run("+VA")));
+            ////tcell5.ColumnSpan = 3;
+            //tcell5.BorderBrush = Brushes.Black;
+            //tcell5.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell5);
+
+            //TableCell tcell6 = new TableCell(new System.Windows.Documents.Paragraph(new Run("TotalWt")));
+            ////tcell6.ColumnSpan = 3;
+            //tcell6.BorderBrush = Brushes.Black;
+            //tcell6.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell6);
+
+            //TableCell tcell7 = new TableCell(new System.Windows.Documents.Paragraph(new Run("MC")));
+            ////tcell7.ColumnSpan = 3;
+            //tcell7.BorderBrush = Brushes.Black;
+            //tcell7.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell7);
+
+            TableCell tcell8 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Price")));
+            //tcell8.ColumnSpan = 3;
+            tcell8.BorderBrush = Brushes.Black;
+            tcell8.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable1.Cells.Add(tcell8);
+
+            //TableCell tcell9 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Amt")));
+            ////tcell9.ColumnSpan = 3;
+            //tcell9.BorderBrush = Brushes.Black;
+            //tcell9.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell9);
+
+            //TableCell tcell10 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Disc%")));
+            ////tcell10.ColumnSpan = 3;
+            //tcell10.BorderBrush = Brushes.Black;
+            //tcell10.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell10);
+
+            TableCell tcell11 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Total")));
+            //tcell11.ColumnSpan = 3;
+            tcell11.BorderBrush = Brushes.Black;
+            tcell11.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable1.Cells.Add(tcell11);
+
+            //TableCell tcell12 = new TableCell(new System.Windows.Documents.Paragraph(new Run("GST%")));
+            ////tcell11.ColumnSpan = 3;
+            //tcell12.BorderBrush = Brushes.Black;
+            //tcell12.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell12);
+
+            //TableCell tcell13 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Tax")));
+            ////tcell11.ColumnSpan = 3;
+            //tcell13.BorderBrush = Brushes.Black;
+            //tcell13.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell13);
+
+            //TableCell tcell14 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Total")));
+            ////tcell11.ColumnSpan = 3;
+            //tcell14.BorderBrush = Brushes.Black;
+            //tcell14.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable1.Cells.Add(tcell14);
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("HSN"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Qty"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Wt"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Waste(%)"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("TotalWt"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("MC"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Price"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Amt"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Disc%"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Amount"))));
+
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("GST%"))));
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Tax"))));
+            //rowheadertable1.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Total"))));
+
+
+            SqlConnection conpdfj = new SqlConnection(ConfigurationManager.ConnectionStrings["ConStrRTSErp"].ConnectionString);
+            //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLExpress;Database=RTSProSoft;Trusted_Connection=Yes;");
+            conpdfj.Open();
+            //string sqlpdfj = "SELECT [ItemName] As [ITEM NAME],[BilledQty] As [Qty] ,[BilledWt] As [Wt],WastePerc,[TotalBilledWt],MakingCharge,[SalePrice] As [Price],Amount,[Discount] As [Disc%],[TotalAmount] As [TOTAL]   FROM [SalesVoucherInventoryByPc] where LTRIM(RTRIM(InvoiceNumber))='" + invoiceNumber.Text.Trim() + "' and CompID = '" + CompID + "' and VoucherNumber= '" + VoucherNumber.Text.Trim() + "' and ItemName not in ( 'Old Gold','Old Silver')";
+            //Converted to Waste gms
+            //string sqlpdfj = "SELECT [ItemName] As [ITEM NAME],[BilledQty] As [Qty] ,[BilledWt] As [Wt],Round((TotalBilledWt-BilledWt),3),[TotalBilledWt],MakingCharge,[SalePrice] As [Price],Amount,[Discount] As [Disc%],[TotalAmount] As [TOTAL]   FROM [SalesVoucherInventoryByPc] where LTRIM(RTRIM(InvoiceNumber))='" + invoiceNumber.Text.Trim() + "' and CompID = '" + CompID + "' and VoucherNumber= '" + VoucherNumber.Text.Trim() + "' and ItemName not in ( 'Old Gold','Old Silver')";
+            //simple slip format
+            string sqlpdfj = "SELECT [ItemName] As [ITEM NAME],[BilledQty] As [Qty] ,[BilledWt] As [Wt],[SalePrice] As [Price],[TotalAmount] As [TOTAL]   FROM [SalesVoucherInventoryByPc] where LTRIM(RTRIM(InvoiceNumber))='" + invoiceNumber.Text.Trim() + "' and CompID = '" + CompID + "' and VoucherNumber= '" + VoucherNumber.Text.Trim() + "' and ItemName not in ( 'Old Gold','Old Silver')";
+            SqlCommand cmdpdfj = new SqlCommand(sqlpdfj);
+            cmdpdfj.Connection = conpdfj;
+            SqlDataAdapter sda = new SqlDataAdapter(cmdpdfj);
+            DataTable dttablej = new DataTable("Inv");
+            sda.Fill(dttablej);
+
+            rg1.Rows.Add(rowheadertable1);
+
+            IEnumerable itemsSource1 = CartGrid.ItemsSource as IEnumerable;
+            if (itemsSource1 != null)
+            {
+                // foreach (var item in itemsSource)
+                for (int k = 0; k < dttablej.Rows.Count; ++k)
+                {
+                    TableRow rowone = new TableRow();
+
+                    // rowone.Background = Brushes.Silver;
+                    rowone.FontSize = 11;
+                    rowone.FontWeight = FontWeights.Bold;
+                    rowone.FontFamily = new FontFamily("Century Gothic");
+
+                    for (int i = 0; i < dttablej.Columns.Count; ++i)
+                    {
+
+                        TableCell firstcolproductcell = new TableCell(new System.Windows.Documents.Paragraph(new Run(dttablej.Rows[k][i].ToString())));
+                        if (i == 0)
+                        {
+                            firstcolproductcell.ColumnSpan = 3;
+                        }
+                        firstcolproductcell.BorderBrush = Brushes.Black;
+                        firstcolproductcell.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+                        // rowone.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run((k + 1).ToString()))));
+                        rowone.Cells.Add(firstcolproductcell);
+
+                    }
+
+                    rg1.Rows.Add(rowone);
+                }
+            }
+
+
+
+            //----------------
+
+            t5.CellSpacing = 0;
+
+
+            t5.RowGroups.Add(rg1);
+            //doc.Blocks.Add(t5);
+
+
+
+            System.Windows.Documents.Paragraph totalValParag = new System.Windows.Documents.Paragraph();
+
+            Span ts = new Span();
+            //ts = new Span(new Run("\t" + " "+  lbTotalTax.Content+"    " + lbTotal.Content));
+
+            ts = new Span(new Run("\t" + lbTotal.Content));
+
+            ts.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            //Span cgsttax = new Span();
+            //cgsttax = new Span(new Run("\t" + "                          " + lbTotalTax.Content));
+            //cgsttax.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            totalValParag.TextAlignment = TextAlignment.Right;
+            totalValParag.FontFamily = new FontFamily("Century Gothic");
+            totalValParag.FontSize = 12;
+            totalValParag.Inlines.Add(ts);// Add the span content into paragraph.  
+            //totalVal.Inlines.Add(cgsttax);// Add the span content into paragraph. 
+            //totalVal.Inlines.Add(sgsttax);// Add the span content into paragraph. 
+
+            //totalVal.Inlines.Add(ali5);// Add the span content into paragraph.  
+
+            //doc.Blocks.Add(totalValParag);
+
+
+            System.Windows.Documents.Table t4 = new System.Windows.Documents.Table();
+
+            for (int i = 0; i < OldGoldGrid.Items.Count; i++)
+            {
+                //TableColumn tc = new TableColumn();
+
+                t4.Columns.Add(new TableColumn());
+
+            }
+
+            ThicknessConverter tc = new ThicknessConverter();
+            //// Create Table Borders
+            t4.BorderThickness = (Thickness)tc.ConvertFromString("0.0001in");
+            t4.CellSpacing = 0;
+            int count = OldGoldGrid.Items.Count;
+            var rg = new TableRowGroup();
+
+            TableRow rowheadertable = new TableRow();
+            rowheadertable.Background = Brushes.Silver;
+            rowheadertable.FontSize = 12;
+            rowheadertable.FontWeight = FontWeights.Bold;
+
+            TableCell tcellfirst1 = new TableCell(new System.Windows.Documents.Paragraph(new Run("OLD Item")));
+            tcellfirst1.ColumnSpan = 3;
+            tcellfirst1.BorderBrush = Brushes.Black;
+            tcellfirst1.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable.Cells.Add(tcellfirst1);
+
+
+            TableCell tcell31 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Qty")));
+            //tcell31.ColumnSpan = 3;
+            tcell31.BorderBrush = Brushes.Black;
+            tcell31.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable.Cells.Add(tcell31);
+
+            TableCell tcell41 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Wt")));
+            //tcell41.ColumnSpan = 3;
+            tcell41.BorderBrush = Brushes.Black;
+            tcell41.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable.Cells.Add(tcell41);
+
+            //TableCell tcell51 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Waste")));
+            ////tcell51.ColumnSpan = 3;
+            //tcell51.BorderBrush = Brushes.Black;
+            //tcell51.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable.Cells.Add(tcell51);
+
+            //TableCell tcell61 = new TableCell(new System.Windows.Documents.Paragraph(new Run("TotalWt")));
+            ////tcell61.ColumnSpan = 3;
+            //tcell61.BorderBrush = Brushes.Black;
+            //tcell61.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable.Cells.Add(tcell61);
+
+            //TableCell tcell71 = new TableCell(new System.Windows.Documents.Paragraph(new Run("MC")));
+            ////tcell71.ColumnSpan = 3;
+            //tcell71.BorderBrush = Brushes.Black;
+            //tcell71.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable.Cells.Add(tcell71);
+
+            TableCell tcell81 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Price")));
+            //tcell81.ColumnSpan = 3;
+            tcell81.BorderBrush = Brushes.Black;
+            tcell81.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable.Cells.Add(tcell81);
+
+            //TableCell tcell91 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Amt")));
+            ////tcell91.ColumnSpan = 3;
+            //tcell91.BorderBrush = Brushes.Black;
+            //tcell91.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable.Cells.Add(tcell91);
+
+            //TableCell tcell101 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Disc%")));
+            ////tcell101.ColumnSpan = 3;
+            //tcell101.BorderBrush = Brushes.Black;
+            //tcell101.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            //rowheadertable.Cells.Add(tcell101);
+
+            TableCell tcell111 = new TableCell(new System.Windows.Documents.Paragraph(new Run("Total")));
+            //tcell111.ColumnSpan = 3;
+            tcell111.BorderBrush = Brushes.Black;
+            tcell111.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+            rowheadertable.Cells.Add(tcell111);
+
+
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Product"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Qty"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Wt"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Waste(%)"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("TotalWt"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("MC"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Price"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Amt"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Disc%"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Amount"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("GST%"))));
+            //rowheadertable.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run("Total"))));
+
+
+
+            SqlConnection conpdfjO = new SqlConnection(ConfigurationManager.ConnectionStrings["ConStrRTSErp"].ConnectionString);
+            //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLExpress;Database=RTSProSoft;Trusted_Connection=Yes;");
+            conpdfjO.Open();
+            //string sqlpdf = "SELECT row_number() OVER (order by srnumber ) Sr ,DesignNumberPattern AS Style,[ItemName] As [Item Name]  ,[HSN],Small As S, Mediium As M, Large As L, XL, XL2, XL3,XL4,XL5,XL6 ,[BilledQty] As [Qty] ,[UnitID] As [UOM],[SalePrice] As [Price],Amount ,[Discount] As [Disc(%)] ,[TaxablelAmount] As [Taxable] ,[GSTRate] As [GST%] ,[TotalAmount] As [Total]   FROM [SalesVoucherInventorycloths] where LTRIM(RTRIM(InvoiceNumber))='" + invoiceNumber.Text.Trim() + "' and CompID = '" + CompID + "' and VoucherNumber= '" + VoucherNumber.Text.Trim() + "'";
+            //string sqlpdfjO = "SELECT [ItemName] As [ITEM NAME],[BilledQty] As [Qty] ,[BilledWt] As [Wt],WastePerc,[TotalBilledWt],MakingCharge,[SalePrice] As [Price],Amount,[Discount] As [Disc(%)],TaxablelAmount As Total FROM [SalesVoucherInventoryByPc] where LTRIM(RTRIM(InvoiceNumber))='" + invoiceNumber.Text.Trim() + "' and CompID = '" + CompID + "' and VoucherNumber= '" + VoucherNumber.Text.Trim() + "' and ItemName in ( 'Old Gold','Old Silver')";
+            //waste perc to gms
+            string sqlpdfjO = "SELECT [ItemName] As [ITEM NAME],[BilledQty] As [Qty] ,[BilledWt] As [Wt],[SalePrice] As [Price],TaxablelAmount As Total FROM [SalesVoucherInventoryByPc] where LTRIM(RTRIM(InvoiceNumber))='" + invoiceNumber.Text.Trim() + "' and CompID = '" + CompID + "' and VoucherNumber= '" + VoucherNumber.Text.Trim() + "' and ItemName in ( 'Old Gold','Old Silver')";
+            SqlCommand cmdpdfjO = new SqlCommand(sqlpdfjO);
+            cmdpdfjO.Connection = conpdfjO;
+            SqlDataAdapter sdaO = new SqlDataAdapter(cmdpdfjO);
+            DataTable dttablejO = new DataTable("Inv");
+            sdaO.Fill(dttablejO);
+
+
+            rg.Rows.Add(rowheadertable);
+
+            IEnumerable itemsSource = OldGoldGrid.ItemsSource as IEnumerable;
+            if (itemsSource != null)
+            {
+
+                if (itemsSource != null)
+                {
+                    // foreach (var item in itemsSource)
+                    for (int k = 0; k < dttablejO.Rows.Count; ++k)
+                    {
+                        TableRow rowoneO = new TableRow();
+
+                        // rowone.Background = Brushes.Silver;
+                        rowoneO.FontSize = 11;
+                        rowoneO.FontWeight = FontWeights.Bold;
+                        rowoneO.FontFamily = new FontFamily("Century Gothic");
+
+                        for (int i = 0; i < dttablejO.Columns.Count; ++i)
+                        {
+
+                            TableCell firstcolproductcellO = new TableCell(new System.Windows.Documents.Paragraph(new Run(dttablejO.Rows[k][i].ToString())));
+                            if (i == 0)
+                            {
+                                firstcolproductcellO.ColumnSpan = 3;
+                            }
+                            firstcolproductcellO.BorderBrush = Brushes.Black;
+                            firstcolproductcellO.BorderThickness = (Thickness)tc222.ConvertFromString("0.0001in");
+                            // rowone.Cells.Add(new TableCell(new System.Windows.Documents.Paragraph(new Run((k + 1).ToString()))));
+                            rowoneO.Cells.Add(firstcolproductcellO);
+
+                        }
+
+                        rg.Rows.Add(rowoneO);
+                    }
+                }
+
+            }
+
+            t4.RowGroups.Add(rg);
+
+            if (oldtotalVal > 0)
+            {
+                doc.Blocks.Add(t4);
+            }
+
+
+
+
+            System.Windows.Documents.Paragraph linedot = new System.Windows.Documents.Paragraph();
+
+            System.Windows.Documents.Paragraph totalValold = new System.Windows.Documents.Paragraph();
+            //totalValold.FontFamily 
+            Span ts1 = new Span();
+            ts1 = new Span(new Run("\t" + "(-) Old " + lbOldTotal.Content));
+
+            ts1.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            totalValold.FontSize = 12;
+
+            totalValold.Inlines.Add(ts1);// Add the span content into paragraph.  
+            totalValold.FontFamily = new FontFamily("Century Gothic");
+            //totalVal.Inlines.Add(ali5);// Add the span content into paragraph.  
+            totalValold.TextAlignment = TextAlignment.Right;
+            //if(oldtotalVal >0){
+            //doc.Blocks.Add(totalValold);
+            //}
+            Span linebrktble = new Span();
+            linebrktble = new Span(new Run("------------------------------------------------------------------------------------------- "));
+            // linebrktble.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            linedot.Inlines.Add(linebrktble);// Add the span content into paragraph. 
+            linedot.TextAlignment = TextAlignment.Center;
+            //doc.Blocks.Add(linedot);
+
+
+
+            System.Windows.Documents.Paragraph totalVaGrand = new System.Windows.Documents.Paragraph();
+            //totalValold.FontFamily 
+
+            Span ts11gTotaoBeforeDisc = new Span();
+            if (totalValBeforeItemDis > 0 && discounttotalByItem > 0)
+            {
+                ts11gTotaoBeforeDisc = new Span(new Run("\t Total:" + "₹" + totalValBeforeItemDis + "         "));
+                ts11gTotaoBeforeDisc.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            }
+
+            Span ts11gDiscAmountItemTotal = new Span();
+            if (discounttotalByItem > 0)
+            {
+                ts11gDiscAmountItemTotal = new Span(new Run("\t (-) Discount:" + "₹ " + discounttotalByItem + "         "));
+                ts11gDiscAmountItemTotal.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            }
+
+            Span tsMakingCharge = new Span();
+            if (makingTotalCharge > 0)
+            {
+                tsMakingCharge = new Span(new Run("\t M/C:" + "₹ " + makingTotalCharge + "        "));
+                tsMakingCharge.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            }
+
+            Span tsTotalTaxableAmt = new Span();
+            if (totalTaxableValues > 0)
+            {
+                tsTotalTaxableAmt = new Span(new Run("\t Taxable Amount:" + "₹ " + totalTaxableValues + "         "));
+                tsTotalTaxableAmt.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            }
+
+
+            Span tsTotalCGST = new Span();
+            Span tsTotalSGST = new Span();
+            Span tsTotalIGST = new Span();
+            if (IState && totalTaxAmount > 0)
+            {
+                tsTotalCGST = new Span(new Run("\t" + "CGST@1.5%:₹ " + (totalTaxAmount / 2) + "         "));
+                tsTotalCGST.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            }
+
+            if (IState && totalTaxAmount > 0)
+            {
+                tsTotalSGST = new Span(new Run("\t" + "SGST@1.5%:₹ " + (totalTaxAmount / 2) + "         "));
+                tsTotalSGST.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            }
+
+            if (!IState && totalTaxAmount > 0)
+            {
+                tsTotalIGST = new Span(new Run("\t" + "IGST@3%:₹ " + totalTaxAmount + "         "));
+                tsTotalIGST.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            }
+
+            Span tsTotalOldVale = new Span();
+            if (oldtotalVal > 0)
+            {
+                tsTotalOldVale = new Span(new Run("\t (-) Old " + lbOldTotal.Content + "         "));
+                tsTotalOldVale.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            }
+
+            Span tsTotalGrandValBeforeFlatOff = new Span();
+            tsTotalGrandValBeforeFlatOff = new Span(new Run("\t" + "" + lbGrandTotal.Content + "         "));
+            tsTotalGrandValBeforeFlatOff.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+
+            double flatoff = (flatOff.Text.Trim() == "") ? 0 : Convert.ToDouble(flatOff.Text.Trim());
+            string grandvalueafterFlatOff = Math.Round((totalVal - oldtotalVal - flatoff), 0).ToString();
+
+            Span ts111g = new Span();
+            Span ts1112g = new Span();
+            if (flatoff > 0)
+            {
+                ts111g = new Span(new Run("\t" + "Flat Off: -₹ " + flatOff.Text + "         "));
+                ts111g.Inlines.Add(new LineBreak());//Line break is used for next line. 
+                ts1112g = new Span(new Run("\t" + "Pay: ₹ " + grandvalueafterFlatOff + "         "));
+                ts1112g.Inlines.Add(new LineBreak());//Line break is used for next line.  
+            }
+
+            totalVaGrand.FontSize = 14;
+            totalVaGrand.FontFamily = new FontFamily("Century Gothic");
+            totalVaGrand.Inlines.Add(ts11gTotaoBeforeDisc);// Add the span content into paragraph.  
+            totalVaGrand.Inlines.Add(ts11gDiscAmountItemTotal);
+            //totalVaGrand.Inlines.Add(tsMakingCharge);
+            totalVaGrand.Inlines.Add(tsTotalTaxableAmt);
+            totalVaGrand.Inlines.Add(tsTotalCGST);
+            totalVaGrand.Inlines.Add(tsTotalSGST);
+            totalVaGrand.Inlines.Add(tsTotalIGST);
+            totalVaGrand.Inlines.Add(tsTotalOldVale);
+            totalVaGrand.Inlines.Add(tsTotalGrandValBeforeFlatOff);
+
+            totalVaGrand.Inlines.Add(ts111g);
+            totalVaGrand.Inlines.Add(ts1112g);
+
+            //totalVal.Inlines.Add(ali5);// Add the span content into paragraph.  
+            totalVaGrand.TextAlignment = TextAlignment.Right;
+
+            totalVaGrand.FontWeight = FontWeights.Bold;
+            //doc.Blocks.Add(totalVaGrand);
+
+
+            TableRow rowtwocompleteTable = new TableRow();
+
+            TableRow rowthreecompleteTable = new TableRow();
+
+            //-------------
+            System.Windows.Documents.Table colTableAdd = new System.Windows.Documents.Table();
+            var rg1tb = new TableRowGroup();
+            TableRow rowColCellheadertable = new TableRow();
+            //rowColCellheadertable.Background = Brushes.Silver;
+            rowColCellheadertable.FontSize = 12;
+            rowColCellheadertable.FontFamily = new FontFamily("Century Gothic");
+            rowColCellheadertable.FontWeight = FontWeights.Bold;
+
+            ThicknessConverter tc222tbc = new ThicknessConverter();
+
+            TableCell tcellfirstTb = new TableCell(new System.Windows.Documents.Paragraph(new Run(" Payment Details:\n Cash:₹ " + receivedCash.Text.Trim() + " Card:₹ " + receivedCard.Text.Trim() + " \n Other:₹" + receivedPaytm.Text.Trim() + "  \n Advance:(-)₹" + flatOff.Text.Trim() + "\n " + dueBal.Content.ToString().Trim() + " \n  Card Charge:₹" + receivedBankSurCharge.Text.Trim())));
+
+            tcellfirstTb.BorderBrush = Brushes.Black;
+            tcellfirstTb.BorderThickness = (Thickness)tc222tbc.ConvertFromString("0.0000in");
+            rowColCellheadertable.Cells.Add(tcellfirstTb);
+
+            TableCell tcell2tb = new TableCell(totalVaGrand);
+            //tcell2.ColumnSpan = 3;
+            tcell2tb.BorderBrush = Brushes.Black;
+            tcell2tb.BorderThickness = (Thickness)tc222tbc.ConvertFromString("0.0000in");
+            rowColCellheadertable.Cells.Add(tcell2tb);
+
+            rg1tb.Rows.Add(rowColCellheadertable);
+            colTableAdd.RowGroups.Add(rg1tb);
+
+            TableRow rowOldcompleteTable = new TableRow();
+
+            var rowgrpcompleteTable = new TableRowGroup();
+
+            ThicknessConverter tc22234completeTable = new ThicknessConverter();
+            // rowone.Background = Brushes.Silver;
+            TableCell txtcellcompleteTable = new TableCell(t5);
+            txtcellcompleteTable.BorderBrush = Brushes.Black;
+            txtcellcompleteTable.BorderThickness = (Thickness)tc22234completeTable.ConvertFromString("0.0001in");
+
+            TableCell txtcell2completeTable = new TableCell(headertbl);
+            txtcell2completeTable.BorderBrush = Brushes.Black;
+            txtcell2completeTable.BorderThickness = (Thickness)tc22234completeTable.ConvertFromString("0.0001in");
+
+            TableCell txtcell3completeTable = new TableCell(colTableAdd);
+            txtcell3completeTable.BorderBrush = Brushes.Black;
+            txtcell3completeTable.BorderThickness = (Thickness)tc22234completeTable.ConvertFromString("0.0001in");
+
+
+
+            //TableCell txtcell31completeTable = new TableCell(totalVaGrand);
+            //txtcell31completeTable.BorderBrush = Brushes.Black;
+            //txtcell31completeTable.BorderThickness = (Thickness)tc22234completeTable.ConvertFromString("0.0001in");
+
+            TableCell txtcellOldcompleteTable = new TableCell(t4);
+            txtcellOldcompleteTable.BorderBrush = Brushes.Black;
+            txtcellOldcompleteTable.BorderThickness = (Thickness)tc22234completeTable.ConvertFromString("0.0001in");
+
+            rowoncompleteTable.Cells.Add(txtcellcompleteTable);
+            rowtwocompleteTable.Cells.Add(txtcell2completeTable);
+            rowthreecompleteTable.Cells.Add(txtcell3completeTable);
+
+
+            rowOldcompleteTable.Cells.Add(txtcellOldcompleteTable);
+
+            rowoncompleteTable.FontSize = 11;
+            rowoncompleteTable.FontWeight = FontWeights.Regular;
+            rowoncompleteTable.FontFamily = new FontFamily("Century Gothic");
+
+
+            rowtwocompleteTable.FontSize = 11;
+            rowtwocompleteTable.FontWeight = FontWeights.Regular;
+            rowtwocompleteTable.FontFamily = new FontFamily("Century Gothic");
+
+            //rowoneHeadertbl.Cells.Add(new TableCell(p));
+            rowgrpcompleteTable.Rows.Add(rowtwocompleteTable);
+            rowgrpcompleteTable.Rows.Add(rowoncompleteTable);
+
+            if (oldtotalVal > 0)
+            {
+                rowgrpcompleteTable.Rows.Add(rowOldcompleteTable);
+            }
+
+
+            rowgrpcompleteTable.Rows.Add(rowthreecompleteTable);
+
+            completeTable.RowGroups.Add(rowgrpcompleteTable);
+
+            //completeTable.Padding = new Thickness(0);
+            completeTable.Padding = new Thickness(12);
+            //completeTable.TextAlignment = TextAlignment.Center;
+
+
+
+            doc.Blocks.Add(completeTable);
+
+            //doc.Blocks.Add(linedot);
+
+            System.Windows.Documents.Paragraph signpara = new System.Windows.Documents.Paragraph();
+
+            Span linebrktble1 = new Span();
+            linebrktble1 = new Span(new Run("Signed By                 "));
+            // linebrktble.Inlines.Add(new LineBreak());//Line break is used for next line.  
+
+            signpara.FontSize = 13;
+
+            signpara.Inlines.Add(linebrktble1);// Add the span content into paragraph.  
+            signpara.TextAlignment = TextAlignment.Right;
+            //linedot.Inlines.Add(linebrktble1);// Add the span content into paragraph.  
+            //doc.Blocks.Add(linedot);
+            doc.Blocks.Add(signpara);
+
+
+            doc.Name = "FlowDoc";
+            //doc.PageWidth = 900;
+            doc.PagePadding = new Thickness(20, 15, 10, 20); //v5
+            //doc.PagePadding = new Thickness(50, 30, 10, 5); //v3
+            //doc.PagePadding = new Thickness(30, 20, 10, 5); //V2 
+            // Create IDocumentPaginatorSource from FlowDocument
+            // IDocumentPaginatorSource idpSource = doc;
+            // Call PrintDocument method to send document to printer
+
+
+
+            return doc;
+
+
+        }
+
 
         /// <summary>
         /// Export to PDf for Clothes Wholesalers
@@ -7016,6 +7905,54 @@ namespace RTSJewelERP
             btn.Background = Brushes.BlueViolet;
             btn.Foreground = Brushes.White;
 
+            double drate = 0;
+            //double discperct = 0;
+            double dAmt = 0;
+            double dAmtLessGST = 0;
+            double dGst = 0;
+            double dGstAmt = 0;
+            double dWastePerc = 0;
+            double dWt = 0;
+            double dTotalWt = 0;
+
+            try
+            {
+                dAmt = (txtAmount.Text.Trim() == "") ? 0 : Convert.ToDouble(txtAmount.Text.Trim());
+                if (dAmt > 0)
+                {
+                    drate = (txtPrice.Text.Trim() == "") ? 0 : Convert.ToDouble(txtPrice.Text.Trim());
+                    dWt = (txtWeight.Text.Trim() == "") ? 0 : Convert.ToDouble(txtWeight.Text.Trim());
+                    dGst = 0;// (txtGSTRateAuto.Text.Trim() == "") ? 0 : Convert.ToDouble(txtGSTRateAuto.Text.Trim());
+                    //dGstAmt = Math.Round((dAmt * dGst / 100), 4);
+                    //dGstAmt = (dAmt * dGst / 100);
+                    dAmtLessGST = dAmt;
+                    //dTotalWt = Math.Round(dAmtLessGST / drate, 6);
+                    dTotalWt = dAmtLessGST / drate;
+                    //dTotalWt = Math.Round(dAmtLessGST / drate, 4);
+                    //dWastePerc = Math.Round(((dTotalWt - dWt) * 100 / dWt), 4);
+                    if ((autocompleteBarCodeItemName.autoTextBoxBarCodeItemName.Text.Trim().ToUpper() == "OLD GOLD") || (autocompleteBarCodeItemName.autoTextBoxBarCodeItemName.Text.Trim().ToUpper() == "OLD SILVER"))
+                    {
+                        dWastePerc = Math.Round(((dWt - dTotalWt) * 100) / dWt, 4);
+                    }
+                    else
+                    {
+                        dWastePerc = Math.Round(((dTotalWt - dWt) * 100) / dWt, 4);
+                    }
+                    //dWastePerc = Math.Round(dWastePerc, 2);
+                    //discPrice = drate - (drate * discperct / 100);
+                    txtWastePercAuto.Text = dWastePerc.ToString();
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please enter valid data");
+            }
+
+
 
 
             double discounPerccalc = (txtDiscPerc.Text == "") ? 0.0 : Convert.ToDouble(txtDiscPerc.Text);
@@ -7481,6 +8418,29 @@ namespace RTSJewelERP
 
 
         }
+
+
+        private void CombopboxHighlight_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var combobox = e.OriginalSource as ComboBox;
+            if (combobox != null)
+            {
+                combobox.Background = Brushes.White;
+                combobox.Foreground = Brushes.Black;
+            }
+        }
+
+        private void CombopboxHighlight_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox = e.OriginalSource as ComboBox;
+            if (textBox != null)
+            {
+                //textBox.Background = Brushes.Blue;
+                //textBox.Foreground = Brushes.Black;
+            }
+        }
+
+
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {

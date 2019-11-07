@@ -539,6 +539,7 @@ namespace RTSJewelERP {
                 this.columnSrNumber.AllowDBNull = false;
                 this.columnSrNumber.ReadOnly = true;
                 this.columnGroupName.MaxLength = 2147483647;
+                this.columnParentGroupName.AllowDBNull = false;
                 this.columnParentGroupName.MaxLength = 2147483647;
                 this.columnParentGroupID.AllowDBNull = false;
                 this.columnHSN.MaxLength = 200;
@@ -732,12 +733,7 @@ namespace RTSJewelERP {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string ParentGroupName {
                 get {
-                    try {
-                        return ((string)(this[this.tableStockGroups.ParentGroupNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ParentGroupName\' in table \'StockGroups\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableStockGroups.ParentGroupNameColumn]));
                 }
                 set {
                     this[this.tableStockGroups.ParentGroupNameColumn] = value;
@@ -863,18 +859,6 @@ namespace RTSJewelERP {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetGroupIDNull() {
                 this[this.tableStockGroups.GroupIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsParentGroupNameNull() {
-                return this.IsNull(this.tableStockGroups.ParentGroupNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetParentGroupNameNull() {
-                this[this.tableStockGroups.ParentGroupNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1117,7 +1101,7 @@ namespace RTSJewelERP.GroupListTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::RTSJewelERP.Properties.Settings.Default.RTSERPBasicConnectionString2;
+            this._connection.ConnectionString = global::RTSJewelERP.Properties.Settings.Default.RTSERPBasicConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1202,7 +1186,7 @@ namespace RTSJewelERP.GroupListTableAdapters {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             if ((ParentGroupName == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("ParentGroupName");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(ParentGroupName));
